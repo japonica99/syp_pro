@@ -2,68 +2,20 @@ main.bkscr : *main
 @savepoint
 @jump label=*test
 main.bkscr : *test
-@protagonist text="会敲门的……是我的研究员来了吗？"
+@card text="研究员，管理并研究试验品，所谓“科学家”，在试验品面前，从来都是冷漠且自信的存在。每位研究员视情况可负责一或多个试验品。"
 {
-　macro.bkscr : *protagonist
-　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　macro.bkscr : *card
+　@textwindow file="ui/card" pos=[0, 0] rect=[457, 200, 387, 185] xinterval=3
 　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
 　@textspeed interval=50
 　@text text=text
 　@return
 }
 @p
-@pretrans
-@sprite index=101 file="resources/gj1/doctor"
-@addto index=101 target=basic_layer opacity=255
-@trans mode="crossfade" time=1000
-@doctor text="上午的例行注射。躺好。"
+@card text="试验品不得质疑研究员的权威，除非“最高级”下达命令，否则严禁违背研究员指令行动……因此研究员之于试验品，是“神明”，而试验品之于研究员，则不过是随用随弃的一件物品。"
 {
-　macro.bkscr : *doctor
-　@textwindow file="ui/messagebox3" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
-　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
-　@textspeed interval=50
-　@text text=text
-　@return
-}
-@p
-@doctor text="好了。有任何异常情况，直接向我汇报。"
-{
-　macro.bkscr : *doctor
-　@textwindow file="ui/messagebox3" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
-　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
-　@textspeed interval=50
-　@text text=text
-　@return
-}
-@p
-@pretrans
-@sprite index=102 file="ui/bg/allblack"
-@addto index=102 target=basic_layer opacity=255
-@trans mode="crossfade" time=1000
-@protagonist text="忘记问他，为什么我忽然能“思考”了。"
-{
-　macro.bkscr : *protagonist
-　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
-　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
-　@textspeed interval=50
-　@text text=text
-　@return
-}
-@p
-@protagonist text="可是，这似乎是不被允许出现的情况……上报了这个情况，是不是我就不再具有“价值”，将会和曾经的那些试验品一样，被送去“销毁”呢？"
-{
-　macro.bkscr : *protagonist
-　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
-　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
-　@textspeed interval=50
-　@text text=text
-　@return
-}
-@p
-@protagonist text="上午的检查、注射和集中测试；下午的检查、注射和集中测试……一切似乎从来都不曾变过，可当我不再以一个游离在外的视角观看这一切，一切似乎又产生了一些难以捉摸的、微妙的变化。"
-{
-　macro.bkscr : *protagonist
-　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　macro.bkscr : *card
+　@textwindow file="ui/card" pos=[0, 0] rect=[457, 200, 387, 185] xinterval=3
 　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
 　@textspeed interval=50
 　@text text=text
@@ -71,4 +23,125 @@ main.bkscr : *test
 }
 @p
 @textoff
+@protagonist text="对于连“人”都算不上的试验品，他们一向是趾高气昂、不屑一顾的。他们只需根据自己的需求在我们身上做各种尝试，而不需要顾及我们的“心情”。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="这样的人，怎么会在自己的试验品面前失去以往的沉着，甚至是有些慌张狼狈地匆匆离开？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="为什么？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="是因为我刚才的发言，太过异常，他们准备将我销毁吗？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="是我，不再“被需要”了吗？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="……"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="未来不受掌控又完全无法确认……这种感觉，是他们所说的，“心慌”吗？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="原来可以“思考”之后，会有这么多曾经无法想象的，从大脑传出的奇妙感觉可是，这么快，我就要失去对这些感觉的体验了吗？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="无论是哪种情况，我似乎都应该了解一下究竟发生了什么……至少，可以先稍微见识一下，自己的所谓“命运”吧"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="白天时刻受监控，也没有足够充裕的自由时间……不如，在晚上工作人员大都睡了的时候溜出来，去找找有没有什么有关DS组试验品淘汰的蛛丝马迹。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="……当然了，首先，我需要存活到晚上。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="……"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+main.bkscr : *gj2.2
 @p
