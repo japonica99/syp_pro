@@ -15,7 +15,8 @@
 
 *gj1
 [typewriter pos=[360,350] rect=[5,5,600,200] text="7:00 am"][p]
-//[se file="resources/gj1/gas.wav" channel=1 loop=false] 
+[se file="resources/gj1/gas.wav" channel=1 loop=false] 
+[p]
 //同一通道同时只能播放一个音频 多个可以同时
 //[voice file="resources/gj1/woman1.wav" vol=80]
 [figurant text="试验品DS-2333，生命体征正常，正在上传睡眠监测数据——"][p]
@@ -44,13 +45,13 @@
 [protagonist text="……"][p]
 [textoff]
 
-//[se file="resources/gj1/bump.wav" channel=1 loop=false] 
-//[se file="resources/gj1/steps.wav" channel=1 loop=false] 
+[se file="resources/gj1/getup.wav" channel=1 loop=false] 
+[p]
 @pretrans
 @sprite index=101 file='resources/gj1/desktop'
 @addto index=101 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000
-//[se file="resources/gj1/didi.wav" channel=1 loop=false] 
+[se file="resources/gj1/didi.wav" channel=1 loop=false] 
 [p]
 //[voice file="resources/gj1/woman3.wav" vol=80]
 [figurant text="DS-2333，心率正常，体温正常，血压正常，肌肉活性正常，正在上传基础数据——"][p]
@@ -62,11 +63,14 @@
 @sprite index=102 file='ui/bg/allblack'
 @addto index=102 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000
-//[se file="resources/gj1/carddidi.wav" channel=1 loop=false] 
-//[se file="resources/gj1/steps_heels_closer.wav" channel=1 loop=false] 
+*test
+[voice file="resources/gj1/carddidi.wav" channel=1 loop=false] 
+[voice file="resources/gj1/steps_heels_closer.wav" channel=1 loop=false] 
 [p]
 [figurant text="上午的例行补给"][p]
-//[se file="resources/gj1/shifting.wav" channel=1 loop=false] 
+[textoff]
+[se file="resources/gj1/shifting.wav" channel=1 loop=false] 
+[p]
 [voice file="resources/gj1/lcy2.wav" vol=80]
 [protagonist text="是物资小组。"][p]
 [figurant text="DS-2333，营养剂补给完成，有什么其他需要吗？"][p]
@@ -84,7 +88,10 @@
 [figurant text="DS-2333，无特殊情况，未发现异常。"][p]
 //[voice file="resources/gj1/intercom1.wav" vol=80]
 [figurant text="收到。"][p]
+[textoff]
 //[se file="resources/gj1/steps_heels_further.wav" channel=1 loop=false] 
+//[se file="resources/gj1/closedoor.wav" channel=1 loop=false] 
+[p]
 [voice file="resources/gj1/lcy3.wav" vol=80]
 [protagonist text="也不知道她们每天来补充点营养剂，能看出什么异常来。"][p]
 [protagonist text="等等，为什么我可以对自己说话了？"][p]
@@ -111,7 +118,8 @@
 @waittrans
 
 //[se file="resources/gj1/knock.wav" channel=1 loop=false] 
-//[se file="resources/gj1/carddidi.wav" channel=1 loop=false] 
+//[se file="resources/gj1/carddi.wav" channel=1 loop=false] 
+[p]
 [voice file="resources/gj1/lcy7.wav" vol=80]
 [protagonist text="会敲门的……是我的研究员来了吗？"][p]
 @pretrans
@@ -120,14 +128,20 @@
 @trans mode="crossfade" time=1000
 [voice file="resources/gj1/lcy9.wav" vol=80]
 [doctor text="上午的例行注射。躺好。"][p]
-//[se file="resources/gj1/didi_fur.wav" channel=1 loop=false]
+[textoff]
+//[se file="resources/gj1/didi.wav" channel=1 loop=false vol=40]
+//[se file="resources/gj1/step_closer.wav" channel=1 loop=false vol=40]
+[p]
 [voice file="resources/gj1/lcy8.wav" vol=80]
 [doctor text="好了。有任何异常情况，直接向我汇报。"][p]
-//[se file="resources/gj1/alotof.wav" channel=1 loop=false]
+[textoff]
 @pretrans
 @sprite index=102 file='ui/bg/allblack'
 @addto index=102 target=basic_layer opacity=255 
-@trans mode="crossfade" time=1000
+@trans mode="crossfade" time=300
+//[se file="resources/gj1/cloth_further.wav" channel=1 loop=false]
+//[se file="resources/gj1/step_further.wav" channel=1 loop=false]
+[p]
 [voice file="resources/gj1/lcy10.wav" vol=80]
 [protagonist text="忘记问他，为什么我忽然能“思考”了。"][p]
 [voice file="resources/gj1/lcy11.wav" vol=80]
@@ -421,7 +435,6 @@
 //[se file="resources/gj3.1.1/steps.wav" channel=1 loop=false]
 [protagonist text="……"][p]
 [textoff]
-*test
 @pretrans
 @sprite index=101 file='resources/gj3.1.1/desktop'
 @addto index=101 target=basic_layer opacity=255 
