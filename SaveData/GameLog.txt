@@ -1,34 +1,11 @@
 main.bkscr : *main
 @savepoint
-@jump label=*test
-main.bkscr : *test
-@protagonist text="一定……要成功啊。"
+@white_in_middle text="数字视音频音乐制作 请戴好耳机"
 {
-　macro.bkscr : *protagonist
-　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
-　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
-　@textspeed interval=50
+　macro.bkscr : *white_in_middle
+　@textwindow color=0 pos=[360, 350] rect=[5, 5, 600, 200] xinterval=3
+　@textstyle size=20 color=16777215
 　@text text=text
 　@return
 }
 @p
-@jump label=*gj3.1.1
-main.bkscr : *gj3.1.1
-@figurant text="DS-2333，测试通过，回到休息室待命。"
-{
-　macro.bkscr : *figurant
-　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
-　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
-　@textspeed interval=50
-　@text text=text
-　@return
-}
-@p
-@pretrans
-@sprite index=101 file="resources/gj3.1.1/corridor"
-@addto index=101 target=basic_layer opacity=255
-@trans mode="crossfade" time=1000
-@p
-@quit
-【错误】脚本文件执行到末端。
-　　　　该错误处于原文件（main.bkscr）的第379行。

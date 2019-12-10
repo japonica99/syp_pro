@@ -13,6 +13,10 @@
   "saveHistory"=>0,
   "isTransitionEnabled"=>1,
   "gameTitle"=>"SEE_BY_EARS",
+  "windowSize"=>[
+    1319,
+    742
+  ],
   "isFPSEnabled"=>0,
   "isFullScreen"=>0
 ]
