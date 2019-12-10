@@ -3,21 +3,6 @@ main.bkscr : *main
 @jump label=*test
 main.bkscr : *test
 @pretrans
-@sprite index=101 file="resources/gj3.1.1/office"
-@addto index=101 target=basic_layer opacity=255
-@trans mode="crossfade" time=1000
-@protagonist text="……"
-{
-　macro.bkscr : *protagonist
-　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
-　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
-　@textspeed interval=50
-　@text text=text
-　@return
-}
-@p
-@textoff
-@pretrans
 @sprite index=101 file="resources/gj3.1.1/desktop"
 @addto index=101 target=basic_layer opacity=255
 @trans mode="crossfade" time=1000
@@ -42,7 +27,21 @@ main.bkscr : *test
 }
 @p
 @textoff
-@p
-@quit
-【错误】脚本文件执行到末端。
-　　　　该错误处于原文件（main.bkscr）的第435行。
+@glowyobject file1="resources/gj3.1.1/paper" file2="resources/gj3.1.1/paper_glow" label=["*a1","*b1"] labelFile=["main","main"]
+{
+　extend.bkscr : *glowyobject
+　#var indexes = [];
+　@idlesp get=indexes num=5
+　#var success = true;
+　#var info1 = %[];
+　#tf.curi=0;
+　@action mode="queue"
+　@sprite index=indexes[0] file=file1
+　@sprite index=indexes[1] file=file2
+　@buttonex index=indexes[4] idle=indexes[0] hover=indexes[1] onclick=["*_selectend","extend","jump","tf.curi=curi",%["curi"=>i],%["ignore"=>1],]
+　#var info2 = %[]
+　@infoex index=indexes[4] get=info2
+　@addto index=indexes[4] target=basic_layer pos=[0, 0] opacity=0
+　@action mode="fadeto" opacity=255 time=400 target=indexes[4]
+　@action mode="start" target=basic_layer
+　@waitbutton

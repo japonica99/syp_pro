@@ -414,7 +414,6 @@
 //[se file="resources/gj3.1.1/input_unlock.wav" channel=1 loop=false]
 //[se file="resources/gj3.1.1/open_door.wav" channel=1 loop=false]
 //[se file="resources/gj3.1.1/close_door.wav" channel=1 loop=false]
-*test
 @pretrans
 @sprite index=101 file='resources/gj3.1.1/office'
 @addto index=101 target=basic_layer opacity=255 
@@ -422,6 +421,7 @@
 //[se file="resources/gj3.1.1/steps.wav" channel=1 loop=false]
 [protagonist text="……"][p]
 [textoff]
+*test
 @pretrans
 @sprite index=101 file='resources/gj3.1.1/desktop'
 @addto index=101 target=basic_layer opacity=255 
@@ -432,5 +432,10 @@
 [protagonist text="等等！这是什么？"][p]
 [textoff]
 //用按钮扩展写个发光纸片吧
+[glowyobject file1='resources/gj3.1.1/paper' file2='resources/gj3.1.1/paper_glow' label=["*a1","*b1"] labelFile=["main","main"] pos=[68,204]]
+*a1
+a[p]
+*b1
+b[p]
 [p]
 @quit

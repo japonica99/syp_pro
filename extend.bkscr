@@ -3,7 +3,7 @@
 @macro name="select"  text label se=void labelFile
 @macro name="enable_dialogbox"
 @macro name="disable_dialogbox"
-@macro name="glowypaper"
+@macro name="glowyobject" file1 file2 label labelFile pos
 @return
 
 //用来禁用对话框事件的宏
@@ -166,4 +166,39 @@
 //因为是call进来的，所以要用returnto 而不是 jump
 @returnto label=label[tf.curi] file=labelFile[tf.curi]
 
-*glowypaper
+*glowyobject
+#var indexes = [];
+@idlesp get=indexes num=5
+#var success = true;
+#var info1 = %[];
+
+#tf.curi=0;
+
+@action mode="queue"
+@sprite index=indexes[0] file=file1 
+@sprite index=indexes[1] file=file2 
+
+
+//创建文字精灵并调整他们的锚点
+//因为同一个文字精灵只能加到一个底层上，所以这里直接创建了2个文子精灵
+
+//用两个按钮底层生成按钮。
+//这里的事件流程如下：
+//在按钮被按下时，保存哪个按钮被选择，然后跳转到选择结束标签
+@buttonex index=indexes[4] idle=indexes[0] hover=indexes[1] onclick=["*_selectend",'extend','jump',"tf.curi=curi",%[curi:i],%[ignore:true]]
+
+//获取这个新按钮的信息
+#var info2 = %[]
+@infoex index=indexes[4] get=info2
+//计算这个按钮的新坐标，并以透明的状态添加到底层上
+@addto index=indexes[4] target=basic_layer pos=pos opacity=0
+
+//将显示这一动作添加到动作列表中，此处的动作作用是将按钮的透明度从0变到255
+@action mode="fadeto" opacity=255 time=400 target=indexes[4]
+
+@action mode="start" target=basic_layer
+
+//等待用户点击
+@waitbutton
+//返回
+@return true
