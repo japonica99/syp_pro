@@ -1,20 +1,31 @@
 main.bkscr : *main
 @savepoint
-@jump label=*day1
-main.bkscr : *day1
-@typewriter pos=[360,350] rect=[5,5,600,200] text="7:00 am"
+@jump label=*test
+main.bkscr : *gj1continue
+main.bkscr : *gj1continue
+@figurant text="DS-2333，无特殊情况，未发现异常。"
 {
-　macro.bkscr : *typewriter
-　@textwindow color=0 pos=pos rect=rect xinterval=3
-　@textstyle name="ui/fonts/AiDeep.otf" size=20 color=16777215
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
 　@textspeed interval=50
 　@text text=text
 　@return
 }
 @p
-@figurant text="试验品DS-2333，生命体征正常，正在上传睡眠监测数据——"
+@figurant text="：收到。"
 {
 　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="也不知道她们每天来补充点营养剂，能看出什么异常来。"
+{
+　macro.bkscr : *protagonist
 　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
 　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
 　@textspeed interval=50
@@ -22,13 +33,24 @@ main.bkscr : *day1
 　@return
 }
 @p
-@figurant text="——上传成功"
+@protagonist text="等等，为什么我可以对自己说话了？"
 {
-　macro.bkscr : *figurant
+　macro.bkscr : *protagonist
 　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
 　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
 　@textspeed interval=50
 　@text text=text
 　@return
 }
+@p
+@protagonist text="难道是，是研究组之前在工作汇报会议上提到的，“想法”？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
 @p

@@ -1,7 +1,7 @@
 ﻿*main
 //@call '*init' 'init'
-[jump label="*day1"]
-[white_in_middle text="数字视音频音乐制作（或许可以加个虚假logo炫酷一下？？）"]
+[jump label="*test"]
+[white_in_middle text="数字视音频音乐制作 请戴好耳机"]
 [p]
 [white_in_middle text="......"]
 [p]
@@ -13,21 +13,85 @@
 [p]
 [jump label="*day1"]
 
-*day1
+*gj1
 [typewriter pos=[360,350] rect=[5,5,600,200] text="7:00 am"][p]
 //[se file="resources/gj1/gas.wav" channel=1 loop=false] 
 //同一通道同时只能播放一个音频 多个可以同时
 //[voice file="resources/gj1/woman1.wav" vol=80]
 //@basic_dialogbox
 [figurant text="试验品DS-2333，生命体征正常，正在上传睡眠监测数据——"][p]
+//[voice file="resources/gj1/woman2.wav" vol=80]
 [figurant text="——上传成功"][p]
+[textoff]
 //遮罩 KAG代码
+
 @pretrans
-//△模仿开门的方式，由左至右，从背景A过渡至背景B（遮片渐隐？）。另一首音乐B（登录音乐展示）淡入，使用开门伴随风铃声音效〔 来源网站：http://www.s-t-t.com〕
-@sprite index=101 file='ui/bg/allblack'
-@addto index=101 target=100 opacity=255 
-@sprite index=101 file='bg/B032Y_1280x720_改'
-@addto index=101 target=100 opacity=255 
+//△模仿睁眼的方式，添加由中间向上下的遮罩，从背景A过渡至背景B（遮片渐隐？）。
+@sprite index=102 file='ui/bg/allblack'
+@addto index=102 target=basic_layer opacity=255 
+@sprite index=101 file='resources/gj1/ceiling'
+@addto index=101 target=basic_layer opacity=255 
 @remove index=102
-@trans mode='universal' rule='ui/rule/openFade' time=1000
+@trans mode='universal' rule='ui/rules/openFade' time=3000
+[p]
+//[voice file="resources/gj1/lcy1.wav" vol=80]
+[protagonist text="又是毫无新意的一天。"][p]
+[textoff]
+//淡出黑色
+@pretrans
+@sprite index=102 file='ui/bg/allblack'
+@addto index=102 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+
+//[se file="resources/gj1/bump.wav" channel=1 loop=false] 
+//[se file="resources/gj1/steps.wav" channel=1 loop=false] 
+@pretrans
+@sprite index=101 file='resources/gj1/desktop'
+@addto index=101 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+//[se file="resources/gj1/didi.wav" channel=1 loop=false] 
+[p]
+//[voice file="resources/gj1/woman3.wav" vol=80]
+[figurant text="DS-2333，心率正常，体温正常，血压正常，肌肉活性正常，正在上传基础数据——"][p]
+//[voice file="resources/gj1/woman4.wav" vol=80]
+[figurant text="——基础数据上传完成。血液样本采集完成，正在进行成分分析。"][p]
+
+//淡出黑色
+@pretrans
+@sprite index=102 file='ui/bg/allblack'
+@addto index=102 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+//[se file="resources/gj1/carddidi.wav" channel=1 loop=false] 
+//[se file="resources/gj1/steps_heels_closer.wav" channel=1 loop=false] 
+[p]
+[figurant text="上午的例行补给"][p]
+//[se file="resources/gj1/shifting.wav" channel=1 loop=false] 
+//[voice file="resources/gj1/lcy2.wav" vol=80]
+[protagonist text="是物资小组。"][p]
+[figurant text="DS-2333，营养剂补给完成，有什么其他需要吗？"][p]
+[textoff]
+
+[select text=["...","没有。"] label=["*A","*B"] labelFile=["main","main"] ]
+
+*A
+[jump label="*gj1continue"]
+*B
+[jump label="*gj1continue"]
+
+*gj1continue
+//[voice file="resources/gj1/woman5.wav" vol=80]
+[figurant text="DS-2333，无特殊情况，未发现异常。"][p]
+//[voice file="resources/gj1/intercom1.wav" vol=80]
+[figurant text="收到。"][p]
+//[se file="resources/gj1/steps_heels_further.wav" channel=1 loop=false] 
+//[voice file="resources/gj1/lcy3.wav" vol=80]
+[protagonist text="也不知道她们每天来补充点营养剂，能看出什么异常来。"][p]
+//[voice file="resources/gj1/lcy4.wav" vol=80]
+[protagonist text="等等，为什么我可以对自己说话了？"][p]
+//[voice file="resources/gj1/lcy5.wav" vol=80]
+[protagonist text="难道是，是研究组之前在工作汇报会议上提到的，“想法”？"][p]
+
+*test
+
+[p]
 @quit

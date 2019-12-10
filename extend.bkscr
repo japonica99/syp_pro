@@ -1,6 +1,6 @@
 ﻿*register
 @macro name="basic_dialogbox"
-@macro name="select1" file text label se
+@macro name="select"  text label se=void labelFile
 @macro name="enable_dialogbox"
 @macro name="disable_dialogbox"
 @return
@@ -56,8 +56,10 @@
 //在这里建立鼠标滚轮事件，向上滚进入历史界面
 @enable_dialogbox
 [return]
-*select1
-@savepoint
+*select
+//@savepoint
+
+//用来确认输入的格式正确，如果错误就会在命令行中报错并结束这个宏
 @if "typeof(text)!='array'"
 	#log("select：text参数需要一个数组");
 	@return false
@@ -67,62 +69,98 @@
 @elseif "text.size!=label.size"
 	#log("select：text和label元素数目应该相同");
 	@return false
+@elseif "labelFile.size!=label.size"
+	#log("select：labelFile和label元素数目应该相同");
+	@return false
 @endif
-
 #var size = label.size;
 @if "size < 2"
 #log("select：选择支数量应该不小于2");
 	@return false
 @endif
+
+//选项创建从这里开始
+//获取 选项数*5 个空编号
 #var indexes = [];
-@idlesp get=indexes num=size*3
+@idlesp get=indexes num=size*5
+
 #var success = true;
 #var info1 = %[];
-@info file=file get=info1
+//获取文件的信息，并检查文件是否存在
+@info file='ui/selectionbutton' get=info1
 @if "!info1.size"
 	#log("select：file文件不存在：" + file);
 	@return false
 @endif
+
 #var zorder;
 @zorder index=message_layer get=zorder
+#tf.curi=0;
 
-##
-function j(curi)
-{
-	if(se != void){
-		Channel(0).play(se);
-	}
-	for i=0,size-1{
-		Scripts.runCmd("action",%[mode:"fadeto", opacity:0, target:indexes[i*3+2], time:500]);
-	}
-	foreach ,i in indexes
-	{
-		Scripts.runCmd("remove",%[index:i, "delete"=>true]);
-	};
-	Scripts.jump(label[curi]);
-};
-##
-
+//创建动作队列，当每一个按钮被创建后，他的显示动作会被添加到这个队列中
 @action mode="queue"
 @for var=i range=range(size)
-	@sprite index=indexes[i*3] file=file
+	//创建idle 和 hover 状态的底层
+	@sprite index=indexes[i*5] file='ui/selectionbutton'
+	@sprite index=indexes[i*5+1] file='ui/selectionbutton_on'
 	
-	@textsprite index=indexes[i*3+1] text=text[i] color=0xFFFFFF
-	@anchor index=indexes[i*3+1] set="center"
-	@addto index=indexes[i*3+1] target=indexes[i*3] pos=[info1.width/2, info1.height/2]
+	//创建文字精灵并调整他们的锚点
+	//因为同一个文字精灵只能加到一个底层上，所以这里直接创建了2个文子精灵
+	@textsprite index=indexes[i*5+2] text=text[i] color=0x0
+	@anchor index=indexes[i*5+2] set="center"
+	@textsprite index=indexes[i*5+3] text=text[i] color=0x0
+	@anchor index=indexes[i*5+3] set="center"
 	
-	@buttonex index=indexes[i*3+2] idle=indexes[i*3] onclick=[,,,"j("+i+")"]
+	//将文字精灵添加到按钮底层上
+	@addto index=indexes[i*5+2] target=indexes[i*5] pos=[info1.width/2, info1.height/2]
+	@addto index=indexes[i*5+3] target=indexes[i*5+1] pos=[info1.width/2, info1.height/2+2] 
+	
+	//用两个按钮底层生成按钮。
+	//这里的事件流程如下：
+	//在按钮被按下时，保存哪个按钮被选择，然后跳转到选择结束标签
+	@buttonex index=indexes[i*5+4] idle=indexes[i*5] hover=indexes[i*5+1] onclick=["*_selectend",'extend','jump',"tf.curi=curi",%[curi:i],%[ignore:true]]
+	
+	//获取这个新按钮的信息
 	#var info2 = %[]
-	@infoex index=indexes[i*3+2] get=info2
-	#log(info2);
+	@infoex index=indexes[i*5+4] get=info2
+	//计算这个按钮的新坐标，并以透明的状态添加到底层上
 	#var winsize = System.resolutionSize;
 	#var w = ( winsize[0] - info2.width ) / 2;
 	#var h = ( winsize[1] - info2.height * size - ( size-1 ) * 50 ) / 2;
-	@addto index=indexes[i*3+2] target=basic_layer zorder=zorder pos=[w, h + i * ( 50 + info2.height )] opacity=0
-	@action mode="fadeto" opacity=255 time=400 target=indexes[i*3+2]
+	@addto index=indexes[i*5+4] target=basic_layer zorder=zorder pos=[w, h + i * ( 50 + info2.height )] opacity=0
+	
+	//将显示这一动作添加到动作列表中，此处的动作作用是将按钮的透明度从0变到255
+	@action mode="fadeto" opacity=255 time=400 target=indexes[i*5+4]
+//进行下一次循环
 @next
+
+//当一切动作添加完毕后开始执行动作队列
 @action mode="start" target=basic_layer
 
+//等待用户点击
 @waitbutton
+//返回
 @return true
 
+//选择结束标签
+*_selectend
+//如果有音效则播放音效
+@if "se!=void"
+@se file=se channel=0
+@endif
+
+//让按钮消失
+@for var=i range=range(size)
+	@action mode="fadeto" opacity=0 target=indexes[i*5+4] time=500
+@next
+//等待其中一个动作解释（因为每个动作都是一样长的，所以理论上来说应该同时结束）
+@waitaction index=indexes[4]
+//清除工作
+@for var=i range=range(size)
+	@remove index=indexes[i*5+4] delete=true
+@next
+
+
+//跳转到按钮对应的标签
+//因为是call进来的，所以要用returnto 而不是 jump
+@returnto label=label[tf.curi] file=labelFile[tf.curi]
