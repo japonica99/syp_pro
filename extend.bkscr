@@ -3,6 +3,7 @@
 @macro name="select"  text label se=void labelFile
 @macro name="enable_dialogbox"
 @macro name="disable_dialogbox"
+@macro name="glowypaper"
 @return
 
 //用来禁用对话框事件的宏
@@ -164,3 +165,5 @@
 //跳转到按钮对应的标签
 //因为是call进来的，所以要用returnto 而不是 jump
 @returnto label=label[tf.curi] file=labelFile[tf.curi]
+
+*glowypaper

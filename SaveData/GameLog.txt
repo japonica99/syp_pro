@@ -1,11 +1,48 @@
 main.bkscr : *main
 @savepoint
-@white_in_middle text="数字视音频音乐制作 请戴好耳机"
+@jump label=*test
+main.bkscr : *test
+@pretrans
+@sprite index=101 file="resources/gj3.1.1/office"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@protagonist text="……"
 {
-　macro.bkscr : *white_in_middle
-　@textwindow color=0 pos=[360, 350] rect=[5, 5, 600, 200] xinterval=3
-　@textstyle size=20 color=16777215
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
 　@text text=text
 　@return
 }
 @p
+@textoff
+@pretrans
+@sprite index=101 file="resources/gj3.1.1/desktop"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@protagonist text="他的电脑密码我记得是……"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="等等！这是什么？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@p
+@quit
+【错误】脚本文件执行到末端。
+　　　　该错误处于原文件（main.bkscr）的第435行。

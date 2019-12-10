@@ -1,6 +1,6 @@
 ﻿*main
 //@call '*init' 'init'
-//[jump label="*test"]
+[jump label="*test"]
 [white_in_middle text="数字视音频音乐制作 请戴好耳机"]
 [p]
 [white_in_middle text="......"]
@@ -82,7 +82,6 @@
 *gj1continue
 //[voice file="resources/gj1/woman5.wav" vol=80]
 [figurant text="DS-2333，无特殊情况，未发现异常。"][p]
-*test
 //[voice file="resources/gj1/intercom1.wav" vol=80]
 [figurant text="收到。"][p]
 //[se file="resources/gj1/steps_heels_further.wav" channel=1 loop=false] 
@@ -361,10 +360,8 @@
 //[voice file="resources/gj3.1/lcy18.wav" vol=80]
 [protagonist text="只等行动了。"][p]
 //[voice file="resources/gj3.1/lcy19.wav" vol=80]
-
 [protagonist text="一定……要成功啊。"][p]
 [jump label="*gj3.1.1"]
-
 *gj3.1.1
 //[bgm file="resources/gj3.1.1/whitenoise.wav" vol=40]
 //[voice file="resources/gj3.1,1/woman1.wav" vol=80]
@@ -377,6 +374,63 @@
 @addto index=101 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000
 //[bgm file="resources/gj3.1.1/whitenoise_echo.wav" vol=40]
-
+//[voice file="resources/gj3.1.1/lcy1.wav" vol=80]
+[protagonist text="看起来还算顺利……"][p]
+//[voice file="resources/gj3.1.1/lcy2.wav" vol=80]
+[figurant text="哎，那边那个试验品，往那儿走干什么？"][p]
+//[voice file="resources/gj3.1.1/lcy3.wav" vol=80]
+[protaspeak text="报告，DS-2333正要前往执行1024号研究员主管的独立测试任务。"][p]
+//[voice file="resources/gj3.1.1/lcy4.wav" vol=80]
+[figurant text="你是今天独立测试……行吧，去吧。研究员例会还没结束，你在测试室里待命。"][p]
+//[voice file="resources/gj3.1.1/lcy5.wav" vol=80]
+[protaspeak text="收到。"][p]
+//[se file="resources/gj3.1.1/steps.wav" channel=1 loop=false]
+//[fade channel=1 to=40 time=1000]
+//[voice file="resources/gj3.1.1/lcy6.wav" vol=80]
+[protagonist text="蒙混过关了。"][p]
+//[voice file="resources/gj3.1.1/lcy7.wav" vol=80]
+[protagonist text="可为什么我会对我的研究员有着如此异样的信任……一旦有人想到确认这件事的真实性而去找研究员核对，我的出逃就会立刻暴露……"][p]
+//[voice file="resources/gj3.1.1/lcy8.wav" vol=80]
+[protagonist text="可我为什么都没有考虑过这个可能性？"][p]
+[textoff]
+@pretrans
+@sprite index=101 file='resources/gj3.1.1/corridor_lonely'
+@addto index=101 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+//[se file="resources/gj3.1.1/steps_echo.wav" channel=1 loop=false]
+//[voice file="resources/gj3.1.1/lcy9.wav" vol=80]
+[protagonist text="什么样的联系，才会产生这种毫无逻辑的信任感呢？"][p]
+//[stop channel=1]
+[textoff]
+@pretrans
+@sprite index=101 file='resources/gj3.1.1/door'
+@addto index=101 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+//[voice file="resources/gj3.1.1/lcy10.wav" vol=80]
+[protagonist text="研究员办公室的密码……之前他带我来过，输入门禁和电脑密码的时候都没有避讳我。"][p]
+//[voice file="resources/gj3.1.1/lcy11.wav" vol=80]
+[protagonist text="大概是觉得，面对听话的试验品，没必要遮遮掩掩吧。"][p]
+[textoff]
+//[se file="resources/gj3.1.1/input_unlock.wav" channel=1 loop=false]
+//[se file="resources/gj3.1.1/open_door.wav" channel=1 loop=false]
+//[se file="resources/gj3.1.1/close_door.wav" channel=1 loop=false]
+*test
+@pretrans
+@sprite index=101 file='resources/gj3.1.1/office'
+@addto index=101 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+//[se file="resources/gj3.1.1/steps.wav" channel=1 loop=false]
+[protagonist text="……"][p]
+[textoff]
+@pretrans
+@sprite index=101 file='resources/gj3.1.1/desktop'
+@addto index=101 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+//[voice file="resources/gj3.1.1/lcy12.wav" vol=80]
+[protagonist text="他的电脑密码我记得是……"][p]
+//[voice file="resources/gj3.1.1/lcy13.wav" vol=80]
+[protagonist text="等等！这是什么？"][p]
+[textoff]
+//用按钮扩展写个发光纸片吧
 [p]
 @quit
