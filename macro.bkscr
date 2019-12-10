@@ -5,6 +5,7 @@
 [macro name="typewriter" text pos rect]
 [macro name="figurant" text]
 [macro name="protagonist" text]
+[macro name="doctor" text]
 [return]
 //在下面写上宏的实现部分
 
@@ -25,6 +26,13 @@
 
 *figurant
 [textwindow file="ui/messagebox2" pos=[0,0] rect=[118,505,1008,231] xinterval=3]
+[textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0x000000]
+[textspeed interval=50]
+[text text=text]
+@return
+
+*doctor
+[textwindow file="ui/messagebox3" pos=[0,0] rect=[118,505,1008,231] xinterval=3]
 [textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0x000000]
 [textspeed interval=50]
 [text text=text]

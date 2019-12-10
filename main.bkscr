@@ -91,7 +91,55 @@
 //[voice file="resources/gj1/lcy5.wav" vol=80]
 [protagonist text="难道是，是研究组之前在工作汇报会议上提到的，“想法”？"][p]
 
+[textoff]
+@pretrans
+@sprite index=101 file='resources/gj1/doctorback'
+@addto index=101 target=basic_layer opacity=255 
+@trans mode="ripple" time=2000
+@waittrans
+//[voice file="resources/gj1/lcy6.wav" vol=80]
+[figurant text="在DS组的培养中，我们通过对神经网络的定向抑制，成功剔除了他们的自我意识，也就是所谓的，‘想法’。"][p]
+//[voice file="resources/gj1/lcy7.wav" vol=80]
+[figurant text="做得很好。作为‘兵器’，他们不需要有多余的思考。能在培养阶段就使自我意识退化消失，就可以没有后顾之忧了。"][p]
+//[voice file="resources/gj1/lcy8.wav" vol=80]
+[protagonist text="那些话，到底……"][p]
+[textoff]
+
+@pretrans
+@sprite index=102 file='ui/bg/allblack'
+@addto index=102 target=basic_layer opacity=255 
+@trans mode="ripple" time=2000
+@waittrans
+
+//[se file="resources/gj1/knock.wav" channel=1 loop=false] 
+//[se file="resources/gj1/carddidi.wav" channel=1 loop=false] 
+//[voice file="resources/gj1/lcy9.wav" vol=80]
+[protagonist text="会敲门的……是我的研究员来了吗？"][p]
+@pretrans
+@sprite index=101 file='resources/gj1/doctor'
+@addto index=101 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+//[voice file="resources/gj1/lcy10.wav" vol=80]
+[doctor text="上午的例行注射。躺好。"][p]
+//[se file="resources/gj1/didi_fur.wav" channel=1 loop=false]
+//[voice file="resources/gj1/lcy11.wav" vol=80]
+[doctor text="好了。有任何异常情况，直接向我汇报。"][p]
+//[se file="resources/gj1/alotof.wav" channel=1 loop=false]
+//[voice file="resources/gj1/lcy12.wav" vol=80]
+@pretrans
+@sprite index=102 file='ui/bg/allblack'
+@addto index=102 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+[protagonist text="忘记问他，为什么我忽然能“思考”了。"][p]
+//[voice file="resources/gj1/lcy13.wav" vol=80]
+[protagonist text="可是，这似乎是不被允许出现的情况……上报了这个情况，是不是我就不再具有“价值”，将会和曾经的那些试验品一样，被送去“销毁”呢？"][p]
+//[voice file="resources/gj1/lcy14.wav" vol=80]
+[protagonist text="上午的检查、注射和集中测试；下午的检查、注射和集中测试……一切似乎从来都不曾变过，可当我不再以一个游离在外的视角观看这一切，一切似乎又产生了一些难以捉摸的、微妙的变化。"][p]
+[textoff]
+
+[jump label="*gj2"]
 *test
+*gj2
 
 [p]
 @quit
