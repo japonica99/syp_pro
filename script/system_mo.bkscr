@@ -1,0 +1,45 @@
+﻿*main
+@textoff
+@event name="rclick"  file="system_mo" label="*exit" type='jump'
+@spriteopt index=7000 disable=true
+//@pretrans //固定画面的状态
+@layer index=6000 width=1280 height=720 //创建一个层作为标题画面底层
+@sprite index=6001 file='bg/B032Y_1280x720_改'//创建一个载入了标题背景画面的精灵
+@addto index=6001 target=6000 zorder=1 opacity=255//将精灵添加到底层上
+//bellie
+@l2dsprite file="image/fig/belle/belle_mo.model.json" index=1
+##
+Live2DSprite(1).startMotionFile("motions/start.mtn",void,void,3,void,0,0);
+##
+@se channel=1 file="image/fig/belle_mo/sounds/tap_start"
+@action mode="scaleto" target=1 time=0 x=60 y=60
+@addto index=1 target=6001 pos=[640,600]
+@addto index=6000 target=basic_layer zorder=5 opacity=0
+@action target=6000 mode='fadeto' time=300 opacity=255
+@waitaction index=6000
+//记录bgm
+#sf.bgm[2]=true;
+@bgm file="rmn_m_015" fadein=150 vol=10
+@button index=6004 idle="system/backbutton"  hover="system/backbutton_on" click="system/backbutton_on"  onclick=['*exit',,'jump'] threshold=20
+@addto index=6004 target=6000 zorder=1 pos=[0,0] opacity=255 
+@waitbutton
+
+
+
+
+
+
+
+*exit
+@remove index=1
+@spriteopt index=6000 disable=true
+@action target=6000 mode="fadeto" opacity=0 time=300
+@waitaction index=6000
+@removeall index=6000 delete=true recursive=true
+@remove index=6000 delete=true
+@spriteopt index=7000 disable=false
+//记录bgm
+#sf.bgm[0]=true;
+@bgm file="kouchanojikan" fadein=150
+@event name="rclick"  file="system_omake" label="*exit" type='jump'
+@return 

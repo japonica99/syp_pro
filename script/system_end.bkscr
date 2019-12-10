@@ -1,0 +1,130 @@
+﻿*main
+@textoff
+@spriteopt index=7000 disable=true
+//@pretrans //固定画面的状态
+@layer index=8000 width=1280 height=720 //创建一个层作为标题画面底层
+@sprite index=8001 file='omake/CG/endBG'//创建一个载入了标题背景画面的精灵
+@addto index=8001 target=8000 zorder=1 opacity=255//将精灵添加到底层上
+
+//2-3
+#var temp=["A","B"]
+@for var=i range=range(0,2)
+	#var cond=eval("sf.end"+temp[i]);
+	@if "cond"
+		@sprite index=8003+i file='screenshot/end'+(i+1)
+		@action target=8003+i mode='scaleto' x=28.75 y=28.75
+		@buttonex index=8002+i idle=8003+i onclick=["*viewEnd", , 'call','tf.curpic='+(i+1)]
+	@else
+		@sprite index=8002+i file='omake/CG/endHolder_0'+(i+1)
+	@endif
+	@addto index=8002+i pos=[448*i+233,172] target=8000 zorder=0
+@next
+@button index=8004 idle="system/backbutton"  hover="system/backbutton_on" click="system/backbutton_on"  onclick=['*exit',,'jump'] threshold=20
+@addto index=8004 target=8000 zorder=1 pos=[400,663] opacity=255 
+@addto index=8000 target=basic_layer opacity=0
+@action mode='fadeto' opacity=255 target=8000 time=300
+@waitallaction
+
+*setEvent
+@event ignore=true name='rclick' label='*exit' 
+@waitbutton
+
+*viewEnd
+@event name="rclick" enable=false
+@spriteopt index=8002 disable=true
+@spriteopt index=8003 disable=true
+@layer index=8005 width=1280 height=720 color=0x000000 opacity=255
+@addto index=8005 target=8000 opacity=0 zorder=3
+@action target=8005 mode='fadeto' opacity=255 time=300
+@waitaction index=8005
+//name
+@layer index=300 width=1280 height=720
+@sprite index=301 file="dialog/back"
+@anchor index=301 set="center"
+@addto index=301 target=300 pos=[640,360]
+@inputbox index=302 back="dialog/inputbox" maxchars=5  text='小野妹子'
+@textsprite index=303 text="请输入姓名" font="font/MFYueYuan_Noncommercial-Regular" size=34 color=0xB97A57
+@button index=304 idle="dialog/ok" hover='dialog/ok_on' click='dialog/ok_on' onclick=["*input_check", ,'jump']
+@anchor index=302 set="topcenter"
+@anchor index=303 set="topcenter"
+@anchor index=304 set="topcenter"
+@addto index=303 target=301 pos=[238,100]
+@addto index=302 target=301 pos=[238,160]
+@addto index=304 target=301 pos=[238,220]
+@addto index=300 target=8005 zorder=3 opacity=0
+@action target=300 mode="fadeto" opacity=255 time=300
+@waitaction index=300
+*input_wait
+@waitbutton
+*input_check
+@if "(Sprite(302).value.length<1||Sprite(302).value.length>5)"
+	@jump '*input_wait'
+@endif
+
+
+##
+tf.name=Sprite(302).value
+##
+
+@action target=300 mode="fadeto" opacity=0 time=300
+@waitaction index=300
+@removeall index=300 delete=true
+@remove index=300 delete=true
+//simulation start
+@layer index=100 width=1280 height=1280
+//bg
+@sprite index=101 file='bg/B032Y_1280x720_改'
+@addto index=101 target=100 opacity=255 
+//bellie
+@l2dsprite file="image/fig/belle/belle.model.json" index=1
+@spriteopt index=1 disable=true
+##
+Live2DSprite(1).setExpression("F10.exp.json");
+Live2DSprite(1).startMotionFile("motions/01.mtn",void,void,3,void,0,0);
+##
+@action mode="scaleto" target=1 time=0 x=60 y=60
+@addto index=1 target=100 pos=[640,600]
+@addto index=100 target=8005 opacity=0
+@action target=100 mode='fadeto' time=300 opacity=255
+@waitaction index=100
+#tf.isRecall=1;//回顾开始
+@basic_dialogbox
+//记录bgm
+#sf.bgm[2]=true;
+@bgm file="rmn_m_015" fadein=150
+//关闭自动模式与快进模式
+##
+System.autoMode=false;
+System.skipMode=false;
+##
+
+@action target=8005 mode='fadeto' time=300 opacity=0
+@waitaction index=8005
+@removeall index=8005 delete=true
+@remove index=8005 delete=true
+@spriteopt index=8002 disable=false
+@spriteopt index=8003 disable=false
+@bgm file="kouchanojikan"
+//记录bgm
+#sf.bgm[0]=true;
+//模拟结束的时候，我们也清一下历史记录
+#History.clear();
+@disable_dialogbox
+@event name="rclick" enable=true
+@returnto '*setEvent'
+
+
+
+
+
+
+
+*exit
+@spriteopt index=8000 disable=true
+@action target=8000 mode="fadeto" opacity=0 time=300
+@waitaction index=8000
+@removeall index=8000 delete=true recursive=true
+@remove index=8000 delete=true
+@spriteopt index=7000 disable=false
+@event name="rclick"  file="system_omake" label="*exit" type='jump'
+@return 

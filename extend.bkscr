@@ -1,0 +1,128 @@
+﻿*register
+@macro name="basic_dialogbox"
+@macro name="select1" file text label se
+@macro name="enable_dialogbox"
+@macro name="disable_dialogbox"
+@return
+
+//用来禁用对话框事件的宏
+*disable_dialogbox
+@for var=i range=range(1,5)//生成for循环。其中range(1,7)=[1,2,3,4,5,6]
+	@remove index=9000+i
+@next
+@spriteopt index=2323 disable=true
+@spriteopt index=message_layer disable=true 
+@remove index=2323
+@event name="mousewheelup" enable=false
+@event name="mousewheeldown" enable=false
+
+@return
+
+//用来启用对话框事件的宏
+*enable_dialogbox
+#var button_pos=[ [700,140],[704,120],[716,100],[726,80]];
+#var onclicks=[ ["*save",'save','call',,,%[condition: "!tf.isRecall", ignore:true]] , ["*load",'load','call',,,%[condition: "!tf.isRecall", ignore:true]] ,[ , ,"callback","System.skipMode=true"],["*option","system_setting","callback",,,%[ignore:true]],]
+@for var=i range=range(1,5)
+	@button index=9000+i idle='menu/messagebox/button/m_button_0'+i click='menu/messagebox/button/m_button_on_0'+i hover='menu/messagebox/button/m_button_on_0'+i threshold=0 onclick=onclicks[i-1]
+	@addto target=message_layer index=9000+i pos=button_pos[i-1] zorder=0
+@next
+[addto index=2323 target=message_layer zorder=-50 pos=[0,0] opacity=180]
+@spriteopt index=2323 disable=false
+@spriteopt index=message_layer disable=false 
+@event name="mousewheelup" enable=true file="system_history" label="*enter" type="call" ignore=true condition="System.stable"
+@event name="mousewheeldown" enable=true file="extend" label="*mouse" type="call" ignore=true
+@return
+
+*basic_dialogbox
+[textwindow pos=[270,410] rect=[48,35,600,140] xinterval=1 yinterval=1 opacity=190]
+[textstyle size=21 bold=false]
+[sprite index=2323 file="picture/menu/messagebox/messagebox"] 
+[addto index=2323 target=message_layer zorder=-50 pos=[0,0] opacity=180]
+//创建按钮
+//储存，读取，回顾，自动，快进，系统
+
+//按钮坐标数组
+#var button_pos=[ [700,140],[704,120],[716,100],[726,80],[1023,680],[1099,680] ];
+
+//按钮单击事件
+#var onclicks=[ ["*save",'save','call',,,%[condition: "!tf.isRecall", ignore:true]] , ["*load",'load','call',,,%[condition: "!tf.isRecall", ignore:true]] ,[ , ,"callback","System.skipMode=true"],["*option","system_setting","call",,,%[ignore:true]],]
+
+@for var=i range=range(1,7)//生成for循环。其中range(1,7)=[1,2,3,4,5,6]
+	//在这个循环中会依次的将01到06号按钮生成并添加到底层上
+	@button index=9000+i idle='menu/messagebox/button/m_button_0'+i click='menu/messagebox/button/m_button_on_0'+i hover='menu/messagebox/button/m_button_on_0'+i threshold=0 onclick=onclicks[i-1]//创建按钮精灵
+	//将按钮精灵添加到底层上
+	@addto target=message_layer index=9000+i pos=button_pos[i-1] zorder=0
+@next
+//在这里建立鼠标滚轮事件，向上滚进入历史界面
+@enable_dialogbox
+[return]
+*select1
+@savepoint
+@if "typeof(text)!='array'"
+	#log("select：text参数需要一个数组");
+	@return false
+@elseif "typeof(label)!='array'"
+	#log("select：label参数需要一个数组");
+	@return false
+@elseif "text.size!=label.size"
+	#log("select：text和label元素数目应该相同");
+	@return false
+@endif
+
+#var size = label.size;
+@if "size < 2"
+#log("select：选择支数量应该不小于2");
+	@return false
+@endif
+#var indexes = [];
+@idlesp get=indexes num=size*3
+#var success = true;
+#var info1 = %[];
+@info file=file get=info1
+@if "!info1.size"
+	#log("select：file文件不存在：" + file);
+	@return false
+@endif
+#var zorder;
+@zorder index=message_layer get=zorder
+
+##
+function j(curi)
+{
+	if(se != void){
+		Channel(0).play(se);
+	}
+	for i=0,size-1{
+		Scripts.runCmd("action",%[mode:"fadeto", opacity:0, target:indexes[i*3+2], time:500]);
+	}
+	foreach ,i in indexes
+	{
+		Scripts.runCmd("remove",%[index:i, "delete"=>true]);
+	};
+	Scripts.jump(label[curi]);
+};
+##
+
+@action mode="queue"
+@for var=i range=range(size)
+	@sprite index=indexes[i*3] file=file
+	
+	@textsprite index=indexes[i*3+1] text=text[i] color=0xFFFFFF
+	@anchor index=indexes[i*3+1] set="center"
+	@addto index=indexes[i*3+1] target=indexes[i*3] pos=[info1.width/2, info1.height/2]
+	
+	@buttonex index=indexes[i*3+2] idle=indexes[i*3] onclick=[,,,"j("+i+")"]
+	#var info2 = %[]
+	@infoex index=indexes[i*3+2] get=info2
+	#log(info2);
+	#var winsize = System.resolutionSize;
+	#var w = ( winsize[0] - info2.width ) / 2;
+	#var h = ( winsize[1] - info2.height * size - ( size-1 ) * 50 ) / 2;
+	@addto index=indexes[i*3+2] target=basic_layer zorder=zorder pos=[w, h + i * ( 50 + info2.height )] opacity=0
+	@action mode="fadeto" opacity=255 time=400 target=indexes[i*3+2]
+@next
+@action mode="start" target=basic_layer
+
+@waitbutton
+@return true
+

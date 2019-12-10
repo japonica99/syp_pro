@@ -1,0 +1,56 @@
+﻿*main
+@textoff
+@stop channel=bgm
+//@pretrans //固定画面的状态
+@spriteopt index=7000 disable=true
+@layer index=4000 width=1280 height=720 //创建一个层作为标题画面底层
+@sprite index=4001 file='systemui_bg'//创建一个载入了标题背景画面的精灵
+@addto index=4001 target=4000 zorder=1 opacity=255//将精灵添加到底层上
+#text=["标题画面","面包店外","面包店内","Staff Roll"];
+#musicName=["kouchanojikan","sanpo", "rmn_m_015","spmo_soten_short"]
+//不要在意编号
+//播放过的才显示
+@for var=i range=range(0,4)
+	@if exp="sf.bgm[i]"
+		@sprite index=4013+i file="SL/SL_button" 
+		@sprite index=4014+i file="SL/SL_button_on"
+		@textsprite index=4015+i text=text[i] color=0xB97A57 size=28 font='font/MFYueYuan_Noncommercial-Regular'
+		@textsprite index=4016+i text=text[i] color=0xB97A57 size=28 font='font/MFYueYuan_Noncommercial-Regular'
+		@addto index=4015+i target=4013+i pos=[120,16]
+		@addto index=4016+i target=4014+i pos=[120,17]
+		@buttonex index=4012+i idle=4013+i hover=4014+i onclick=[,,'callback',"Scripts.runCmd('bgm',%[file:musicName["+i+"], fadein : 150])"] threshold=10
+		@addto index=4012+i target=4001 pos=[350,132+82*i]
+	@else
+		@sprite index=4012+i file="SL/SL_button" 
+		@addto index=4012+i target=4001 pos=[350,132+82*i]
+	@endif
+@next
+
+@button index=4004 idle="system/backbutton"  hover="system/backbutton_on" click="system/backbutton_on"  onclick=['*exit',,'jump'] threshold=20
+@addto index=4004 target=4000 zorder=1 pos=[400,663] opacity=255 
+
+
+@addto index=4000 target=basic_layer zorder=5 opacity=0
+//2-3
+@action mode='fadeto' opacity=255 target=4000 time=300
+@waitallaction
+
+*setEvent
+@event ignore=true name='rclick' label='*exit' 
+@waitbutton
+//按钮的创建与添加从这里开始
+//因为按钮图片的明明只有编号不同，采用了for loop 来偷懒
+
+*exit
+@spriteopt index=4000 disable=true
+@action target=4000 mode="fadeto" opacity=0 time=300
+@waitaction index=4000
+@removeall index=4000 delete=true recursive=true
+@remove index=4000 delete=true
+@event name="rclick"  file="system_omake" label="*exit" type='jump'
+//记录bgm
+#sf.bgm[0]=true;
+@bgm file="kouchanojikan"
+
+@spriteopt index=7000 disable=false
+@return 

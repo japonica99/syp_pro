@@ -1,0 +1,33 @@
+﻿*main
+//@call '*init' 'init'
+[jump label="*day1"]
+[white_in_middle text="数字视音频音乐制作（或许可以加个虚假logo炫酷一下？？）"]
+[p]
+[white_in_middle text="......"]
+[p]
+[white_in_middle text="那是什么..."]
+[p]
+[white_in_middle text="是我么..."]
+[p]
+[white_in_middle text="......"]
+[p]
+[jump label="*day1"]
+
+*day1
+[typewriter pos=[360,350] rect=[5,5,600,200] text="7:00 am"][p]
+//[se file="resources/gj1/gas.wav" channel=1 loop=false] 
+//同一通道同时只能播放一个音频 多个可以同时
+//[voice file="resources/gj1/woman1.wav" vol=80]
+//@basic_dialogbox
+[figurant text="试验品DS-2333，生命体征正常，正在上传睡眠监测数据——"][p]
+[figurant text="——上传成功"][p]
+//遮罩 KAG代码
+@pretrans
+//△模仿开门的方式，由左至右，从背景A过渡至背景B（遮片渐隐？）。另一首音乐B（登录音乐展示）淡入，使用开门伴随风铃声音效〔 来源网站：http://www.s-t-t.com〕
+@sprite index=101 file='ui/bg/allblack'
+@addto index=101 target=100 opacity=255 
+@sprite index=101 file='bg/B032Y_1280x720_改'
+@addto index=101 target=100 opacity=255 
+@remove index=102
+@trans mode='universal' rule='ui/rule/openFade' time=1000
+@quit

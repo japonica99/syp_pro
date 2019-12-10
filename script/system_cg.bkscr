@@ -1,0 +1,66 @@
+﻿*main
+@spriteopt index=7000 disable=true
+@textoff
+//@pretrans //固定画面的状态
+@layer index=10000 width=1280 height=720 //创建一个层作为标题画面底层
+@sprite index=10001 file='omake/CG/endBG'//创建一个载入了标题背景画面的精灵
+@addto index=10001 target=10000 zorder=1 opacity=255//将精灵添加到底层上
+
+//2-3
+#var temp=["A","B"]
+@for var=i range=range(0,2)
+	#var cond=eval("sf.end"+temp[i]);
+	@if "cond"
+		@sprite index=10003+i file='screenshot/end'+(i+1)
+		@action target=10003+i mode='scaleto' x=28.75 y=28.75
+		@buttonex index=10002+i idle=10003+i onclick=["*viewPic", , 'call','tf.curpic='+(i+1)]
+	@else
+		@sprite index=10002+i file='omake/CG/endHolder_0'+(i+1)
+	@endif
+	@addto index=10002+i pos=[448*i+233,172] target=10000 zorder=0
+@next
+@button index=10004 idle="system/backbutton"  hover="system/backbutton_on" click="system/backbutton_on"  onclick=['*exit',,'jump'] threshold=20
+@addto index=10004 target=10000 zorder=1 pos=[400,663] opacity=255 
+@addto index=10000 target=basic_layer opacity=0
+@action mode='fadeto' opacity=255 target=10000 time=300
+@waitallaction
+
+*setEvent
+@event ignore=true name='rclick' label='*exit' file='system_cg'
+@waitbutton
+//按钮的创建与添加从这里开始
+//因为按钮图片的明明只有编号不同，采用了for loop 来偷懒
+
+*viewPic
+@spriteopt index=10002 disable=true
+@spriteopt index=10003 disable=true
+@sprite index=10005 file='screenshot/end'+tf.curpic
+@addto index=10005 target=10000 opacity=0 zorder=2
+@action target=10005 mode='fadeto' opacity=255 time=300
+@waitallaction
+@event ignore=true name='rclick' label='*toSelect' type='jump'
+@click
+@jump '*toSelect'
+*toSelect
+@action target=10005 mode='fadeto' opacity=0 time=300
+@waitallaction
+@spriteopt index=10002 disable=false
+@spriteopt index=10003 disable=false
+@returnto '*setEvent'
+
+
+
+
+
+
+
+*exit
+@spriteopt index=10000 disable=true
+@action target=10000 mode="fadeto" opacity=0 time=300
+@waitaction index=10000
+@removeall index=10000 delete=true recursive=true
+@remove index=10000 delete=true
+@event name="rclick" file="system_omake" label="*exit" type='jump'
+@spriteopt index=7000 disable=false
+@return 
+

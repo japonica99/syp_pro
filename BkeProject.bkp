@@ -1,0 +1,20 @@
+{
+    "import": {
+        "extend.bkscr": 0,
+        "init.bkscr": 0,
+        "macro.bkscr": 0
+    },
+    "name": "syp_pro",
+    "script": {
+        "main.bkscr": 0,
+        "script": {
+        }
+    },
+    "source": {
+        "resources": {
+        },
+        "ui": {
+        }
+    },
+    "version": "1.2"
+}

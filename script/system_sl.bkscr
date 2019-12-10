@@ -1,0 +1,223 @@
+﻿*load
+##
+var mode='load';
+##
+@jump '*enter'
+
+*save
+##
+var mode='save';
+##
+
+*enter
+#ssDisable=false;
+@spriteopt index=5000 disable=true
+@screenshot index=999 target=basic_layer width=609 height=343
+@if "f.inGame"
+	@disable_dialogbox
+@endif
+@layer index=2000 opacity=0 width=1280 height=720
+@spriteopt index=2000 disable=true
+@sprite index=2001 file="SL/sl_bg"
+@addto index=2001 target=2000 zorder=2 opacity=255
+@sprite index=2002  file='SL/'+mode
+@addto index=2002 target=2001 pos=[0,0]
+@addto index=2000 target=basic_layer opacity=0 zorder=51
+#tf.cur_sl_page=sf.last_save_page;
+//page_buttons 2003 to 2009
+@for var=i range=range(0,7)
+	@event name="checkbox"+i exp="tf.next_page="+i label="*checkbox" type="jump" 
+	@checkbox index=2003+i idle="SL/"+mode+"_page_0"+(i+1)  checked="SL/"+mode+"_page_on_0"+(i+1) onchanged="checkbox"+i
+	@addto index=2003+i pos=[530+104*i,29] target=2001
+@next
+@spriteopt index=2003+tf.cur_sl_page disable=true
+@event name="checkbox"+tf.cur_sl_page enable=false
+#Sprite(2003+tf.cur_sl_page).value=true;
+//@wait time=10
+//@event name='checkbox'+tf.next_page enable=false
+//preview image=2010
+@sprite index=2010 file="SL/nodata"
+@addto index=2010 target=2000 zorder=1 pos=[588,172]
+@button index=2011 idle="backbutton" hover="backbutton_on" onclick=["*exit",,"jump"]
+@addto index=2011 target=2001 pos=[400,663]
+
+*slots
+
+@pretrans
+//slots
+@for var=i range=range(0,6)
+	##
+	var saveID=tf.cur_sl_page*6+i;
+	var text=""+(saveID+1)+". ";
+	##
+	@if "SaveData.exist(saveID)"
+		##
+		var saveInfo=[];
+		var saveTime=SaveData.getTime(saveID);
+		saveInfo[0]=saveTime.getMonth();
+		saveInfo[1]=saveTime.getDay();
+		saveInfo[2]=saveTime.getHour();
+		saveInfo[3]=saveTime.getMinute();
+		saveInfo[4]=saveTime.getSecond();
+		text+="%02d月%02d日%02d:%02d:%02d".sprintf(saveInfo[0], saveInfo[1], saveInfo[2], saveInfo[3], saveInfo[4]);
+//		for(var j=0 ; j<5 ; j++){
+//			if(saveInfo[j]<10){
+//			    saveInfo[j]='0'+saveInfo[j];
+//			}
+//		}
+//		text+=(""+saveInfo[0]+'月'+saveInfo[1]+'日 '+saveInfo[2]+":"+saveInfo[3]+":"+saveInfo[4]);
+		##
+	@endif
+	@event name='hover_saveslot'+i label="*saveslot_hover" type='callback' exp='tf.curss='+saveID condition="!ssDisable"
+	@event name='leave_saveslot'+i label="*saveslot_leave" type='callback' exp='tf.curss='+saveID condition="!ssDisable"
+	@event name=mode+i label='*SS'+mode exp='tf.cur='+saveID type='jump'
+	@sprite index=2013+i file="SL/SL_button" 
+	@sprite index=2014+i file="SL/SL_button_on"
+	@textsprite index=2015+i text=text color=0xB97A57 size=28 font='font/MFYueYuan_Noncommercial-Regular'
+	@textsprite index=2016+i text=text color=0xB97A57 size=28 font='font/MFYueYuan_Noncommercial-Regular'
+	@addto index=2015+i target=2013+i pos=[120,16]
+	@addto index=2016+i target=2014+i pos=[120,17]
+	@buttonex index=2012+i idle=2013+i hover=2014+i onclick=mode+i onenter='hover_saveslot'+i onleave='leave_saveslot'+i threshold=10
+	@if "saveID==sf.last_save"
+		@sprite index=998 file="SL/okawari"
+		@anchor index=998 set="center"
+		@addto index=998 target=2012+i pos=[460,32]
+//		@sprite index=997 file="SL/okawari"
+//		@anchor index=997 set="center"
+//		@addto index=997 target=2014+i pos=[460,33]
+	@endif
+	@addto index=2012+i target=2001 pos=[0,132+82*i]
+@next
+@trans mode="crossfade" time=300
+//@trans mode='normal'
+@action target=2000 mode="fadeto" time=300 opacity=255
+
+@event ignore=true name="rclick" type="jump" enable=true label="*exit"
+@waitbutton
+
+*checkbox
+@spriteopt index=2003+tf.cur_sl_page disable=false
+@event name="checkbox"+tf.cur_sl_page enable=false
+#Sprite(2003+tf.cur_sl_page).value=false;
+@wait time=10
+@event name="checkbox"+tf.cur_sl_page enable=true
+@spriteopt index=2003+tf.next_page disable=true
+@event name='checkbox'+tf.next_page enable=false
+#tf.cur_sl_page=tf.next_page;
+@jump "*slots"
+
+
+*saveslot_hover
+@if 'SaveData.exist(tf.curss)'
+	@sprite index=2010 file="savedata/save"+tf.curss
+@endif
+@return
+*saveslot_leave
+@if 'SaveData.exist(tf.curss)'
+	@sprite index=2010 file="SL/nodata"
+@endif
+@return
+
+*SSsave
+@spriteopt index=2000 disable=true
+@if "!SaveData.exist(tf.cur)"
+	@savetoimage index=999 file="savedata/save"+tf.cur
+	@save index=tf.cur
+	@sprite index=2010 file="savedata/save"+tf.cur
+	##
+		sf.last_save_page=tf.cur_sl_page;
+		sf.last_save=tf.cur;
+	##
+	@spriteopt index=2000 disable=false
+	@jump "*slots"
+@endif
+#ssDisable=true;
+//input dialog
+@spriteopt index=2000 disable=true
+@event ignore=true name="rclick" type="jump" enable=true label="*SSsaveEnd"
+@layer index=1300 width=1280 height=720
+@sprite index=1301 file="dialog/back"
+@anchor index=1301 set="center"
+@addto index=1301 target=1300 pos=[640,360]
+@textsprite index=1303 text="确定要保存吗" font="font/MFYueYuan_Noncommercial-Regular" size=34 color=0xB97A57
+@button index=1304 idle="dialog/yes" hover='dialog/yes_on' click='dialog/yes_on' onclick=["*SSsaveYes", ,'jump']
+@button index=1302 idle="dialog/no" hover='dialog/no_on' click='dialog/no_on' onclick=["*SSsaveEnd", ,'jump']
+@anchor index=1302 set="topcenter"
+@anchor index=1303 set="topcenter"
+@anchor index=1304 set="topcenter"
+@addto index=1303 target=1301 pos=[238,100]
+@addto index=1304 target=1301 pos=[173,200]
+@addto index=1302 target=1301 pos=[303,200]
+@addto index=1300 target=2000 zorder=3 opacity=0
+@action target=1300 mode="fadeto" opacity=255 time=300
+@waitaction index=1300
+@waitbutton
+*SSsaveYes
+@savetoimage index=999 file="savedata/save"+tf.cur
+@save index=tf.cur
+@sprite index=2010 file="savedata/save"+tf.cur
+##
+	sf.last_save_page=tf.cur_sl_page;
+	sf.last_save=tf.cur;
+##
+*SSsaveEnd
+@event ignore=true name="rclick" type="jump" enable=true label="*exit"
+@action target=1300 mode="fadeto" opacity=0 time=300
+@waitaction index=1300
+@removeall index=1300 delete=true
+@remove index=1300 delete=true
+#ssDisable=false;
+@spriteopt index=2000 disable=false
+@jump "*slots"
+
+*SSload
+@if '!SaveData.exist(tf.cur)'
+	@jump "*slots"
+@else
+	#ssDisable=true;
+	@spriteopt index=2000 disable=true
+	@event ignore=true name="rclick" type="jump" enable=true label="*SSsaveEnd"
+	@layer index=1300 width=1280 height=720
+	@sprite index=1301 file="dialog/back"
+	@anchor index=1301 set="center"
+	@addto index=1301 target=1300 pos=[640,360]
+	@textsprite index=1303 text="确定要读取吗" font="font/MFYueYuan_Noncommercial-Regular" size=34 color=0xB97A57
+	@button index=1304 idle="dialog/yes" hover='dialog/yes_on' click='dialog/yes_on' onclick=["*SSloadYes", ,'jump']
+	@button index=1302 idle="dialog/no" hover='dialog/no_on' click='dialog/no_on' onclick=["*SSloadEnd", ,'jump']
+	@anchor index=1302 set="topcenter"
+	@anchor index=1303 set="topcenter"
+	@anchor index=1304 set="topcenter"
+	@addto index=1303 target=1301 pos=[238,100]
+	@addto index=1304 target=1301 pos=[173,200]
+	@addto index=1302 target=1301 pos=[303,200]
+	@addto index=1300 target=2000  zorder=3 opacity=0
+	@action target=1300 mode="fadeto" opacity=255 time=300
+	@waitaction index=1300
+	@waitbutton
+@endif
+
+*SSloadYes
+@load index=tf.cur
+*SSloadEnd
+@event ignore=true name="rclick" type="jump" enable=true label="*exit"
+@action target=1300 mode="fadeto" opacity=0 time=300
+@waitaction index=1300
+@removeall index=1300 delete=true
+@remove index=1300 delete=true
+#ssDisable=false;
+@spriteopt index=2000 disable=false
+@jump "*slots"
+
+*exit
+
+@spriteopt index=2000 disable=true
+@action target=2000 mode="fadeto" opacity=0 time=300
+@waitaction index=2000
+@removeall index=2000 delete=true recursive=true
+@remove index=2000 delete=true
+@event name="rclick" type="jump" enable=false
+@if "f.inGame"
+	@enable_dialogbox
+@endif
+@spriteopt index=5000 disable=false
+@return 

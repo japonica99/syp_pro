@@ -1,0 +1,68 @@
+﻿*main
+//关掉快进
+//#System.skipMode=false;
+@if "f.inGame" //在游戏中观看staff，则关闭事件
+	@disable_dialogbox
+@endif
+@stop channel=bgm fadeout=500
+@wait time=500
+@removeall index=basic_layer delete=true
+##
+//不用在意这是什么，只是用split方法把ed字幕分成了数组而已
+var edTexts="监制|giy_管 X Taigacon||策划·剧本|trilvie_小望||程序|抽象类|职业背锅侠Taigacon|没有发现自己名字被打错的gjy_管||界面|Lyceenee||Live2D|ID一定要土豪金的高庄主||人设|唔嘿嘿嘿嘿嘿||贝莉CV|朱雀橙||背景|むらくも背景CG素材集      http://murakumo.biz||配乐|Abstract hope      http://bungakuseinen.com|甘茶の音楽工房      http://amachamusic.chagasi.com|絵に描いた城      http://enikaitashiro.com|殯宮音楽堂      http://savior.aki.gs/music||音效|On-Jin ～音人～      http://on-jin.com|SYNC THINK TANK      http://www.s-t-t.com|Music is VFR      http://musicisvfr.com|くらげ工匠      http://www.kurage-kosho.info||特别感谢|全局变量D|夏与秋aki|黑心饼干|舟之永远|BKEngine原创游戏制作群的小伙伴们||||出品|BKE-Demo制作委员会".split('|');
+//也不用在意这是什么，只是用个数组记录下哪些行需要改变颜色而已
+var edTitles=[0,3,6,11,14,17,20,23,26,32,38,47];
+//更不用在意这是什么，只是个标记在哪里显示logo而已
+var edLogo=48;
+//千万不用在意这是什么，只是给庄主加土豪金而已
+var edGao=15;
+var indices=[];
+##
+
+@event name="click" type="jump" label="*leave" condition="tf.skipable||sf.skipable"
+//记录bgm
+#sf.bgm[3]=true;
+@bgm file="spmo_soten_short" loop=false
+//申请一些空余sp编号
+@idlesp num=edTexts.length get=indices
+@for var=i range=range(0,edTexts.length)
+	##
+	var color = 0xffffff;
+	if(edTitles.find(i)!=-1) color=0xaaaaff;
+	else if(edGao==i) color=0xffff55;
+	##
+	@if "edTexts[i]==''"
+		@wait time=400
+		@continue
+	@endif
+	@if "edLogo==i"
+		#var id = Sprite.idlesp();
+		#var idLogo = Sprite.idlesp();
+		@textsprite index=id text=edTexts[i] font="font/NotoSansCJKsc-Regular" color=color bold=true
+		@sprite index=idLogo file="image/system/demo_logo.png"
+		@layer index=indices[i] width=Sprite(id).width+50+20 height=50
+		@addto index=idLogo target=indices[i]
+		@addto index=id target=indices[i] pos=[50+20,(50-Sprite(id).height)/2]
+	@else
+		@textsprite index=indices[i] text=edTexts[i] font="font/NotoSansCJKsc-Regular" color=color bold=true	
+	@endif
+	@anchor index=indices[i] set='topcenter'
+	@addto index=indices[i] target=basic_layer pos=[640,720]
+	@action mode='queue'
+		@action mode="moveby" pos=[0,-800] time=8000
+		@action mode="remove" delete=true
+	@action mode="start" target=indices[i]
+	@wait time=400
+@next
+
+@waitallaction
+@wait time=500
+
+*leave
+#tf.skipable=false;
+#sf.skipable=true;
+@deleteevent name="click"
+@removeall index=basic_layer delete=true
+@stop channel=bgm
+//@jump label="*enter" file="title"
+@load index=999

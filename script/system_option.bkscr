@@ -1,0 +1,235 @@
+﻿*main
+##
+tf.poses=[[448,51],[661,51],[874,51],[558,213],[759,213]];
+var sliderPose=[[524,143],[524,304],[524,405],[524,488],[524,573]];
+var opacity=204;
+##
+@if "f.inGame||tf.isRecall"
+@disable_dialogbox
+@endif
+@layer index=3000 opacity=0 width=1280 height=720
+@spriteopt index=3000 disable=true
+@sprite index=3001 file="system/systemui_bg"
+@addto index=3000 target=basic_layer opacity=0 zorder=51
+@sprite index=3002 file="option/option"
+@addto index=3001 target=3000 opacity=255 zorder=0
+@addto index=3002 target=3001 opacity=255 zorder=0
+
+
+//功能部件 
+//按钮 3003-3007
+//显示*3 快进*2
+@for var=i range=range(1,6)
+	@button index=3002+i threshold=0 idle='option/option_button_0'+i hover='option/option_button_on_0'+i click='option/option_button_on_0'+i onclick=['*button_0'+i, 'system_option', 'callback']
+	@addto index=3002+i target=3002 pos=tf.poses[i-1]
+@next
+
+@if 'sf.display==\'full\''
+	@sprite index=3003 file='option/option_button_on_01'
+	@addto index=3003 target=3002 pos=tf.poses[0]
+@elseif 'sf.display==\'big\''
+	@sprite index=3004 file='option/option_button_on_02'
+	@addto index=3004 target=3002 pos=tf.poses[1]
+@else
+	@sprite index=3005 file='option/option_button_on_03'
+	@addto index=3005 target=3002 pos=tf.poses[2]
+@endif
+
+@if 'System.skipAll'
+	@sprite index=3006 file='option/option_button_on_04'
+	@addto index=3006 target=3002 pos=tf.poses[3]
+@else
+	@sprite index=3007 file='option/option_button_on_05'
+	@addto index=3007 target=3002 pos=tf.poses[4]
+@endif
+
+
+//滑条 3008-3012
+@for var=i range=range(0,5)
+	@layer index=3009+i width=436 height=60
+	@sprite index=3010+i file='option/slidebar02'
+	@sprite index=3011+i file='option/slidebar02_on'
+	@addto index=3010+i target=3009+i
+	@sliderex index=3008+i back=3009+i block=3011+i onchanged=['*slider_0'+i, 'system_option', 'callback'] min=0 max=100 value=sf.sliderValue[i]
+	@addto index=3008+i target=3002 pos=sliderPose[i]
+@next
+
+
+//额外添加的返回按钮所以在3013
+@button index=3013 idle='backbutton' hover='backbutton_on' click='backbutton_on' onclick=['*option_exit','system_option','jump']
+
+@if "f.inGame||tf.isRecall"
+@button index=3014 idle='option/gototitle' hover='option/gototitle_on' click='option/gototitle_on' onclick=['*backToTitle','system_option','jump']
+@addto index=3013 target=3000 pos=[200,663]
+@addto index=3014 target=3000 pos=[600,663]
+@else
+	@addto index=3013 target=3000 pos=[400,663]
+@endif
+
+@action mode='fadeto' target=3000 opacity=255 time=300
+@spriteopt index=3000 disable=false
+@event name="rclick" type="jump" enable=true label="*option_exit" ignore=true
+@waitbutton
+
+//分辨率事件
+*button_01
+[pretrans]
+@button index=3004 threshold=0 idle='option/option_button_02' hover='option/option_button_on_02' click='option/option_button_on_02' onclick=['*button_02', 'system_option', 'callback']
+@button index=3005 threshold=0 idle='option/option_button_03' hover='option/option_button_on_03' click='option/option_button_on_03' onclick=['*button_03', 'system_option', 'callback']
+@sprite index=3003 file='option/option_button_on_01'
+##
+System.fullScreen=1;
+sf.display='full';
+##
+@call '*display_change_end'
+@return
+*button_02
+[pretrans]
+@sprite index=3004 file='option/option_button_on_02'
+@button index=3005 threshold=0 idle='option/option_button_03' hover='option/option_button_on_03' click='option/option_button_on_03' onclick=['*button_03', 'system_option', 'callback']
+@button index=3003 threshold=0 idle='option/option_button_01' hover='option/option_button_on_01' click='option/option_button_on_01' onclick=['*button_01', 'system_option', 'callback']
+
+##
+System.fullScreen=0;
+System.windowSize=[1280,720];
+sf.display='big';
+##
+@call '*display_change_end'
+@return
+
+*button_03
+[pretrans]
+@button index=3004 threshold=0 idle='option/option_button_02' hover='option/option_button_on_02' click='option/option_button_on_02' onclick=['*button_02', 'system_option', 'callback']
+@sprite index=3005 file='option/option_button_on_03'
+@button index=3003 threshold=0 idle='option/option_button_01' hover='option/option_button_on_01' click='option/option_button_on_01' onclick=['*button_01', 'system_option', 'callback']
+
+##
+System.fullScreen=0;
+System.windowSize=[800,450];
+sf.display='small';
+##
+@call '*display_change_end'
+@return
+
+*display_change_end
+@addto index=3003 target=3002 pos=tf.poses[0]
+@addto index=3004 target=3002 pos=tf.poses[1]
+@addto index=3005 target=3002 pos=tf.poses[2]
+[trans mode='normal']
+@return
+
+//分辨率相关事件到此结束
+//快进按钮相关开始
+
+*button_04
+[pretrans]
+@sprite index=3006 file='option/option_button_on_04'
+@button index=3007 threshold=0 idle='option/option_button_05' hover='option/option_button_on_05' click='option/option_button_on_05' onclick=['*button_05', 'system_option', 'callback']
+#System.skipAll=1;
+@call '*skip_change_end'
+@return
+
+*button_05
+[pretrans]
+@button index=3006 threshold=0 idle='option/option_button_04' hover='option/option_button_on_04' click='option/option_button_on_04' onclick=['*button_04', 'system_option', 'callback']
+@sprite index=3007 file='option/option_button_on_05'
+#System.skipAll=0;
+@call '*skip_change_end'
+@return
+
+
+*skip_change_end
+@addto index=3006 target=3002 pos=tf.poses[3]
+@addto index=3007 target=3002 pos=tf.poses[4]
+[trans mode='normal']
+@return
+//快进按钮相关结束
+
+//滑条事件
+*slider_00
+##
+sf.sliderValue[0]=value;
+System.textSpeed=value;
+##
+@return
+
+*slider_01
+##
+System.autoModeTime=2000-16*value;
+sf.sliderValue[1]=value;
+##
+@return
+
+*slider_02
+##
+Channel.musicVolume=value;
+sf.sliderValue[2]=value;
+##
+@return
+
+*slider_03
+##
+Channel.soundVolume=value;
+sf.sliderValue[3]=value;
+##
+@return
+
+*slider_04
+##
+Channel.voiceVolume=value;
+sf.sliderValue[4]=value;
+##
+@return
+
+*option_exit
+@spriteopt index=3000 disable=true
+@action target=3000 mode="fadeto" opacity=0 time=300
+@waitaction index=3000
+@removeall index=3000 delete=true recursive=true
+@remove index=3000 delete=true
+@event name="rclick"  enable=false
+@if "f.inGame||tf.isRecall"
+@enable_dialogbox
+@endif  
+@return 
+
+*backToTitle
+@spriteopt index=3000 disable=true
+@event ignore=true name="rclick" type="jump" enable=true label="*btYes"
+@layer index=300 width=1280 height=720
+@sprite index=301 file="dialog/back"
+@anchor index=301 set="center"
+@addto index=301 target=300 pos=[640,360]
+@textsprite index=303 text="确定要返回标题吗" font="font/MFYueYuan_Noncommercial-Regular" size=34 color=0xB97A57
+@button index=304 idle="dialog/yes" hover='dialog/yes_on' click='dialog/yes_on' onclick=["*btYes", ,'jump']
+@button index=302 idle="dialog/no" hover='dialog/no_on' click='dialog/no_on' onclick=["*btEnd", ,'jump']
+@anchor index=302 set="topcenter"
+@anchor index=303 set="topcenter"
+@anchor index=304 set="topcenter"
+@addto index=303 target=301 pos=[238,100]
+@addto index=304 target=301 pos=[173,200]
+@addto index=302 target=301 pos=[303,200]
+@addto index=300 target=3000 zorder=3 opacity=0
+@action target=300 mode="fadeto" opacity=255 time=300
+@waitaction index=300
+@waitbutton
+*btYes
+@enable_dialogbox
+@textoff
+@removeall index=basic_layer delete=true
+@event name="rclick" enable=false
+#tf.isRecall=void
+@load index=999
+//@returnto "*enter" "title"
+*btEnd
+@action target=300 mode="fadeto" opacity=0 time=300
+@waitaction index=300
+@removeall index=300 delete=true
+@remove index=300 delete=true
+@spriteopt index=3000 disable=false
+@event name="rclick" type="jump" enable=true label="*option_exit" ignore=true
+@waitbutton
+//@return
+
+
+

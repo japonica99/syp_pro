@@ -1,0 +1,47 @@
+﻿*main
+//@textoff
+
+@spriteopt index=5000 disable=true
+//@pretrans //固定画面的状态
+@layer index=7000 width=1280 height=720 //创建一个层作为标题画面底层
+@spriteopt index=7000 disable=true
+@sprite index=7001 file='omake/bg'//创建一个载入了标题背景画面的精灵
+@addto index=7001 target=7000 zorder=1 opacity=255//将精灵添加到底层上
+
+@event ignore=true name="rclick" type="jump" enable=true label="*exit"
+//按钮的创建与添加从这里开始
+//因为按钮图片的明明只有编号不同，采用了for loop 来偷懒
+##
+// CG, musi, ending,touch, back
+var button_pos=[[241,105],[414,216],[241,327],[414,438]];//预先设定的按钮坐标
+var button_event=[ ['*main', 'system_cg', 'call'], ['*main','system_music','call'] , ['*main', 'system_end', 'call'] , ['*main', 'system_mo', 'call']]
+##
+@for var=i range=range(0,4)
+	//在这个循环中会依次的将01到06号按钮生成并添加到底层上
+	@button index=7002+i idle='omake/omake_button_0'+(i+1) click='omake/omake_button_on_0'+(i+1) hover='omake/omake_button_on_0'+(i+1) threshold=10 onclick=button_event[i]//创建按钮精灵//
+	@addto target=7000 index=7002+i pos=button_pos[i-1] zorder=2//将按钮精灵添加到底层上
+@next
+//未全通没有摸摸乐
+@if exp="!sf.endA || !sf.endB"
+	@remove index=7005
+@endif
+@button index=7006 idle='backbutton' hover='backbutton_on' click='backbutton_on' onclick=['*exit',,'jump'] 
+@button index=7013 idle='backbutton' hover='backbutton_on' click='backbutton_on' onclick=['*exit', ,'jump']
+@addto index=7013 target=7000 pos=[400,663] zorder=2
+@addto index=7000 target=basic_layer opacity=0//将整个底层添加到基础层上使得底层和基础层能够显示
+
+@action mode='fadeto' time=300 opacity=255 target=7000//解除画面的固定状态
+@spriteopt index=7000 disable=false
+@waitbutton
+
+*exit
+@spriteopt index=7000 disable=true
+@action target=7000 mode="fadeto" opacity=0 time=300
+@waitaction index=7000
+@removeall index=7000 delete=true recursive=true
+@remove index=7000 delete=true
+@event name="rclick"  enable=false  
+@spriteopt index=5000 disable=false
+
+@return 
+

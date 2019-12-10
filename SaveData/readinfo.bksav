@@ -1,0 +1,9 @@
+%[
+  "init.bkbin"=>%[
+    "*init"=>15
+  ],
+  "main.bkbin"=>%[
+    "*main"=>151,
+    "*day1"=>58
+  ]
+]

@@ -1,0 +1,30 @@
+﻿*register
+[import file="extend.bkscr"]
+//这之间写上要定义的宏或导入其他的宏文件
+[macro name="white_in_middle" text]
+[macro name="typewriter" text pos rect]
+[macro name="figurant" text]
+[return]
+//在下面写上宏的实现部分
+
+*white_in_middle
+[textwindow color=0x000000 pos=[360,350] rect=[5,5,600,200] xinterval=3]
+[textstyle size=20 color=0xffffff]
+[text text=text]
+@return
+
+*typewriter
+//to-do:光标
+//[textcursor index=10 follow=true]
+[textwindow color=0x000000 pos=pos rect=rect xinterval=3]
+[textstyle name="ui/fonts/AiDeep.otf" size=20 color=0xffffff]
+[textspeed interval=50]
+[text text=text]
+@return
+
+*figurant
+[textwindow file="ui/messagebox" pos=[0,0] rect=[118,505,1008,231] xinterval=3]
+[textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0xffffff]
+[textspeed interval=50]
+[text text=text]
+@return
