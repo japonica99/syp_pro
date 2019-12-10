@@ -18,7 +18,6 @@
 //[se file="resources/gj1/gas.wav" channel=1 loop=false] 
 //同一通道同时只能播放一个音频 多个可以同时
 //[voice file="resources/gj1/woman1.wav" vol=80]
-//@basic_dialogbox
 [figurant text="试验品DS-2333，生命体征正常，正在上传睡眠监测数据——"][p]
 //[voice file="resources/gj1/woman2.wav" vol=80]
 [figurant text="——上传成功"][p]
@@ -164,7 +163,7 @@
 //[voice file="resources/gj3/lcy8.wav" vol=80]
 [protagonist text="要问问原因吗？可作为试验品，本不该有试验品行动规则以外的任何举动……贸然询问，会直接被当成什么地方出了差错的“废品”，直接销毁吧？"][p]
 [textoff]
-[select text=["...","没有。"] label=["*A1","*B1"] labelFile=["main","main"] ]
+[select text=["询问研究员","不询问研究员"] label=["*A1","*B1"] labelFile=["main","main"] ]
 *A1
 [jump label="*gj2.1"]
 *B1
@@ -197,7 +196,6 @@
 [protagonist text="甚至连今天的针剂注射都没有做……"][p]
 //[voice file="resources/gj2.1/lcy5.wav" vol=80]
 [protagonist text="这不像他。或者说，这不像他们研究员。"][p]
-*test
 //[se file="resources/gj2.1/nervours.wav" channel=1 loop=true volume=40]
 [card text="研究员，管理并研究试验品，所谓“科学家”，在试验品面前，从来都是冷漠且自信的存在。每位研究员视情况可负责一或多个试验品。"][p]
 [card text="试验品不得质疑研究员的权威，除非“最高级”下达命令，否则严禁违背研究员指令行动……因此研究员之于试验品，是“神明”，而试验品之于研究员，则不过是随用随弃的一件物品。"][p]
@@ -228,6 +226,157 @@
 [protagonist text="……当然了，首先，我需要存活到晚上。"][p]
 //[stop channel=1 fadeout=1000]
 [protagonist text="……"][p]
+[textoff]
+[jump label="*gj2.1.1"]
+
+*gj2.1.1
+[protagonist text="……"][p]
+[protagonist text="……"][p]
+[protagonist text="……"][p]
+//[voice file="resources/gj2.1.1/woman1.wav" vol=80]
+[figurant text="睡眠时间已到，请在一分钟内回到睡眠舱。"][p]
+//[se file="resources/gj2.1.1/switch.wav" channel=1 loop=false]
+//[voice file="resources/gj2.1.1/lcy1.wav" vol=80]
+[protagonist text="之前听到过安保人员的谈话，凌晨四点到四点三十是巡逻交班的空档期"][p]
+//[voice file="resources/gj2.1.1/lcy2.wav" vol=80]
+[protagonist text="放掉一部分催眠气体，保证能在四点之前醒来，然后去研究员的办公室调取属于我的、DS-2333号的档案，或许就能解释这么多天来的种种反常现象了。"][p]
+[textoff]
+[card text="催眠气体：辅助试验品们进入睡眠的气态物质，会在睡眠舱设定的时间内从容器内均匀释放。每晚试验品进入睡眠舱前物资组人员会对催眠气体进行补充，以保证试验品第二天在指定时间醒来而不在睡眠时间擅自活动。"][p]
+[textoff]
+//[voice file="resources/gj2.1.1/lcy3.wav" vol=80]
+[protagonist text="可是，这是违反试验品行动准则的行为……不这样冒险，只不过是在难以捉摸的命运中沉沦而已；而一旦被发现，等待着我的，就必然是万劫不复的深渊。"][p]
+//[voice file="resources/gj2.1.1/lcy4.wav" vol=80]
+[protagonist text="真的要冒着被发现然后立即被执行销毁程序的风险做这件事吗？"][p]
+[textoff]
+[select text=["坚持行动","放弃行动"] label=["*A2","*B2"] labelFile=["main","main"] ]
+*A2
+[jump label="*gj2.1.2"]
+*B2
+[jump label="*gj2.2.2"]
+*gj2.1.2
+//[voice file="resources/gj2.1.2/lcy1.wav" vol=80]
+[protagonist text="只要抓住空档期的机会，这次行动或许也就并不会我想象中的那样危险……还是试试看吧。"][p]
+//[se file="resources/gj2.1.2/step.wav" channel=1 loop=false]
+//[se file="resources/gj2.1.2/stroke.wav" channel=1 loop=false]
+//[voice file="resources/gj2.1.2/lcy2.wav" vol=80]
+[protagonist text="我记得……睡眠舱的催眠气体是存储在这里的……"][p]
+//[se file="resources/gj2.1.2/twist.wav" channel=1 loop=false]
+//[se file="resources/gj2.1.2/gas_leak.wav" channel=1 loop=false]
+//[voice file="resources/gj2.1.2/lcy3.wav" vol=80]
+[protagonist text="催眠气体的储量检测只在早上和晚上两次物资小组的例行补给时才会检验，他们倒是对睡眠舱储气装置的质量很有自信，连意外漏气的可能性都没有考虑……？"][p]
+//[voice file="resources/gj2.1.2/lcy4.wav" vol=80]
+[protagonist text="不……或许，他们只是对我们这些试验品的听话程度有自信罢了。倘若因为催眠气体不够而导致我们中途醒来，大概也只会安静地躺在舱里等待天明吧？"][p]
+//[voice file="resources/gj2.1.2/lcy5.wav" vol=80]
+[protagonist text="然后在早上物资小组来执行补给任务时，主动表示催眠气体储量有误。"][p]
+//[voice file="resources/gj2.1.2/lcy6.wav" vol=80]
+[protagonist text="所以，其实根本没有必要在这里多加资源进行检测——我们就已是催眠系统最便捷的传感器了。"][p]
+//[se file="resources/gj2.1.2/collide.wav" channel=1 loop=false]
+//[se file="resources/gj2.1.2/mechanic.wav" channel=1 loop=false]
+//[voice file="resources/gj2.1.2/woman1.wav" vol=80]
+[figurant text="DS-2333，生命体征正常，正在进入睡眠模式。"][p]
+//[se file="resources/gj2.1.2/gas.wav" channel=1 loop=false]
+//[voice file="resources/gj2.1.2/lcy7.wav" vol=80]
+[protagonist text="希望计划能够顺利进行吧。"][p]
+[textoff]
+[jump label="*gj3.1"]
 *gj2.2
+*gj2.2.2
+*gj3.1
+[protagonist text="……"][p]
+//[se file="resources/gj2.1.2/gas.wav" channel=1 loop=false]
+//[se file="resources/gj2.1.2/mechanic.wav" channel=1 loop=false]
+//[voice file="resources/gj1/woman1.wav" vol=80]
+[figurant text="试验品DS-2333，生命体征正常，正在上传睡眠监测数据——"][p]
+//[voice file="resources/gj1/woman2.wav" vol=80]
+[figurant text="——上传成功"][p]
+[textoff]
+//遮罩 KAG代码
+@pretrans
+//△模仿睁眼的方式，添加由中间向上下的遮罩，从背景A过渡至背景B（遮片渐隐？）。
+@sprite index=102 file='ui/bg/allblack'
+@addto index=102 target=basic_layer opacity=255 
+@sprite index=101 file='resources/gj1/ceiling'
+@addto index=101 target=basic_layer opacity=255 
+@remove index=102
+@trans mode='universal' rule='ui/rules/openFade' time=3000
+[p]
+//[voice file="resources/gj1/lcy1.wav" vol=80]
+[protagonist text="又是毫无新意的一天。"][p]
+[textoff]
+//淡出黑色
+@pretrans
+@sprite index=102 file='ui/bg/allblack'
+@addto index=102 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+//[voice file="resources/gj3.1/lcy1.wav" vol=80]
+[protagonist text="等等！"][p]
+//[voice file="resources/gj3.1/lcy2.wav" vol=80]
+[protagonist text="我记得……昨天晚上，我把催眠气体放掉了一部分，想要在四点前醒来，去研究员办公室查看我的个人档案……"][p]
+//[voice file="resources/gj3.1/lcy3.wav" vol=80]
+[protagonist text="可是为什么，我还是从催眠气体中醒来？！"][p]
+//[voice file="resources/gj3.1/lcy4.wav" vol=80]
+[protagonist text="到底是哪里出了差错？"][p]
+//[se file="resources/gj3.1/collide.wav" channel=1 loop=false]
+//[se file="resources/gj3.1/step.wav" channel=1 loop=false]
+//[voice file="resources/gj3.1/lcy5.wav" vol=80]
+[protagonist text="催眠气体……"][p]
+//[voice file="resources/gj3.1/lcy6.wav" vol=80]
+[protagonist text="这怎么可能？！"][p]
+[protagonist text="!!！"][p]
+//@pretrans
+//@textoff
+//@trans mode='rotatezoom' time=1500
+//@waittrans
+//[voice file="resources/gj3.1/lcy7.wav" vol=80]
+[protagonist text="催眠气体怎么可能还有余量？！"][p]
+//[voice file="resources/gj3.1/lcy8.wav" vol=80]
+[protagonist text="为什么？……究竟是……"][p]
+//[bgm file="resources/gj3.1/didi.wav" vol=40 loop=false]
+//[bgm file="resources/gj3.1/woman1.wav" vol=40 loop=false]
+//[voice file="resources/gj3.1/lcy9.wav" vol=80]
+[protagonist text="虽然还不知道是出了什么问题……既然晚上是否能行动取决于我是否可以成功减少催眠气体储量，而看起来要做到这一点似乎会产生一些困难……"][p]
+//[voice file="resources/gj3.1/lcy10.wav" vol=80]
+[protagonist text="那么为了使行动可以顺利开展，只能选择白天的时间了。"][p]
+//[voice file="resources/gj3.1/lcy11.wav" vol=80]
+[protagonist text="尽管这也意味着，我必须面临更大的风险"][p]
+//[voice file="resources/gj3.1/lcy12.wav" vol=80]
+[protagonist text="每天上午试验品的集中测试时间，也是研究员的例会时间"][p]
+//[voice file="resources/gj3.1/lcy13.wav" vol=80]
+[protagonist text="例会的时间通常比较长——也就是说，只要我能快速完成测试内容，就会有相当充裕一段时间可以与研究员的行动错开，进入他的办公室。"][p]
+//[voice file="resources/gj3.1/lcy14.wav" vol=80]
+[protagonist text="只是白天不可避免地会在路上遇到很多工作人员……需要找一个合理而自然的往办公室方向走的理由。"][p]
+//[voice file="resources/gj3.1/lcy15.wav" vol=80]
+[protagonist text="不如，就以“独立测试”掩人耳目吧。"][p]
+[textoff]
+[card text="独立测试：研究员可根据实验情况增加对自己下属试验品的独立测试，增加的独立测试通常选定在集中测试时间后进行"][p]
+[textoff]
+//[voice file="resources/gj3.1/lcy16.wav" vol=80]
+[protagonist text="独立测试所在的诊断室和办公室在同一个方向，只需要在分叉口处，找准时机转入研究员办公区的那一条岔路即可；那个时候的办公区不会有人，唯一的任务就是躲开走廊里的监控。"][p]
+//[voice file="resources/gj3.1/lcy17.wav" vol=80]
+[protagonist text="根据之前随研究员进入办公室的经验，我的研究员并没有在办公室里设置监控，因此，进入办公室之后需要注意的点，就只是要为撤离留下足够的时间罢了。"][p]
+//[se file="resources/gj3.1/carddidi.wav" channel=1 loop=false]
+//[se file="resources/gj3.1/step_heels_closer.wav" channel=1 loop=false]
+//[voice file="resources/gj3.1/woman2.wav" vol=80]
+[figurant text="上午的例行补给。"][p]
+//[voice file="resources/gj3.1/lcy18.wav" vol=80]
+[protagonist text="只等行动了。"][p]
+//[voice file="resources/gj3.1/lcy19.wav" vol=80]
+*test
+[protagonist text="一定……要成功啊。"][p]
+[jump label="*gj3.1.1"]
+
+*gj3.1.1
+//[bgm file="resources/gj3.1.1/whitenoise.wav" vol=40]
+//[voice file="resources/gj3.1,1/woman1.wav" vol=80]
+[figurant text="DS-2333，测试通过，回到休息室待命。"][p]
+[textoff]
+//[se file="resources/gj3.1.1/steps.wav" channel=1 loop=false]
+//[se file="resources/gj3.1.1/door.wav" channel=1 loop=false]
+@pretrans
+@sprite index=101 file='resources/gj3.1.1/corridor'
+@addto index=101 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+//[bgm file="resources/gj3.1.1/whitenoise_echo.wav" vol=40]
+
 [p]
 @quit
