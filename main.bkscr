@@ -288,7 +288,44 @@
 [textoff]
 [jump label="*gj3.1"]
 *gj2.2
+//[voice file="resources/gj2.2/lcy1.wav" vol=100]
+[protagonist text="研究员总是这么严肃，恐怕也不会回答我。万一他听到我的提问直接上报把我销毁了，那我不是害了自己？研究员可能有他自己的考虑吧……还是先别做出什么异常举动的好。"][p]
+//[voice file="resources/gj2.2/lcy2.wav" vol=100]
+[protaspeak text="对不起先生，我刚才失神了。"][p][textoff]
+//[se file="resources/gj2.2/shuffle.wav" channel=1 loop=false][p]
+//[voice file="resources/gj2.2/lcy3.wav" vol=100]
+[doctor text="难道系统出了什么问题导致了试验品短暂的短路?看来得研究一下然后找时间做个全面点的检查。不要到时候实验成功了结果出现别的问题。"][p]
+[textoff]
+[card text="研究员，管理并研究试验品，所谓“科学家”，在试验品面前，从来都是冷漠且自信的存在。每位研究员视情况可负责一或多个试验品。"][p]
+[card text="试验品不得质疑研究员的权威，除非“最高级”下达命令，否则严禁违背研究员指令行动……因此研究员之于试验品，是“神明”，而试验品之于研究员，则不过是随用随弃的一件物品。"][p]
+[textoff]
+[jump label="*gj2.2.2"]
 *gj2.2.2
+//[voice file="resources/gj2.2.2/lcy1.wav" vol=100]
+[protagonist text="今天果然还是没有进行独立测试。"][p]
+//[voice file="resources/gj2.2.2/lcy2.wav" vol=100]
+[protagonist text="如果我真的是要被抛弃了怎么办？我见过那些被淘汰的试验品，他们被运送去销毁室的时候都是一副毫无生机的样子，有的虽然睁着眼，却跟那些布偶没什么两样。"][p]
+//[se file="resources/gj2.2.2/clap.wav" channel=1 loop=false]
+//[voice file="resources/gj2.2.2/lcy3.wav" vol=100]
+[protagonist text="要是我也变成那样……"][p]
+[protagonist text="不会的不会的！如果要把我淘汰，怎么会还浪费资源每天进行检查呢！研究员提到什么实验成功……一定是研究员忙着做这个实验临时取消了独立测试。对，一定是这样！我只管听研究员的就好了。"][p]
+//[se file="resources/gj2.2.2/collide.wav" channel=1 loop=false][p]
+//[voice file="resources/gj2.2.2/lcy4.wav" vol=100]
+[protagonist text="这……"][p]
+//[voice file="resources/gj2.2.2/lcy5 .wav" vol=100]
+[protagonist text="真是的，我怎么这么不小心，是不是应该先去找物资组说一下？哎，又要被他们念叨了。"][p]
+//[se file="resources/gj2.2.2/chair.wav" channel=1 loop=false][p]
+//[voice file="resources/gj2.2.2/woman1.wav" vol=100]
+[figurant text="睡眠时间已到，请在一分钟内回到睡眠舱。"]
+//[voice file="resources/gj2.2.2/lcy6 .wav" vol=100]
+[protagonist text="这么快已经到睡眠时间了吗？算了，那明天早上等物资组来的时候再跟他们说好了，反正总归不是什么紧急的事情。"][p]
+//[se file="resources/gj2.2.2/sleepprepare.wav" channel=1 loop=false][p]
+//[voice file="resources/gj2.2.2/woman1.wav" vol=100]
+[figurant text="电子女声：DS-2333，生命体征正常，正在进入睡眠模式。"]
+//[voice file="resources/gj2.2.2/lcy7 .wav" vol=100]
+[protagonist text="或许明天，我的疑问会有解答吗。"][p]
+[textoff]
+[jump label="*gj3.2"]
 *gj3.1
 [protagonist text="……"][p]
 //[se file="resources/gj2.1.2/gas.wav" channel=1 loop=false]
@@ -499,7 +536,7 @@ dead code only[p]
 @waittrans 
 [p]
 [jump label="*gj4.1"]
-
+*gj3.2
 *gj4.1
 @pretrans
 @sprite index=101 file='resources/gj1/desktop'
@@ -561,9 +598,9 @@ dead code only[p]
 [textoff]
 [glowyobjects file1=['resources/gj4.1.1/desk','resources/gj4.1.1/door'] file2=['resources/gj4.1.1/desk_glow','resources/gj4.1.1/door_glow'] label=["*a2","*b2"] labelFile=["main","main"] pos=[[78,314],[1250,65]]]
 *a2
-[jump label="*gj4.1.1.1"]
+哈哈哈哈哈哈我还没写[p]
 *b2
-b[p]
+[jump label="*gj4.1.1.1"]
 *gj4.1.1.1
 //[voice file="resources/gj4.1.1.1/lcy1.wav" vol=100]
 [protagonist text="还是先躲在门后，趁机控制住研究员，不让他有机会示警，然后再作打算吧。"][p]
@@ -685,6 +722,10 @@ supposed to be dead code[p]
 @trans mode="crossfade" time=50
 [p]
 @else 
+@pretrans
+@sprite index=101 file='resources/gj4.1.1.1/page7_2.2'
+@addto index=101 target=basic_layer opacity=255 
+@trans mode="crossfade" time=50
 @endif
 [jump "*4.1.2"]
 *4.1.2

@@ -79,3 +79,2026 @@ main.bkscr : *gj1
 　@return
 }
 @p
+@textoff
+@pretrans
+@sprite index=102 file="ui/bg/allblack"
+@addto index=102 target=basic_layer opacity=255
+@sprite index=101 file="resources/gj1/ceiling"
+@addto index=101 target=basic_layer opacity=255
+@remove index=102
+@trans mode="universal" rule="ui/rules/openFade" time=3000
+@p
+@voice file="resources/gj1/lcy1.wav" vol=100
+@protagonist text="又是毫无新意的一天呢。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@pretrans
+@sprite index=102 file="ui/bg/allblack"
+@addto index=102 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@protagonist text="……"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@se file="resources/gj1/getup.wav" channel=1 loop=false
+@p
+@pretrans
+@sprite index=101 file="resources/gj1/desktop"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@se file="resources/gj1/didi.wav" channel=1 loop=false
+【错误】找不到文件（resources/gj1/didi.wav）。
+　　　　当试图执行命令（se）时，该错误处于原文件（main.bkscr）的第54行。
+@p
+@figurant text="DS-2333，心率正常，体温正常，血压正常，肌肉活性正常，正在上传基础数据——"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@figurant text="——基础数据上传完成。血液样本采集完成，正在进行成分分析。"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@pretrans
+@sprite index=102 file="ui/bg/allblack"
+@addto index=102 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@se file="resources/gj1/add_step_in.wav" channel=1 loop=false
+@p
+@figurant text="上午的例行补给"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@se file="resources/gj1/shifting.wav" channel=1 loop=false
+@p
+@voice file="resources/gj1/lcy2.wav" vol=100
+@protagonist text="是物资小组。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@figurant text="DS-2333，营养剂补给完成，有什么其他需要吗？"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@select text=["...","没有。"] label=["*A","*B"] labelFile=["main","main"]
+{
+　extend.bkscr : *select
+　#var size = label.size;
+　#var indexes = [];
+　@idlesp get=indexes num=size*5
+　#var success = true;
+　#var info1 = %[];
+　@info file="ui/selectionbutton" get=info1
+　#var zorder;
+　@zorder index=message_layer get=zorder
+　#tf.curi=0;
+　@action mode="queue"
+　@for var=i range=range(size)
+　　@sprite index=indexes[(i*5)] file="ui/selectionbutton"
+　　@sprite index=indexes[(i*5+1)] file="ui/selectionbutton_on"
+　　@textsprite index=indexes[(i*5+2)] text=text[i] color=0
+　　@anchor index=indexes[(i*5+2)] set="center"
+　　@textsprite index=indexes[(i*5+3)] text=text[i] color=0
+　　@anchor index=indexes[(i*5+3)] set="center"
+　　@addto index=indexes[(i*5+2)] target=indexes[(i*5)] pos=[info1.width/2,info1.height/2,]
+　　@addto index=indexes[(i*5+3)] target=indexes[(i*5+1)] pos=[info1.width/2,info1.height/2+2,]
+　　@buttonex index=indexes[(i*5+4)] idle=indexes[(i*5)] hover=indexes[(i*5+1)] onclick=["*_selectend","extend","jump","tf.curi=curi",%["curi"=>i],%["ignore"=>1],]
+　　#var info2 = %[]
+　　@infoex index=indexes[(i*5+4)] get=info2
+　　#var winsize = System.resolutionSize;
+　　#var w = ( winsize[0] - info2.width ) / 2;
+　　#var h = ( winsize[1] - info2.height * size - ( size-1 ) * 50 ) / 2;
+　　@addto index=indexes[(i*5+4)] target=basic_layer zorder=zorder pos=[w,h+i*(50+info2.height),] opacity=0
+　　@action mode="fadeto" opacity=255 time=400 target=indexes[(i*5+4)]
+　　@next
+　@action mode="start" target=basic_layer
+　@waitbutton
+　extend.bkscr : *_selectend
+　@for var=i range=range(size)
+　　@action mode="fadeto" opacity=0 time=500 target=indexes[(i*5+4)]
+　　@next
+　@waitaction index=indexes[4]
+　@for var=i range=range(size)
+　　@remove index=indexes[(i*5+4)] delete=true
+　　@next
+　@returnto label="*A" file="main"}
+main.bkscr : *A
+@jump label=*gj1continue
+main.bkscr : *gj1continue
+@figurant text="DS-2333，无特殊情况，未发现异常。"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@figurant text="收到。"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@se file="resources/gj1/add_step_out.wav" channel=1 loop=false
+@p
+@voice file="resources/gj1/lcy3.wav" vol=100
+@protagonist text="也不知道她们每天来补充点营养剂，能看出什么异常来。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="等等，为什么我可以对自己说话了？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="难道是，是研究组之前在工作汇报会议上提到的，“想法”？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@pretrans
+@sprite index=101 file="resources/gj1/doctorback"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="ripple" time=2000
+@waittrans
+@voice file="resources/gj1/lcy4.wav" vol=100
+@doctor text="在DS组的培养中，我们通过对神经网络的定向抑制，成功剔除了他们的自我意识，也就是所谓的，‘想法’。"
+{
+　macro.bkscr : *doctor
+　@textwindow file="ui/messagebox3" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@voice file="resources/gj1/lcy5.wav" vol=100
+@figurant text="做得很好。作为‘兵器’，他们不需要有多余的思考。能在培养阶段就使自我意识退化消失，就可以没有后顾之忧了。"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@voice file="resources/gj1/lcy6.wav" vol=100
+@protagonist text="那些话，到底……"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@pretrans
+@sprite index=102 file="ui/bg/allblack"
+@addto index=102 target=basic_layer opacity=255
+@trans mode="ripple" time=2000
+@waittrans
+@se file="resources/gj1/add_knock&comein.wav" channel=1 loop=false
+@p
+@voice file="resources/gj1/lcy7.wav" vol=100
+@protagonist text="会敲门的……是我的研究员来了吗？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@pretrans
+@sprite index=101 file="resources/gj1/doctor"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@voice file="resources/gj1/lcy9.wav" vol=100
+@doctor text="上午的例行注射。躺好。"
+{
+　macro.bkscr : *doctor
+　@textwindow file="ui/messagebox3" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@se file="resources/gj1/add_didi_comein.wav" channel=1 loop=false
+@p
+@voice file="resources/gj1/lcy8.wav" vol=100
+@doctor text="好了。有任何异常情况，直接向我汇报。"
+{
+　macro.bkscr : *doctor
+　@textwindow file="ui/messagebox3" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@pretrans
+@sprite index=102 file="ui/bg/allblack"
+@addto index=102 target=basic_layer opacity=255
+@trans mode="crossfade" time=300
+@se file="resources/gj1/cloth_further.wav" channel=1 loop=false
+@p
+@voice file="resources/gj1/lcy10.wav" vol=100
+@protagonist text="忘记问他，为什么我忽然能“思考”了。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@voice file="resources/gj1/lcy11.wav" vol=100
+@protagonist text="可是，这似乎是不被允许出现的情况……上报了这个情况，是不是我就不再具有“价值”，将会和曾经的那些试验品一样，被送去“销毁”呢？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@voice file="resources/gj1/lcy12.wav" vol=100
+@protagonist text="上午的检查、注射和集中测试；下午的检查、注射和集中测试……一切似乎从来都不曾变过，可当我不再以一个游离在外的视角观看这一切，一切似乎又产生了一些难以捉摸的、微妙的变化。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@jump label=*gj2
+main.bkscr : *gj2
+@protagonist text="为什么？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="从我可以“思考”的那天算起，已经过去整整八天了。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="这八天来，我逐渐能感受到那种不和谐的微妙变化是从何而来——我的研究员已经很久没有像曾经那样认真而专注地处理“我”这个项目了……这应该怎么形容来着？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="哦，对。“敷衍”。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="今天是几号了？……25？那下午应该有十五天一次的独立测试，可研究员没有像往常一样提前通知我，看起来也并没有任何安排了测试的样子，……"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="究竟是为什么？难道……是我已经没有研究价值，即将被放弃了吗？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@pretrans
+@sprite index=101 file="resources/gj1/doctor"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@doctor text="下午的例行注射。躺好……你在磨蹭什么？"
+{
+　macro.bkscr : *doctor
+　@textwindow file="ui/messagebox3" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="要问问原因吗？可作为试验品，本不该有试验品行动规则以外的任何举动……贸然询问，会直接被当成什么地方出了差错的“废品”，直接销毁吧？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@select text=["询问研究员","不询问研究员"] label=["*A1","*B1"] labelFile=["main","main"]
+{
+　extend.bkscr : *select
+　#var size = label.size;
+　#var indexes = [];
+　@idlesp get=indexes num=size*5
+　#var success = true;
+　#var info1 = %[];
+　@info file="ui/selectionbutton" get=info1
+　#var zorder;
+　@zorder index=message_layer get=zorder
+　#tf.curi=0;
+　@action mode="queue"
+　@for var=i range=range(size)
+　　@sprite index=indexes[(i*5)] file="ui/selectionbutton"
+　　@sprite index=indexes[(i*5+1)] file="ui/selectionbutton_on"
+　　@textsprite index=indexes[(i*5+2)] text=text[i] color=0
+　　@anchor index=indexes[(i*5+2)] set="center"
+　　@textsprite index=indexes[(i*5+3)] text=text[i] color=0
+　　@anchor index=indexes[(i*5+3)] set="center"
+　　@addto index=indexes[(i*5+2)] target=indexes[(i*5)] pos=[info1.width/2,info1.height/2,]
+　　@addto index=indexes[(i*5+3)] target=indexes[(i*5+1)] pos=[info1.width/2,info1.height/2+2,]
+　　@buttonex index=indexes[(i*5+4)] idle=indexes[(i*5)] hover=indexes[(i*5+1)] onclick=["*_selectend","extend","jump","tf.curi=curi",%["curi"=>i],%["ignore"=>1],]
+　　#var info2 = %[]
+　　@infoex index=indexes[(i*5+4)] get=info2
+　　#var winsize = System.resolutionSize;
+　　#var w = ( winsize[0] - info2.width ) / 2;
+　　#var h = ( winsize[1] - info2.height * size - ( size-1 ) * 50 ) / 2;
+　　@addto index=indexes[(i*5+4)] target=basic_layer zorder=zorder pos=[w,h+i*(50+info2.height),] opacity=0
+　　@action mode="fadeto" opacity=255 time=400 target=indexes[(i*5+4)]
+　　@next
+　@action mode="start" target=basic_layer
+　@waitbutton
+　extend.bkscr : *_selectend
+　@for var=i range=range(size)
+　　@action mode="fadeto" opacity=0 time=500 target=indexes[(i*5+4)]
+　　@next
+　@waitaction index=indexes[4]
+　@for var=i range=range(size)
+　　@remove index=indexes[(i*5+4)] delete=true
+　　@next
+　@returnto label="*A1" file="main"}
+main.bkscr : *A1
+#f.ask=1
+@jump label=*gj2.1
+main.bkscr : *gj2.1
+@protagonist text="……问一问试试吧。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protaspeak text="先生，今天……没有独立测试吗？"
+{
+　macro.bkscr : *protaspeak
+　@textwindow file="ui/messagebox3" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@doctor text="……没有。"
+{
+　macro.bkscr : *doctor
+　@textwindow file="ui/messagebox3" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@doctor text="如果有……独立测试的话，我会让人来通知的"
+{
+　macro.bkscr : *doctor
+　@textwindow file="ui/messagebox3" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@pretrans
+@sprite index=102 file="ui/bg/allblack"
+@addto index=102 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@protagonist text="……"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="他……怎么直接就离开了？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="甚至连今天的针剂注射都没有做……"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="这不像他。或者说，这不像他们研究员。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@card text="研究员，管理并研究试验品，所谓“科学家”，在试验品面前，从来都是冷漠且自信的存在。每位研究员视情况可负责一或多个试验品。"
+{
+　macro.bkscr : *card
+　@textwindow file="ui/card" pos=[0, 0] rect=[457, 200, 387, 185] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@card text="试验品不得质疑研究员的权威，除非“最高级”下达命令，否则严禁违背研究员指令行动……因此研究员之于试验品，是“神明”，而试验品之于研究员，则不过是随用随弃的一件物品。"
+{
+　macro.bkscr : *card
+　@textwindow file="ui/card" pos=[0, 0] rect=[457, 200, 387, 185] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@protagonist text="对于连“人”都算不上的试验品，他们一向是趾高气昂、不屑一顾的。他们只需根据自己的需求在我们身上做各种尝试，而不需要顾及我们的“心情”。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="这样的人，怎么会在自己的试验品面前失去以往的沉着，甚至是有些慌张狼狈地匆匆离开？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="为什么？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="是因为我刚才的发言，太过异常，他们准备将我销毁吗？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="是我，不再“被需要”了吗？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="……"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="未来不受掌控又完全无法确认……这种感觉，是他们所说的，“心慌”吗？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="原来可以“思考”之后，会有这么多曾经无法想象的，从大脑传出的奇妙感觉可是，这么快，我就要失去对这些感觉的体验了吗？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="无论是哪种情况，我似乎都应该了解一下究竟发生了什么……至少，可以先稍微见识一下，自己的所谓“命运”吧"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="白天时刻受监控，也没有足够充裕的自由时间……不如，在晚上工作人员大都睡了的时候溜出来，去找找有没有什么有关DS组试验品淘汰的蛛丝马迹。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="……当然了，首先，我需要存活到晚上。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="……"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@jump label=*gj2.1.1
+main.bkscr : *gj2.1.1
+@protagonist text="……"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="……"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="……"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@figurant text="睡眠时间已到，请在一分钟内回到睡眠舱。"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@se file="resources/gj2.1.1/switch.wav" channel=1 loop=false
+@p
+@voice file="resources/gj2.1.1/lcy1.wav" vol=100
+@protagonist text="之前听到过安保人员的谈话，凌晨四点到四点三十是巡逻交班的空档期"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@voice file="resources/gj2.1.1/lcy2.wav" vol=100
+@protagonist text="放掉一部分催眠气体，保证能在四点之前醒来，然后去研究员的办公室调取属于我的、DS-2333号的档案，或许就能解释这么多天来的种种反常现象了。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@card text="催眠气体：辅助试验品们进入睡眠的气态物质，会在睡眠舱设定的时间内从容器内均匀释放。每晚试验品进入睡眠舱前物资组人员会对催眠气体进行补充，以保证试验品第二天在指定时间醒来而不在睡眠时间擅自活动。"
+{
+　macro.bkscr : *card
+　@textwindow file="ui/card" pos=[0, 0] rect=[457, 200, 387, 185] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@voice file="resources/gj2.1.1/lcy3.wav" vol=100
+@protagonist text="可是，这是违反试验品行动准则的行为……不这样冒险，只不过是在难以捉摸的命运中沉沦而已；而一旦被发现，等待着我的，就必然是万劫不复的深渊。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="真的要冒着被发现然后立即被执行销毁程序的风险做这件事吗？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@select text=["坚持行动","放弃行动"] label=["*A2","*B2"] labelFile=["main","main"]
+{
+　extend.bkscr : *select
+　#var size = label.size;
+　#var indexes = [];
+　@idlesp get=indexes num=size*5
+　#var success = true;
+　#var info1 = %[];
+　@info file="ui/selectionbutton" get=info1
+　#var zorder;
+　@zorder index=message_layer get=zorder
+　#tf.curi=0;
+　@action mode="queue"
+　@for var=i range=range(size)
+　　@sprite index=indexes[(i*5)] file="ui/selectionbutton"
+　　@sprite index=indexes[(i*5+1)] file="ui/selectionbutton_on"
+　　@textsprite index=indexes[(i*5+2)] text=text[i] color=0
+　　@anchor index=indexes[(i*5+2)] set="center"
+　　@textsprite index=indexes[(i*5+3)] text=text[i] color=0
+　　@anchor index=indexes[(i*5+3)] set="center"
+　　@addto index=indexes[(i*5+2)] target=indexes[(i*5)] pos=[info1.width/2,info1.height/2,]
+　　@addto index=indexes[(i*5+3)] target=indexes[(i*5+1)] pos=[info1.width/2,info1.height/2+2,]
+　　@buttonex index=indexes[(i*5+4)] idle=indexes[(i*5)] hover=indexes[(i*5+1)] onclick=["*_selectend","extend","jump","tf.curi=curi",%["curi"=>i],%["ignore"=>1],]
+　　#var info2 = %[]
+　　@infoex index=indexes[(i*5+4)] get=info2
+　　#var winsize = System.resolutionSize;
+　　#var w = ( winsize[0] - info2.width ) / 2;
+　　#var h = ( winsize[1] - info2.height * size - ( size-1 ) * 50 ) / 2;
+　　@addto index=indexes[(i*5+4)] target=basic_layer zorder=zorder pos=[w,h+i*(50+info2.height),] opacity=0
+　　@action mode="fadeto" opacity=255 time=400 target=indexes[(i*5+4)]
+　　@next
+　@action mode="start" target=basic_layer
+　@waitbutton
+　extend.bkscr : *_selectend
+　@for var=i range=range(size)
+　　@action mode="fadeto" opacity=0 time=500 target=indexes[(i*5+4)]
+　　@next
+　@waitaction index=indexes[4]
+　@for var=i range=range(size)
+　　@remove index=indexes[(i*5+4)] delete=true
+　　@next
+　@returnto label="*A2" file="main"}
+main.bkscr : *A2
+@jump label=*gj2.1.2
+main.bkscr : *gj2.1.2
+@voice file="resources/gj2.1.2/lcy1.wav" vol=100
+@protagonist text="只要抓住空档期的机会，这次行动或许也就并不会我想象中的那样危险……还是试试看吧。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@se file="resources/gj2.1.2/walk&touch.wav" channel=1 loop=false
+@p
+@voice file="resources/gj2.1.2/lcy2.wav" vol=100
+@protagonist text="我记得……睡眠舱的催眠气体是存储在这里的……"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@se file="resources/gj2.1.2/ningdongxi_fangqi.wav" channel=1 loop=false
+@p
+@voice file="resources/gj2.1.2/lcy3.wav" vol=100
+@protagonist text="催眠气体的储量检测只在早上和晚上两次物资小组的例行补给时才会检验，他们倒是对睡眠舱储气装置的质量很有自信，连意外漏气的可能性都没有考虑……？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@voice file="resources/gj2.1.2/lcy4.wav" vol=100
+@protagonist text="不……或许，他们只是对我们这些试验品的听话程度有自信罢了。倘若因为催眠气体不够而导致我们中途醒来，大概也只会安静地躺在舱里等待天明吧？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="然后在早上物资小组来执行补给任务时，主动表示催眠气体储量有误。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="所以，其实根本没有必要在这里多加资源进行检测——我们就已是催眠系统最便捷的传感器了。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@se file="resources/gj2.1.2/moca&close.wav" channel=1 loop=false
+@p
+@figurant text="DS-2333，生命体征正常，正在进入睡眠模式。"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@se file="resources/gj2.1.2/fangqi.wav" channel=1 loop=false
+@p
+@voice file="resources/gj2.1.2/lcy6.wav" vol=80
+@protagonist text="希望计划能够顺利进行吧。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@jump label=*gj3.1
+main.bkscr : *gj3.1
+@protagonist text="……"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@figurant text="试验品DS-2333，生命体征正常，正在上传睡眠监测数据——"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@figurant text="——上传成功"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@pretrans
+@sprite index=102 file="ui/bg/allblack"
+@addto index=102 target=basic_layer opacity=255
+@sprite index=101 file="resources/gj1/ceiling"
+@addto index=101 target=basic_layer opacity=255
+@remove index=102
+@trans mode="universal" rule="ui/rules/openFade" time=3000
+@p
+@protagonist text="又是毫无新意的一天。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@pretrans
+[警告]尝试在正在trans的过程中执行pretrans指令。
+　　　当试图执行命令（pretrans）时，该错误处于原文件（main.bkscr）的第352行。
+@sprite index=102 file="ui/bg/allblack"
+@addto index=102 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+[警告]尝试在正在trans的过程中执行trans指令。
+　　　当试图执行命令（trans）时，该错误处于原文件（main.bkscr）的第356行。
+@protagonist text="等等！"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="我记得……昨天晚上，我把催眠气体放掉了一部分，想要在四点前醒来，去研究员办公室查看我的个人档案……"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="可是为什么，我还是从催眠气体中醒来？！"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="到底是哪里出了差错？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="催眠气体……"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="这怎么可能？！"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="!!！"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="催眠气体怎么可能还有余量？！"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="为什么？……究竟是……"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="虽然还不知道是出了什么问题……既然晚上是否能行动取决于我是否可以成功减少催眠气体储量，而看起来要做到这一点似乎会产生一些困难……"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="那么为了使行动可以顺利开展，只能选择白天的时间了。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="尽管这也意味着，我必须面临更大的风险"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="每天上午试验品的集中测试时间，也是研究员的例会时间"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="例会的时间通常比较长——也就是说，只要我能快速完成测试内容，就会有相当充裕一段时间可以与研究员的行动错开，进入他的办公室。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="只是白天不可避免地会在路上遇到很多工作人员……需要找一个合理而自然的往办公室方向走的理由。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="不如，就以“独立测试”掩人耳目吧。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@card text="独立测试：研究员可根据实验情况增加对自己下属试验品的独立测试，增加的独立测试通常选定在集中测试时间后进行"
+{
+　macro.bkscr : *card
+　@textwindow file="ui/card" pos=[0, 0] rect=[457, 200, 387, 185] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@protagonist text="独立测试所在的诊断室和办公室在同一个方向，只需要在分叉口处，找准时机转入研究员办公区的那一条岔路即可；那个时候的办公区不会有人，唯一的任务就是躲开走廊里的监控。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="根据之前随研究员进入办公室的经验，我的研究员并没有在办公室里设置监控，因此，进入办公室之后需要注意的点，就只是要为撤离留下足够的时间罢了。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@figurant text="上午的例行补给。"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="只等行动了。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="一定……要成功啊。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@jump label=*gj3.1.1
+main.bkscr : *gj3.1.1
+@figurant text="DS-2333，测试通过，回到休息室待命。"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@pretrans
+@sprite index=101 file="resources/gj3.1.1/corridor"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@protagonist text="看起来还算顺利……"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@figurant text="哎，那边那个试验品，往那儿走干什么？"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protaspeak text="报告，DS-2333正要前往执行1024号研究员主管的独立测试任务。"
+{
+　macro.bkscr : *protaspeak
+　@textwindow file="ui/messagebox3" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@figurant text="你是今天独立测试……行吧，去吧。研究员例会还没结束，你在测试室里待命。"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protaspeak text="收到。"
+{
+　macro.bkscr : *protaspeak
+　@textwindow file="ui/messagebox3" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="蒙混过关了。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="可为什么我会对我的研究员有着如此异样的信任……一旦有人想到确认这件事的真实性而去找研究员核对，我的出逃就会立刻暴露……"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="可我为什么都没有考虑过这个可能性？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@pretrans
+@sprite index=101 file="resources/gj3.1.1/corridor_lonely"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@protagonist text="什么样的联系，才会产生这种毫无逻辑的信任感呢？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@pretrans
+@sprite index=101 file="resources/gj3.1.1/door"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@protagonist text="研究员办公室的密码……之前他带我来过，输入门禁和电脑密码的时候都没有避讳我。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="大概是觉得，面对听话的试验品，没必要遮遮掩掩吧。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@pretrans
+@sprite index=101 file="resources/gj3.1.1/office"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@protagonist text="……"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@pretrans
+[警告]尝试在正在trans的过程中执行pretrans指令。
+　　　当试图执行命令（pretrans）时，该错误处于原文件（main.bkscr）的第470行。
+@sprite index=101 file="resources/gj3.1.1/desktop"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+[警告]尝试在正在trans的过程中执行trans指令。
+　　　当试图执行命令（trans）时，该错误处于原文件（main.bkscr）的第474行。
+@protagonist text="他的电脑密码我记得是……"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="等等！这是什么？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@glowyobject file1="resources/gj3.1.1/paper" file2="resources/gj3.1.1/paper_glow" label=["*a1","*b1"] labelFile=["main","main"] pos=[68,204]
+{
+　extend.bkscr : *glowyobject
+　#var indexes = [];
+　@idlesp get=indexes num=5
+　#var success = true;
+　#var info1 = %[];
+　#tf.curi=0;
+　@action mode="queue"
+　@sprite index=indexes[0] file=file1
+　@sprite index=indexes[1] file=file2
+　@buttonex index=indexes[4] idle=indexes[0] hover=indexes[1] onclick=["*_glowyend","extend","jump","tf.curi=curi",%["curi"=>i],%["ignore"=>1],]
+　#var info2 = %[]
+　@infoex index=indexes[4] get=info2
+　@addto index=indexes[4] target=basic_layer pos=pos opacity=255
+　@action mode="start" target=basic_layer
+　[警告]无效的参数：创建了一个空的并行或者动作队列，该队列将被无视。
+　　　　当试图执行命令（action）时，该错误处于原文件（extend.bkscr）的第195行。
+　@waitbutton
+　extend.bkscr : *_glowyend
+　@action mode="fadeto" opacity=0 time=500 target=indexes[4]
+　@waitaction index=indexes[4]
+　@remove index=indexes[4] delete=true
+　@returnto label="*a1" file="main"}
+main.bkscr : *a1
+@jump label=*3.1.1cont
+main.bkscr : *3.1.1cont
+@pretrans
+@sprite index=101 file="resources/gj3.1.1/paper_d1"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@protagonist text="转移行动……"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@pretrans
+@sprite index=102 file="resources/gj3.1.1/paper_d2"
+@addto index=102 target=basic_layer opacity=255
+@remove index=101
+@trans mode="universal" rule="ui/rules/leftFade" time=3000
+@waittrans
+@p
+@protagonist text="武器”销毁计划？！"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="这是什么？！"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@card text="“武器”，试验品的官方名称"
+{
+　macro.bkscr : *card
+　@textwindow file="ui/card" pos=[0, 0] rect=[457, 200, 387, 185] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@protagonist text="我们为什么要被销毁？？集团为什么要转移？？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="等一下！"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@pretrans
+@sprite index=101 file="resources/gj3.1.1/data"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@protagonist text="等一下！"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="这上面写着的销毁日期是……12月19日？！怎么可能？明明今天已经是12月26日了！"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="是销毁行动推迟了吗？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="怪不得这些天来研究员的各项测试都做得非常敷衍……原来不是我一个人将要被放弃，而是我们所有试验品都已不再有留下来的价值。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="虽然销毁行动不知道为什么没有执行，但这一天也必定会很快到来。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="看清了自己的命运，但这命运本身就是未知吗……"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="不管怎么说，还是趁着执行计划尚未执行，先思考一下，如何才能逃离这注定消亡的命运吧……"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@pretrans
+@sprite index=102 file="ui/bg/allblack"
+@addto index=102 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@waittrans
+@p
+@jump label=*gj4.1
+main.bkscr : *gj4.1
+@pretrans
+@sprite index=101 file="resources/gj1/desktop"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@figurant text="DS-2333，心率正常，体温正常，血压正常，肌肉活性正常，正在上传基础数据——"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@figurant text="——基础数据上传完成。血液样本采集完成，正在进行成分分析。"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="假冒研究员随着大部队撤离、强行闯出基地、偷偷逃走……从看到计划的那一刻开始，我已经考虑过十几种避免被销毁的行动设想，但所有的设想都在踩点或是尝试时被发现并不可行……"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="在不可知的未来中寻找希望，却只能找到对逐渐迫近的未知更深的恐惧。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@figurant text="DS-2333，营养剂补给完成，有什么其他需要吗？"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="难道，只能和那些被销毁的曾经的试验品们一样吗？可我的“意识”告诉我，我还不想死……"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="……"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="等一下！ 被销毁的试验品！"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="之前的方案之所以无法成功，就是因为如果我提前出走，在撤离计划执行时，就一定会有人发现DS-2333的失踪，进而启动警戒模式，那时候的基地只会比现在更难闯出去。但如果我能让DS-2333不再是存活着的试验品之一，那后续的一系列行动都将没有阻碍。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="可是，以研究员名义申报试验品死亡，是需要经过尸体检查的，混不过去。只能从主电脑的数据库里将我的资料删除或修改为之前已死亡的状态。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="问题是，主电脑在哪儿？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="似乎……只能再去一次研究员的办公室了。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@pretrans
+@sprite index=102 file="ui/bg/allblack"
+@addto index=102 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@waittrans
+@p
+@jump label=*gj4.1.1
+main.bkscr : *gj4.1.1
+@pretrans
+@sprite index=101 file="resources/gj3.1.1/office"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@protagonist text="又一次，如此轻易地潜入办公室。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@protagonist text="这类机密资料应该都只存在电脑里，找纸质资料都是白费力气。只是，不知道查看这类资料，需不需要额外的验证密码……"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@figurant text="报告三天之后会上传给分析小组……在可控范围内……"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="糟了！研究员例会结束了！"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="不能现在出去！被发现偷偷进入研究员办公室的话，一切努力就都白费了！"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="应该怎么做才好？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@glowyobjects file1=["resources/gj4.1.1/desk","resources/gj4.1.1/door"] file2=["resources/gj4.1.1/desk_glow","resources/gj4.1.1/door_glow"] label=["*a2","*b2"] labelFile=["main","main"] pos=[[78,314],[1250,65]]
+{
+　extend.bkscr : *glowyobjects
+　#var size = file1.size;
+　#var indexes = [];
+　@idlesp get=indexes num=size*5
+　#var success = true;
+　#var info1 = %[];
+　#var zorder;
+　@zorder index=message_layer get=zorder
+　#tf.curi=0;
+　@action mode="queue"
+　@for var=i range=range(size)
+　　@sprite index=indexes[(i*5)] file=file1[i]
+　　@sprite index=indexes[(i*5+1)] file=file2[i]
+　　@buttonex index=indexes[(i*5+4)] idle=indexes[(i*5)] hover=indexes[(i*5+1)] onclick=["*_glowyobjects","extend","jump","tf.curi=curi",%["curi"=>i],%["ignore"=>1],]
+　　#var info2 = %[]
+　　@infoex index=indexes[(i*5+4)] get=info2
+　　@addto index=indexes[(i*5+4)] target=basic_layer zorder=zorder pos=pos[i] opacity=255
+　　@next
+　@action mode="start" target=basic_layer
+　[警告]无效的参数：创建了一个空的并行或者动作队列，该队列将被无视。
+　　　　当试图执行命令（action）时，该错误处于原文件（extend.bkscr）的第257行。
+　@waitbutton
+　extend.bkscr : *_glowyobjects
+　@for var=i range=range(size)
+　　@action mode="fadeto" opacity=0 time=500 target=indexes[(i*5+4)]
+　　@next
+　@waitaction index=indexes[4]
+　@for var=i range=range(size)
+　　@remove index=indexes[(i*5+4)] delete=true
+　　@next
+　@returnto label="*b2" file="main"}
+main.bkscr : *b2
+b
+@p
+main.bkscr : *gj4.1.1.1
+@protagonist text="还是先躲在门后，趁机控制住研究员，不让他有机会示警，然后再作打算吧。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@pretrans
+@sprite index=102 file="ui/bg/allblack"
+@addto index=102 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@waittrans
+@p
+@pretrans
+@sprite index=101 file="resources/gj4.1.1.1/door_closed"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@p
+@pretrans
+@sprite index=101 file="resources/gj4.1.1.1/door_opened"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@p
+@pretrans
+@sprite index=101 file="resources/gj4.1.1.1/doctor"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@protagonist text="就是现在！"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@pretrans
+[警告]尝试在正在trans的过程中执行pretrans指令。
+　　　当试图执行命令（pretrans）时，该错误处于原文件（main.bkscr）的第635行。
+@sprite index=101 file="resources/gj4.1.1.1/doctor_blur"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="wave" time=500
+[警告]尝试在正在trans的过程中执行trans指令。
+　　　当试图执行命令（trans）时，该错误处于原文件（main.bkscr）的第638行。
+@p
+@pretrans
+@sprite index=101 file="resources/gj4.1.1.1/doctor_closer"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="wave" time=500
+@pretrans
+[警告]尝试在正在trans的过程中执行pretrans指令。
+　　　当试图执行命令（pretrans）时，该错误处于原文件（main.bkscr）的第644行。
+@sprite index=102 file="ui/bg/allblack"
+@addto index=102 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+[警告]尝试在正在trans的过程中执行trans指令。
+　　　当试图执行命令（trans）时，该错误处于原文件（main.bkscr）的第648行。
+@p
+@protagonist text="什么东西？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@doctor text="……"
+{
+　macro.bkscr : *doctor
+　@textwindow file="ui/messagebox3" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="……劳烦您先睡一会儿了。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@p
+@pretrans
+@sprite index=101 file="resources/gj4.1.1.1/doctor_notebook"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@protagonist text="这是……一本纸质的笔记？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="研究员从来都是用电子设备记录实验数据……什么时候用到纸质的笔记本了？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="还是打开看看吧。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@glowyobject file1="resources/gj4.1.1.1/notebook" file2="resources/gj4.1.1.1/notebook_glow" label=["*a3","*b3"] labelFile=["main","main"] pos=[121,134]
+{
+　extend.bkscr : *glowyobject
+　#var indexes = [];
+　@idlesp get=indexes num=5
+　#var success = true;
+　#var info1 = %[];
+　#tf.curi=0;
+　@action mode="queue"
+　@sprite index=indexes[0] file=file1
+　@sprite index=indexes[1] file=file2
+　@buttonex index=indexes[4] idle=indexes[0] hover=indexes[1] onclick=["*_glowyend","extend","jump","tf.curi=curi",%["curi"=>i],%["ignore"=>1],]
+　#var info2 = %[]
+　@infoex index=indexes[4] get=info2
+　@addto index=indexes[4] target=basic_layer pos=pos opacity=255
+　@action mode="start" target=basic_layer
+　[警告]无效的参数：创建了一个空的并行或者动作队列，该队列将被无视。
+　　　　当试图执行命令（action）时，该错误处于原文件（extend.bkscr）的第195行。
+　@waitbutton
+　extend.bkscr : *_glowyend
+　@action mode="fadeto" opacity=0 time=500 target=indexes[4]
+　@waitaction index=indexes[4]
+　@remove index=indexes[4] delete=true
+　@returnto label="*a3" file="main"}
+main.bkscr : *a3
+@jump label=*4.1.1.1cont
+main.bkscr : *4.1.1.1cont
+@pretrans
+@sprite index=101 file="resources/gj4.1.1.1/page1"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@p
+@pretrans
+@sprite index=101 file="resources/gj4.1.1.1/page2"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=50
+@p
+@pretrans
+@sprite index=101 file="resources/gj4.1.1.1/page3"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=50
+@p
+@pretrans
+@sprite index=101 file="resources/gj4.1.1.1/page4"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=50
+@p
+@pretrans
+@sprite index=101 file="resources/gj4.1.1.1/page5"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=50
+@p
+@pretrans
+@sprite index=101 file="resources/gj4.1.1.1/page6"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=50
+@p
+@pretrans
+@sprite index=101 file="resources/gj4.1.1.1/page7_2.1"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=50
+@p
+@pretrans
+@sprite index=101 file="resources/gj4.1.1.1/page8_2.1"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=50
+@p
+@jump label=*4.1.2
+main.bkscr : *4.1.2
+@p

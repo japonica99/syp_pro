@@ -14,8 +14,8 @@
   "isTransitionEnabled"=>1,
   "gameTitle"=>"SEE_BY_EARS",
   "windowSize"=>[
-    1319,
-    742
+    1312,
+    738
   ],
   "isFPSEnabled"=>0,
   "isFullScreen"=>0
