@@ -260,7 +260,6 @@
 *B2
 [jump label="*gj2.2.2"]
 *gj2.1.2
-*test
 [voice file="resources/gj2.1.2/lcy1.wav" vol=100]
 [protagonist text="只要抓住空档期的机会，这次行动或许也就并不会我想象中的那样危险……还是试试看吧。"][p]
 [textoff]
@@ -441,8 +440,151 @@
 //用按钮扩展写个发光纸片吧
 [glowyobject file1='resources/gj3.1.1/paper' file2='resources/gj3.1.1/paper_glow' label=["*a1","*b1"] labelFile=["main","main"] pos=[68,204]]
 *a1
-a[p]
+//[se file="resources/gj3.1.1/paper.wav" channel=1 loop=false]
+[jump "*3.1.1cont"]
 *b1
-b[p]
+dead code only[p]
+*3.1.1cont
+@pretrans
+@sprite index=101 file='resources/gj3.1.1/paper_d1'
+@addto index=101 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+//[voice file="resources/gj3.1.1/lcy14.wav" vol=80]
+[protagonist text="转移行动……"][p]
+[textoff]
+@pretrans
+//△模仿翻书的方式，添加向左的遮罩，从背景A过渡至背景B（遮片渐隐？）。
+@sprite index=102 file='resources/gj3.1.1/paper_d2'
+@addto index=102 target=basic_layer opacity=255 
+@remove index=101
+@trans mode='universal' rule='ui/rules/leftFade' time=3000
+@waittrans 
 [p]
+//[voice file="resources/gj3.1.1/lcy15.wav" vol=80]
+[protagonist text="武器”销毁计划？！"][p]
+//[voice file="resources/gj3.1.1/lcy16.wav" vol=80]
+[protagonist text="这是什么？！"][p]
+[textoff]
+[card text="“武器”，试验品的官方名称"][p]
+[textoff]
+//[voice file="resources/gj3.1.1/lcy17.wav" vol=80]
+[protagonist text="我们为什么要被销毁？？集团为什么要转移？？"][p]
+//[voice file="resources/gj3.1.1/lcy18.wav" vol=80]
+[protagonist text="等一下！"][p]
+@pretrans
+@sprite index=101 file='resources/gj3.1.1/data'
+@addto index=101 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+//[voice file="resources/gj3.1.1/lcy19.wav" vol=80]
+[protagonist text="等一下！"][p]
+//[voice file="resources/gj3.1.1/lcy20.wav" vol=80]
+[protagonist text="这上面写着的销毁日期是……12月9日？！怎么可能？明明今天已经是12月26日了！"][p]
+//[voice file="resources/gj3.1.1/lcy21.wav" vol=80]
+[protagonist text="是销毁行动推迟了吗？"][p]
+//[voice file="resources/gj3.1.1/lcy22.wav" vol=80]
+[protagonist text="怪不得这些天来研究员的各项测试都做得非常敷衍……原来不是我一个人将要被放弃，而是我们所有试验品都已不再有留下来的价值。"][p]
+//[voice file="resources/gj3.1.1/lcy23.wav" vol=80]
+[protagonist text="虽然销毁行动不知道为什么没有执行，但这一天也必定会很快到来。"][p]
+//[voice file="resources/gj3.1.1/lcy24.wav" vol=80]
+[protagonist text="看清了自己的命运，但这命运本身就是未知吗……"][p]
+//[voice file="resources/gj3.1.1/lcy25.wav" vol=80]
+[protagonist text="不管怎么说，还是趁着执行计划尚未执行，先思考一下，如何才能逃离这注定消亡的命运吧……"][p]
+[textoff]
+@pretrans
+@sprite index=102 file='ui/bg/allblack'
+@addto index=102 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+@waittrans 
+[p]
+[jump label="*gj4.1"]
+
+*gj4.1
+@pretrans
+@sprite index=101 file='resources/gj1/desktop'
+@addto index=101 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+//[se file="resources/gj4.1/didi.wav" channel=1 loop=false]
+//[voice file="resources/gj4.1/woman1.wav" vol=100]
+[figurant text="DS-2333，心率正常，体温正常，血压正常，肌肉活性正常，正在上传基础数据——"][p]
+//[voice file="resources/gj4.1/woman2.wav" vol=100]
+[figurant text="——基础数据上传完成。血液样本采集完成，正在进行成分分析。"][p]
+//[voice file="resources/gj4.1/lcy1.wav" vol=100]
+[protagonist text="假冒研究员随着大部队撤离、强行闯出基地、偷偷逃走……从看到计划的那一刻开始，我已经考虑过十几种避免被销毁的行动设想，但所有的设想都在踩点或是尝试时被发现并不可行……"][p]
+//[voice file="resources/gj4.1/lcy2.wav" vol=100]
+[protagonist text="在不可知的未来中寻找希望，却只能找到对逐渐迫近的未知更深的恐惧。"][p]
+//[voice file="resources/gj4.1/woman3.wav" vol=100]
+[figurant text="DS-2333，营养剂补给完成，有什么其他需要吗？"][p]
+//[voice file="resources/gj4.1/lcy3.wav" vol=100]
+[protagonist text="难道，只能和那些被销毁的曾经的试验品们一样吗？可我的“意识”告诉我，我还不想死……"][p]
+//[voice file="resources/gj4.1/lcy4.wav" vol=100]
+[protagonist text="……"][p]
+//[voice file="resources/gj4.1/lcy5.wav" vol=100]
+[protagonist text="等一下！ 被销毁的试验品！"][p]
+//[voice file="resources/gj4.1/lcy6.wav" vol=100]
+[protagonist text="之前的方案之所以无法成功，就是因为如果我提前出走，在撤离计划执行时，就一定会有人发现DS-2333的失踪，进而启动警戒模式，那时候的基地只会比现在更难闯出去。但如果我能让DS-2333不再是存活着的试验品之一，那后续的一系列行动都将没有阻碍。"][p]
+//[voice file="resources/gj4.1/lcy7.wav" vol=100]
+[protagonist text="可是，以研究员名义申报试验品死亡，是需要经过尸体检查的，混不过去。只能从主电脑的数据库里将我的资料删除或修改为之前已死亡的状态。"][p]
+//[voice file="resources/gj4.1/lcy8.wav" vol=100]
+[protagonist text="问题是，主电脑在哪儿？"][p]
+//[voice file="resources/gj4.1/lcy9.wav" vol=100]
+[protagonist text="似乎……只能再去一次研究员的办公室了。"][p]
+[textoff]
+@pretrans
+@sprite index=102 file='ui/bg/allblack'
+@addto index=102 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+@waittrans 
+[p]
+[jump label="*gj4.1.1"]
+*gj4.1.1
+//[se file="resources/gj4.1.1/didi.wav" channel=1 loop=false][p]
+@pretrans
+@sprite index=101 file='resources/gj3.1.1/office'
+@addto index=101 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+//[voice file="resources/gj4.1.1/lcy1.wav" vol=100]
+[protagonist text="又一次，如此轻易地潜入办公室。"][p][textoff]
+//[se file="resources/gj4.1.1/steps.wav" channel=1 loop=false][p]
+//[voice file="resources/gj4.1.1/lcy2.wav" vol=100]
+[protagonist text="这类机密资料应该都只存在电脑里，找纸质资料都是白费力气。只是，不知道查看这类资料，需不需要额外的验证密码……"][p]
+//[se file="resources/gj4.1.1/steps_outside.wav" channel=1 loop=false][p]
+//[voice file="resources/gj4.1.1/lcy3.wav" vol=100]
+[figurant text="报告三天之后会上传给分析小组……在可控范围内……"][p]
+//[voice file="resources/gj4.1.1/lcy4.wav" vol=100]
+[protagonist text="糟了！研究员例会结束了！"][p]
+//[voice file="resources/gj4.1.1/lcy5.wav" vol=100]
+[protagonist text="不能现在出去！被发现偷偷进入研究员办公室的话，一切努力就都白费了！"][p]
+//[voice file="resources/gj4.1.1/lcy6.wav" vol=100]
+[protagonist text="应该怎么做才好？"][p]
+[textoff]
+[glowyobjects file1=['resources/gj4.1.1/desk','resources/gj4.1.1/door'] file2=['resources/gj4.1.1/desk_glow','resources/gj4.1.1/door_glow'] label=["*a2","*b2"] labelFile=["main","main"] pos=[[78,314],[1250,65]]]
+*a2
+[jump label="*gj4.1.1.1"]
+*b2
+b[p]
+*test
+*gj4.1.1.1
+//[voice file="resources/gj4.1.1.1/lcy1.wav" vol=100]
+[protagonist text="还是先躲在门后，趁机控制住研究员，不让他有机会示警，然后再作打算吧。"][p]
+[textoff]
+@pretrans
+@sprite index=102 file='ui/bg/allblack'
+@addto index=102 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+@waittrans 
+//[se file="resources/gj4.1.1.1/bump&cloth.wav" channel=1 loop=false]
+[p]
+@pretrans
+@sprite index=101 file='resources/gj4.1.1.1/door_closed'
+@addto index=101 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+//[se file="resources/gj4.1.1.1/steps&alot.wav" channel=1 loop=false]
+[p]
+@pretrans
+@sprite index=101 file='resources/gj4.1.1.1/door_opened'
+@addto index=101 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+//[se file="resources/gj4.1.1.1/steps12.wav" channel=1 loop=false]
+[p]
+
 @quit
