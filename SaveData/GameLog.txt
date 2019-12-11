@@ -1,124 +1,81 @@
 main.bkscr : *main
 @savepoint
-@jump label=*test
-main.bkscr : *test
-@pretrans
-@sprite index=101 file="resources/gj4.1.1.1/doctor_closer"
-@addto index=101 target=basic_layer opacity=255
-@trans mode="wave" time=500
-@pretrans
-[警告]尝试在正在trans的过程中执行pretrans指令。
-　　　当试图执行命令（pretrans）时，该错误处于原文件（main.bkscr）的第606行。
-@sprite index=102 file="ui/bg/allblack"
-@addto index=102 target=basic_layer opacity=255
-@trans mode="crossfade" time=1000
-[警告]尝试在正在trans的过程中执行trans指令。
-　　　当试图执行命令（trans）时，该错误处于原文件（main.bkscr）的第610行。
-@p
-@protagonist text="什么东西？"
+@white_in_middle text="数字视音频音乐制作 请戴好耳机"
 {
-　macro.bkscr : *protagonist
-　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
-　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　macro.bkscr : *white_in_middle
+　@textwindow color=0 pos=[360, 350] rect=[5, 5, 600, 200] xinterval=3
+　@textstyle size=20 color=16777215
+　@text text=text
+　@return
+}
+@p
+@white_in_middle text="......"
+{
+　macro.bkscr : *white_in_middle
+　@textwindow color=0 pos=[360, 350] rect=[5, 5, 600, 200] xinterval=3
+　@textstyle size=20 color=16777215
+　@text text=text
+　@return
+}
+@p
+@white_in_middle text="那是什么..."
+{
+　macro.bkscr : *white_in_middle
+　@textwindow color=0 pos=[360, 350] rect=[5, 5, 600, 200] xinterval=3
+　@textstyle size=20 color=16777215
+　@text text=text
+　@return
+}
+@p
+@white_in_middle text="是我么..."
+{
+　macro.bkscr : *white_in_middle
+　@textwindow color=0 pos=[360, 350] rect=[5, 5, 600, 200] xinterval=3
+　@textstyle size=20 color=16777215
+　@text text=text
+　@return
+}
+@p
+@white_in_middle text="......"
+{
+　macro.bkscr : *white_in_middle
+　@textwindow color=0 pos=[360, 350] rect=[5, 5, 600, 200] xinterval=3
+　@textstyle size=20 color=16777215
+　@text text=text
+　@return
+}
+@p
+@jump label=*gj1
+main.bkscr : *gj1
+@typewriter pos=[360,350] rect=[5,5,600,200] text="7:00 am"
+{
+　macro.bkscr : *typewriter
+　@textwindow color=0 pos=pos rect=rect xinterval=3
+　@textstyle name="ui/fonts/AiDeep.otf" size=20 color=16777215
 　@textspeed interval=50
 　@text text=text
 　@return
 }
 @p
-@doctor text="……"
+@se file="resources/gj1/gas.wav" channel=1 loop=false
+@p
+@figurant text="试验品DS-2333，生命体征正常，正在上传睡眠监测数据——"
 {
-　macro.bkscr : *doctor
-　@textwindow file="ui/messagebox3" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
 　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
 　@textspeed interval=50
 　@text text=text
 　@return
 }
 @p
-@protagonist text="……劳烦您先睡一会儿了。"
+@figurant text="——上传成功"
 {
-　macro.bkscr : *protagonist
-　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
-　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
 　@textspeed interval=50
 　@text text=text
 　@return
 }
 @p
-@textoff
-@p
-@pretrans
-@sprite index=101 file="resources/gj4.1.1.1/doctor_notebook"
-@addto index=101 target=basic_layer opacity=255
-@trans mode="crossfade" time=1000
-@protagonist text="这是……一本纸质的笔记？"
-{
-　macro.bkscr : *protagonist
-　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
-　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
-　@textspeed interval=50
-　@text text=text
-　@return
-}
-@p
-@protagonist text="研究员从来都是用电子设备记录实验数据……什么时候用到纸质的笔记本了？"
-{
-　macro.bkscr : *protagonist
-　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
-　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
-　@textspeed interval=50
-　@text text=text
-　@return
-}
-@p
-@protagonist text="还是打开看看吧。"
-{
-　macro.bkscr : *protagonist
-　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
-　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
-　@textspeed interval=50
-　@text text=text
-　@return
-}
-@p
-@textoff
-@glowyobject file1="resources/gj4.1.1.1/notebook" file2="resources/gj4.1.1.1/notebook_glow" label=["*a3","*b3"] labelFile=["main","main"] pos=[121,134]
-{
-　extend.bkscr : *glowyobject
-　#var indexes = [];
-　@idlesp get=indexes num=5
-　#var success = true;
-　#var info1 = %[];
-　#tf.curi=0;
-　@action mode="queue"
-　@sprite index=indexes[0] file=file1
-　@sprite index=indexes[1] file=file2
-　@buttonex index=indexes[4] idle=indexes[0] hover=indexes[1] onclick=["*_glowyend","extend","jump","tf.curi=curi",%["curi"=>i],%["ignore"=>1],]
-　#var info2 = %[]
-　@infoex index=indexes[4] get=info2
-　@addto index=indexes[4] target=basic_layer pos=pos opacity=255
-　@action mode="start" target=basic_layer
-　[警告]无效的参数：创建了一个空的并行或者动作队列，该队列将被无视。
-　　　　当试图执行命令（action）时，该错误处于原文件（extend.bkscr）的第195行。
-　@waitbutton
-　extend.bkscr : *_glowyend
-　@action mode="fadeto" opacity=0 time=500 target=indexes[4]
-　@waitaction index=indexes[4]
-　@remove index=indexes[4] delete=true
-　@returnto label="*a3" file="main"}
-main.bkscr : *a3
-@jump label=*4.1.1.1cont
-main.bkscr : *4.1.1.1cont
-@pretrans
-@sprite index=101 file="resources/gj4.1.1.1/page1"
-@addto index=101 target=basic_layer opacity=255
-@trans mode="crossfade" time=1000
-@p
-@pretrans
-@sprite index=101 file="resources/gj4.1.1.1/page2"
-@addto index=101 target=basic_layer opacity=255
-@trans mode="crossfade" time=50
-@p
-@quit
-【错误】脚本文件执行到末端。
-　　　　该错误处于原文件（main.bkscr）的第646行。

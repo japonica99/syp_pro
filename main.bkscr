@@ -1,6 +1,6 @@
 ﻿*main
 //@call '*init' 'init'
-[jump label="*test"]
+//[jump label="*test"]
 [white_in_middle text="数字视音频音乐制作 请戴好耳机"]
 [p]
 [white_in_middle text="......"]
@@ -172,8 +172,10 @@
 [textoff]
 [select text=["询问研究员","不询问研究员"] label=["*A1","*B1"] labelFile=["main","main"] ]
 *A1
+#f.ask=1
 [jump label="*gj2.1"]
 *B1
+#f.ask=0
 @pretrans
 @sprite index=102 file='ui/bg/allblack'
 @addto index=102 target=basic_layer opacity=255 
@@ -598,7 +600,6 @@ b[p]
 @addto index=101 target=basic_layer opacity=255 
 @trans mode="wave" time=500
 [p]
-*test
 @pretrans
 @sprite index=101 file='resources/gj4.1.1.1/doctor_closer'
 @addto index=101 target=basic_layer opacity=255 
@@ -634,14 +635,58 @@ b[p]
 *b3
 supposed to be dead code[p]
 *4.1.1.1cont
+//[se file="resources/gj4.1.1.1/paper.wav" channel=1 loop=false]
 @pretrans
 @sprite index=101 file='resources/gj4.1.1.1/page1'
 @addto index=101 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000
 [p]
+//[se file="resources/gj4.1.1.1/paper.wav" channel=1 loop=false]
 @pretrans
 @sprite index=101 file='resources/gj4.1.1.1/page2'
 @addto index=101 target=basic_layer opacity=255 
 @trans mode="crossfade" time=50
+[p]
+//[se file="resources/gj4.1.1.1/paper.wav" channel=1 loop=false]
+@pretrans
+@sprite index=101 file='resources/gj4.1.1.1/page3'
+@addto index=101 target=basic_layer opacity=255 
+@trans mode="crossfade" time=50
+[p]
+//[se file="resources/gj4.1.1.1/paper.wav" channel=1 loop=false]
+@pretrans
+@sprite index=101 file='resources/gj4.1.1.1/page4'
+@addto index=101 target=basic_layer opacity=255 
+@trans mode="crossfade" time=50
+[p]
+//[se file="resources/gj4.1.1.1/paper.wav" channel=1 loop=false]
+@pretrans
+@sprite index=101 file='resources/gj4.1.1.1/page5'
+@addto index=101 target=basic_layer opacity=255 
+@trans mode="crossfade" time=50
+[p]
+//[se file="resources/gj4.1.1.1/paper.wav" channel=1 loop=false]
+@pretrans
+@sprite index=101 file='resources/gj4.1.1.1/page6'
+@addto index=101 target=basic_layer opacity=255 
+@trans mode="crossfade" time=50
+[p]
+@if "f.ask > 0"
+//[se file="resources/gj4.1.1.1/paper.wav" channel=1 loop=false]
+@pretrans
+@sprite index=101 file='resources/gj4.1.1.1/page7_2.1'
+@addto index=101 target=basic_layer opacity=255 
+@trans mode="crossfade" time=50
+[p]
+//[se file="resources/gj4.1.1.1/paper.wav" channel=1 loop=false]
+@pretrans
+@sprite index=101 file='resources/gj4.1.1.1/page8_2.1'
+@addto index=101 target=basic_layer opacity=255 
+@trans mode="crossfade" time=50
+[p]
+@else 
+@endif
+[jump "*4.1.2"]
+*4.1.2
 [p]
 @quit
