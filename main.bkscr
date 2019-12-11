@@ -34,7 +34,7 @@
 @remove index=102
 @trans mode='universal' rule='ui/rules/openFade' time=3000
 [p]
-[voice file="resources/gj1/lcy1.wav" vol=80]
+[voice file="resources/gj1/lcy1.wav" vol=100]
 [protagonist text="又是毫无新意的一天呢。"][p]
 [textoff]
 //淡出黑色
@@ -63,15 +63,13 @@
 @sprite index=102 file='ui/bg/allblack'
 @addto index=102 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000
-*test
-[voice file="resources/gj1/carddidi.wav" channel=1 loop=false] 
-[voice file="resources/gj1/steps_heels_closer.wav" channel=1 loop=false] 
+[se file="resources/gj1/add_step_in.wav" channel=1 loop=false] 
 [p]
 [figurant text="上午的例行补给"][p]
 [textoff]
 [se file="resources/gj1/shifting.wav" channel=1 loop=false] 
 [p]
-[voice file="resources/gj1/lcy2.wav" vol=80]
+[voice file="resources/gj1/lcy2.wav" vol=100]
 [protagonist text="是物资小组。"][p]
 [figurant text="DS-2333，营养剂补给完成，有什么其他需要吗？"][p]
 [textoff]
@@ -89,10 +87,9 @@
 //[voice file="resources/gj1/intercom1.wav" vol=80]
 [figurant text="收到。"][p]
 [textoff]
-//[se file="resources/gj1/steps_heels_further.wav" channel=1 loop=false] 
-//[se file="resources/gj1/closedoor.wav" channel=1 loop=false] 
+[se file="resources/gj1/add_step_out.wav" channel=1 loop=false] 
 [p]
-[voice file="resources/gj1/lcy3.wav" vol=80]
+[voice file="resources/gj1/lcy3.wav" vol=100]
 [protagonist text="也不知道她们每天来补充点营养剂，能看出什么异常来。"][p]
 [protagonist text="等等，为什么我可以对自己说话了？"][p]
 [protagonist text="难道是，是研究组之前在工作汇报会议上提到的，“想法”？"][p]
@@ -103,11 +100,11 @@
 @addto index=101 target=basic_layer opacity=255 
 @trans mode="ripple" time=2000
 @waittrans
-[voice file="resources/gj1/lcy4.wav" vol=80]
+[voice file="resources/gj1/lcy4.wav" vol=100]
 [doctor text="在DS组的培养中，我们通过对神经网络的定向抑制，成功剔除了他们的自我意识，也就是所谓的，‘想法’。"][p]
-[voice file="resources/gj1/lcy5.wav" vol=80]
+[voice file="resources/gj1/lcy5.wav" vol=100]
 [figurant text="做得很好。作为‘兵器’，他们不需要有多余的思考。能在培养阶段就使自我意识退化消失，就可以没有后顾之忧了。"][p]
-[voice file="resources/gj1/lcy6.wav" vol=80]
+[voice file="resources/gj1/lcy6.wav" vol=100]
 [protagonist text="那些话，到底……"][p]
 [textoff]
 
@@ -117,36 +114,33 @@
 @trans mode="ripple" time=2000
 @waittrans
 
-//[se file="resources/gj1/knock.wav" channel=1 loop=false] 
-//[se file="resources/gj1/carddi.wav" channel=1 loop=false] 
+[se file="resources/gj1/add_knock&comein.wav" channel=1 loop=false]  
 [p]
-[voice file="resources/gj1/lcy7.wav" vol=80]
+[voice file="resources/gj1/lcy7.wav" vol=100]
 [protagonist text="会敲门的……是我的研究员来了吗？"][p]
 @pretrans
 @sprite index=101 file='resources/gj1/doctor'
 @addto index=101 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000
-[voice file="resources/gj1/lcy9.wav" vol=80]
+[voice file="resources/gj1/lcy9.wav" vol=100]
 [doctor text="上午的例行注射。躺好。"][p]
 [textoff]
-//[se file="resources/gj1/didi.wav" channel=1 loop=false vol=40]
-//[se file="resources/gj1/step_closer.wav" channel=1 loop=false vol=40]
+[se file="resources/gj1/add_didi_comein.wav" channel=1 loop=false]
 [p]
-[voice file="resources/gj1/lcy8.wav" vol=80]
+[voice file="resources/gj1/lcy8.wav" vol=100]
 [doctor text="好了。有任何异常情况，直接向我汇报。"][p]
 [textoff]
 @pretrans
 @sprite index=102 file='ui/bg/allblack'
 @addto index=102 target=basic_layer opacity=255 
 @trans mode="crossfade" time=300
-//[se file="resources/gj1/cloth_further.wav" channel=1 loop=false]
-//[se file="resources/gj1/step_further.wav" channel=1 loop=false]
+[se file="resources/gj1/cloth_further.wav" channel=1 loop=false]
 [p]
-[voice file="resources/gj1/lcy10.wav" vol=80]
+[voice file="resources/gj1/lcy10.wav" vol=100]
 [protagonist text="忘记问他，为什么我忽然能“思考”了。"][p]
-[voice file="resources/gj1/lcy11.wav" vol=80]
+[voice file="resources/gj1/lcy11.wav" vol=100]
 [protagonist text="可是，这似乎是不被允许出现的情况……上报了这个情况，是不是我就不再具有“价值”，将会和曾经的那些试验品一样，被送去“销毁”呢？"][p]
-[voice file="resources/gj1/lcy12.wav" vol=80]
+[voice file="resources/gj1/lcy12.wav" vol=100]
 [protagonist text="上午的检查、注射和集中测试；下午的检查、注射和集中测试……一切似乎从来都不曾变过，可当我不再以一个游离在外的视角观看这一切，一切似乎又产生了一些难以捉摸的、微妙的变化。"][p]
 [textoff]
 
@@ -247,18 +241,17 @@
 [protagonist text="……"][p]
 [protagonist text="……"][p]
 //[voice file="resources/gj2.1.1/woman1.wav" vol=80]
-[figurant text="睡眠时间已到，请在一分钟内回到睡眠舱。"][p]
-//[se file="resources/gj2.1.1/switch.wav" channel=1 loop=false]
-//[voice file="resources/gj2.1.1/lcy1.wav" vol=80]
+[figurant text="睡眠时间已到，请在一分钟内回到睡眠舱。"][p][textoff]
+[se file="resources/gj2.1.1/switch.wav" channel=1 loop=false][p]
+[voice file="resources/gj2.1.1/lcy1.wav" vol=100]
 [protagonist text="之前听到过安保人员的谈话，凌晨四点到四点三十是巡逻交班的空档期"][p]
-//[voice file="resources/gj2.1.1/lcy2.wav" vol=80]
+[voice file="resources/gj2.1.1/lcy2.wav" vol=100]
 [protagonist text="放掉一部分催眠气体，保证能在四点之前醒来，然后去研究员的办公室调取属于我的、DS-2333号的档案，或许就能解释这么多天来的种种反常现象了。"][p]
 [textoff]
 [card text="催眠气体：辅助试验品们进入睡眠的气态物质，会在睡眠舱设定的时间内从容器内均匀释放。每晚试验品进入睡眠舱前物资组人员会对催眠气体进行补充，以保证试验品第二天在指定时间醒来而不在睡眠时间擅自活动。"][p]
 [textoff]
-//[voice file="resources/gj2.1.1/lcy3.wav" vol=80]
+[voice file="resources/gj2.1.1/lcy3.wav" vol=100]
 [protagonist text="可是，这是违反试验品行动准则的行为……不这样冒险，只不过是在难以捉摸的命运中沉沦而已；而一旦被发现，等待着我的，就必然是万劫不复的深渊。"][p]
-//[voice file="resources/gj2.1.1/lcy4.wav" vol=80]
 [protagonist text="真的要冒着被发现然后立即被执行销毁程序的风险做这件事吗？"][p]
 [textoff]
 [select text=["坚持行动","放弃行动"] label=["*A2","*B2"] labelFile=["main","main"] ]
@@ -267,28 +260,29 @@
 *B2
 [jump label="*gj2.2.2"]
 *gj2.1.2
-//[voice file="resources/gj2.1.2/lcy1.wav" vol=80]
+*test
+[voice file="resources/gj2.1.2/lcy1.wav" vol=100]
 [protagonist text="只要抓住空档期的机会，这次行动或许也就并不会我想象中的那样危险……还是试试看吧。"][p]
-//[se file="resources/gj2.1.2/step.wav" channel=1 loop=false]
-//[se file="resources/gj2.1.2/stroke.wav" channel=1 loop=false]
-//[voice file="resources/gj2.1.2/lcy2.wav" vol=80]
+[textoff]
+[se file="resources/gj2.1.2/walk&touch.wav" channel=1 loop=false][p]
+[voice file="resources/gj2.1.2/lcy2.wav" vol=100]
 [protagonist text="我记得……睡眠舱的催眠气体是存储在这里的……"][p]
-//[se file="resources/gj2.1.2/twist.wav" channel=1 loop=false]
-//[se file="resources/gj2.1.2/gas_leak.wav" channel=1 loop=false]
-//[voice file="resources/gj2.1.2/lcy3.wav" vol=80]
+[textoff]
+[se file="resources/gj2.1.2/ningdongxi_fangqi.wav" channel=1 loop=false][p]
+[voice file="resources/gj2.1.2/lcy3.wav" vol=100]
 [protagonist text="催眠气体的储量检测只在早上和晚上两次物资小组的例行补给时才会检验，他们倒是对睡眠舱储气装置的质量很有自信，连意外漏气的可能性都没有考虑……？"][p]
-//[voice file="resources/gj2.1.2/lcy4.wav" vol=80]
+[voice file="resources/gj2.1.2/lcy4.wav" vol=100]
 [protagonist text="不……或许，他们只是对我们这些试验品的听话程度有自信罢了。倘若因为催眠气体不够而导致我们中途醒来，大概也只会安静地躺在舱里等待天明吧？"][p]
-//[voice file="resources/gj2.1.2/lcy5.wav" vol=80]
 [protagonist text="然后在早上物资小组来执行补给任务时，主动表示催眠气体储量有误。"][p]
-//[voice file="resources/gj2.1.2/lcy6.wav" vol=80]
+//[voice file="resources/gj2.1.2/lcy5.wav" vol=80]
 [protagonist text="所以，其实根本没有必要在这里多加资源进行检测——我们就已是催眠系统最便捷的传感器了。"][p]
-//[se file="resources/gj2.1.2/collide.wav" channel=1 loop=false]
-//[se file="resources/gj2.1.2/mechanic.wav" channel=1 loop=false]
+[textoff]
+[se file="resources/gj2.1.2/moca&close.wav" channel=1 loop=false][p]
 //[voice file="resources/gj2.1.2/woman1.wav" vol=80]
 [figurant text="DS-2333，生命体征正常，正在进入睡眠模式。"][p]
-//[se file="resources/gj2.1.2/gas.wav" channel=1 loop=false]
-//[voice file="resources/gj2.1.2/lcy7.wav" vol=80]
+[textoff]
+[se file="resources/gj2.1.2/fangqi.wav" channel=1 loop=false][p]
+[voice file="resources/gj2.1.2/lcy6.wav" vol=80]
 [protagonist text="希望计划能够顺利进行吧。"][p]
 [textoff]
 [jump label="*gj3.1"]

@@ -2,6 +2,152 @@ main.bkscr : *main
 @savepoint
 @jump label=*test
 main.bkscr : *test
-@voice file="resources/gj1/carddidi.wav"
-@voice file="resources/gj1/steps_heels_closer.wav"
+@voice file="resources/gj2.1.2/lcy1.wav" vol=100
+【错误】找不到文件（resources/gj2.1.2/lcy1.wav）。
+　　　　当试图执行命令（voice）时，该错误处于原文件（main.bkscr）的第264行。
+@protagonist text="只要抓住空档期的机会，这次行动或许也就并不会我想象中的那样危险……还是试试看吧。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@se file="resources/gj2.1.2/walk&touch.wav" channel=1 loop=false
+【错误】找不到文件（resources/gj2.1.2/walk&touch.wav）。
+　　　　当试图执行命令（se）时，该错误处于原文件（main.bkscr）的第266行。
+@p
+@voice file="resources/gj2.1.2/lcy2.wav" vol=100
+【错误】找不到文件（resources/gj2.1.2/lcy2.wav）。
+　　　　当试图执行命令（voice）时，该错误处于原文件（main.bkscr）的第268行。
+@protagonist text="我记得……睡眠舱的催眠气体是存储在这里的……"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@se file="resources/gj2.1.2/ningdongxi_fangqi.wav" channel=1 loop=false
+【错误】找不到文件（resources/gj2.1.2/ningdongxi_fangqi.wav）。
+　　　　当试图执行命令（se）时，该错误处于原文件（main.bkscr）的第270行。
+@p
+@voice file="resources/gj2.1.2/lcy3.wav" vol=100
+【错误】找不到文件（resources/gj2.1.2/lcy3.wav）。
+　　　　当试图执行命令（voice）时，该错误处于原文件（main.bkscr）的第272行。
+@protagonist text="催眠气体的储量检测只在早上和晚上两次物资小组的例行补给时才会检验，他们倒是对睡眠舱储气装置的质量很有自信，连意外漏气的可能性都没有考虑……？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@voice file="resources/gj2.1.2/lcy4.wav" vol=100
+【错误】找不到文件（resources/gj2.1.2/lcy4.wav）。
+　　　　当试图执行命令（voice）时，该错误处于原文件（main.bkscr）的第274行。
+@protagonist text="不……或许，他们只是对我们这些试验品的听话程度有自信罢了。倘若因为催眠气体不够而导致我们中途醒来，大概也只会安静地躺在舱里等待天明吧？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@l
+@r
+@protagonist text="然后在早上物资小组来执行补给任务时，主动表示催眠气体储量有误。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="所以，其实根本没有必要在这里多加资源进行检测——我们就已是催眠系统最便捷的传感器了。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@se file="resources/gj2.1.2/moca&close.wav" channel=1 loop=false
+【错误】找不到文件（resources/gj2.1.2/moca&close.wav）。
+　　　　当试图执行命令（se）时，该错误处于原文件（main.bkscr）的第280行。
+@p
+@figurant text="DS-2333，生命体征正常，正在进入睡眠模式。"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@se file="resources/gj2.1.2/fangqi.wav" channel=1 loop=false
+【错误】找不到文件（resources/gj2.1.2/fangqi.wav）。
+　　　　当试图执行命令（se）时，该错误处于原文件（main.bkscr）的第283行。
+@p
+@voice file="resources/gj2.1.2/lcy6.wav" vol=80
+【错误】找不到文件（resources/gj2.1.2/lcy6.wav）。
+　　　　当试图执行命令（voice）时，该错误处于原文件（main.bkscr）的第285行。
+@protagonist text="希望计划能够顺利进行吧。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@jump label=*gj3.1
+main.bkscr : *gj3.1
+@protagonist text="……"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@figurant text="试验品DS-2333，生命体征正常，正在上传睡眠监测数据——"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@figurant text="——上传成功"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
 @p
