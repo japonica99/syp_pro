@@ -181,7 +181,6 @@
 @addto index=102 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000
 [jump label="*gj2.2"]
-*test
 *gj2.1
 [voice file="resources/gj2.1/lcy1.wav" vol=100]
 [protagonist text="……问一问试试吧。"][p]
@@ -561,6 +560,7 @@ dead code only[p]
 @waittrans 
 [p]
 [jump label="*gj4.1.1"]
+*test
 *gj4.1.1
 @pretrans
 @sprite index=101 file='resources/gj3.1.1/office'
@@ -579,11 +579,13 @@ dead code only[p]
 [voice file="resources/gj4.1.1/lcy6.wav" vol=100]
 [protagonist text="应该怎么做才好？"][p]
 [textoff]
-[glowyobjects file1=['resources/gj4.1.1/desk','resources/gj4.1.1/door'] file2=['resources/gj4.1.1/desk_glow','resources/gj4.1.1/door_glow'] label=["*a2","*b2"] labelFile=["main","main"] pos=[[78,314],[1250,65]]]
+[glowyobjects file1=['resources/gj4.1.1/desk','resources/gj4.1.1/door','resources/gj4.1.1/floor'] file2=['resources/gj4.1.1/desk_glow','resources/gj4.1.1/door_glow','resources/gj4.1.1/floor_glow'] label=["*a2","*b2","*c2"] labelFile=["main","main","main"] pos=[[78,314],[1250,65],[391,573]]]
 *a2
-哈哈哈哈哈哈我还没写[p]
+[jump label="*gj4.1.1.2"]
 *b2
 [jump label="*gj4.1.1.1"]
+*c2
+[jump label="*gj4.1.1.3"]
 *gj4.1.1.1
 [voice file="resources/gj4.1.1.1/lcy1.wav" vol=100]
 [protagonist text="还是先躲在门后，趁机控制住研究员，不让他有机会示警，然后再作打算吧。"][p]
@@ -646,6 +648,8 @@ dead code only[p]
 [protagonist text="研究员从来都是用电子设备记录实验数据……什么时候用到纸质的笔记本了？"][p]
 [voice file="resources/gj4.1.1.1/lcy7.wav" vol=100]
 [protagonist text="还是打开看看吧。"][p][textoff]
+[jump label="*notebook"]
+*notebook
 [glowyobject file1="resources/gj4.1.1.1/notebook" file2="resources/gj4.1.1.1/notebook_glow" label=["*a3","*b3"] labelFile=["main","main"] pos=[121,134]]
 *a3
 [jump label="*4.1.1.1cont"]
@@ -707,7 +711,60 @@ supposed to be dead code[p]
 @addto index=101 target=basic_layer opacity=255 
 @trans mode="crossfade" time=50
 @endif
-[jump "*4.1.2"]
-*4.1.2
+[jump "*gj4.1.2"]
+*gj4.1.1.2
+[voice file="resources/gj4.1.1.2/lcy1.wav" vol=100]
+[protagonist text="先躲在办公桌下看看情况，找机会行动吧。"][p]
+[textoff]
+@pretrans
+@sprite index=102 file='ui/bg/allblack'
+@addto index=102 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+@waittrans 
+//[se file="resources/gj4.1.1.2/bump&shuffle.wav" channel=1 loop=false]
+@pretrans
+@sprite index=102 file='resources/gj4.1.1.2/undertable'
+@addto index=102 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+@waittrans
+[se file="resources/gj4.1.1.2/steps.wav" channel=1 loop=false]
+[p]
+@pretrans
+@sprite index=102 file='resources/gj4.1.1.2/leg'
+@addto index=102 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+@waittrans
+[p]
+@pretrans
+@sprite index=102 file='resources/gj4.1.1.2/withnotebook'
+@addto index=102 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+@waittrans
+[voice file="resources/gj4.1.1.2/lcy2.wav" vol=100]
+[protagonist text="……一本纸质的笔记？"][p]
+[voice file="resources/gj4.1.1.2/lcy3.wav" vol=100]
+[protagonist text="研究员从来都是用电子设备记录实验数据……什么时候用到纸质的笔记本了？"][p]
+[voice file="resources/gj4.1.1.2/lcy4.wav" vol=100]
+[protagonist text="这么特殊……或许这上面会有一些意想不到的资料？不如抢过来看一看，顺便趁此机会逃走吧。"][p]
+[voice file="resources/gj4.1.1.2/lcy5.wav" vol=100]
+[protagonist text="3……2……1！"][p]
+[textoff]
+[se file="resources/gj4.1.1.2/bumps.wav" channel=1 loop=false]
+@pretrans
+@sprite index=102 file='resources/gj4.1.1.2/mess'
+@addto index=102 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+@waittrans
+[p]
+@pretrans
+@sprite index=101 file='resources/gj4.1.1.1/doctor_notebook'
+@addto index=101 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+[voice file="resources/gj4.1.1.2/lcy6.wav" vol=100]
+[protagonist text="笔记本里……会写着什么呢？"][p]
+[textoff]
+[jump label="*notebook"]
+*gj4.1.1.3
+*gj4.1.2
 [p]
 @quit
