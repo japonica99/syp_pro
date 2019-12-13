@@ -285,12 +285,11 @@
 [textoff]
 [jump label="*gj3.1"]
 *gj2.2
-//[voice file="resources/gj2.2/lcy1.wav" vol=100]
+[voice file="resources/gj2.2/lcy1.wav" vol=100]
 [protagonist text="研究员总是这么严肃，恐怕也不会回答我。万一他听到我的提问直接上报把我销毁了，那我不是害了自己？研究员可能有他自己的考虑吧……还是先别做出什么异常举动的好。"][p]
-//[voice file="resources/gj2.2/lcy2.wav" vol=100]
+[voice file="resources/gj2.2/lcy2.wav" vol=100]
 [protaspeak text="对不起先生，我刚才失神了。"][p][textoff]
-//[se file="resources/gj2.2/shuffle.wav" channel=1 loop=false][p]
-//[voice file="resources/gj2.2/lcy3.wav" vol=100]
+[voice file="resources/gj2.2/lcy3.wav" vol=100]
 [doctor text="难道系统出了什么问题导致了试验品短暂的短路?看来得研究一下然后找时间做个全面点的检查。不要到时候实验成功了结果出现别的问题。"][p]
 [textoff]
 [card text="研究员，管理并研究试验品，所谓“科学家”，在试验品面前，从来都是冷漠且自信的存在。每位研究员视情况可负责一或多个试验品。"][p]
@@ -586,7 +585,7 @@ dead code only[p]
 *b2
 [jump label="*gj4.1.1.1"]
 *gj4.1.1.1
-//[voice file="resources/gj4.1.1.1/lcy1.wav" vol=100]
+[voice file="resources/gj4.1.1.1/lcy1.wav" vol=100]
 [protagonist text="还是先躲在门后，趁机控制住研究员，不让他有机会示警，然后再作打算吧。"][p]
 [textoff]
 @pretrans
@@ -594,28 +593,25 @@ dead code only[p]
 @addto index=102 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000
 @waittrans 
-//[se file="resources/gj4.1.1.1/bump&cloth.wav" channel=1 loop=false]
 [p]
 @pretrans
 @sprite index=101 file='resources/gj4.1.1.1/door_closed'
 @addto index=101 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000
-//[se file="resources/gj4.1.1.1/steps&alot.wav" channel=1 loop=false]
+[voice file="resources/gj4.1.1.1/lcy2.wav" vol=100]//最好能分开
 [p]
 @pretrans
 @sprite index=101 file='resources/gj4.1.1.1/door_opened'
 @addto index=101 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000
-//[se file="resources/gj4.1.1.1/steps12.wav" channel=1 loop=false]
 [p]
 @pretrans
 @sprite index=101 file='resources/gj4.1.1.1/doctor'
 @addto index=101 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000
-//[voice file="resources/gj4.1.1.1/lcy1.wav" vol=100]
 [protagonist text="就是现在！"][p]
 [textoff]
-//[se file="resources/gj4.1.1.1/fight.wav" channel=1 loop=false]
+[se file="resources/gj4.1.1.1/fight.wav" channel=1 loop=false]
 @pretrans
 @sprite index=101 file='resources/gj4.1.1.1/doctor_blur'
 @addto index=101 target=basic_layer opacity=255 
@@ -629,26 +625,26 @@ dead code only[p]
 @sprite index=102 file='ui/bg/allblack'
 @addto index=102 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000 
-//[se file="resources/gj4.1.1.1/drop.wav" channel=1 loop=false]
+[se file="resources/gj4.1.1.1/drop.wav" channel=1 loop=false]
 [p]
-//[voice file="resources/gj4.1.1.1/lcy2.wav" vol=100]
+[voice file="resources/gj4.1.1.1/lcy3.wav" vol=100]
 [protagonist text="什么东西？"][p]
 [doctor text="……"][p]
-//[se file="resources/gj4.1.1.1/struggle.wav" channel=1 loop=false]
-//[voice file="resources/gj4.1.1.1/lcy3.wav" vol=100]
+[se file="resources/gj4.1.1.1/struggle.wav" channel=1 loop=false]
+[voice file="resources/gj4.1.1.1/lcy4.wav" vol=100]
 [protagonist text="……劳烦您先睡一会儿了。"][p]
 [textoff]
-//[se file="resources/gj4.1.1.1/beat.wav" channel=1 loop=false]
+[se file="resources/gj4.1.1.1/beat.wav" channel=1 loop=false]
 [p]
 @pretrans
 @sprite index=101 file='resources/gj4.1.1.1/doctor_notebook'
 @addto index=101 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000
-//[voice file="resources/gj4.1.1.1/lcy3.wav" vol=100]
+[voice file="resources/gj4.1.1.1/lcy5.wav" vol=100]
 [protagonist text="这是……一本纸质的笔记？"][p]
-//[voice file="resources/gj4.1.1.1/lcy4.wav" vol=100]
+[voice file="resources/gj4.1.1.1/lcy6.wav" vol=100]
 [protagonist text="研究员从来都是用电子设备记录实验数据……什么时候用到纸质的笔记本了？"][p]
-//[voice file="resources/gj4.1.1.1/lcy5.wav" vol=100]
+[voice file="resources/gj4.1.1.1/lcy7.wav" vol=100]
 [protagonist text="还是打开看看吧。"][p][textoff]
 [glowyobject file1="resources/gj4.1.1.1/notebook" file2="resources/gj4.1.1.1/notebook_glow" label=["*a3","*b3"] labelFile=["main","main"] pos=[121,134]]
 *a3
