@@ -1,6 +1,6 @@
 ﻿*main
 //@call '*init' 'init'
-[jump label="*test"]
+//[jump label="*test"]
 [white_in_middle text="数字视音频音乐制作 请戴好耳机"]
 [p]
 [white_in_middle text="......"]
@@ -11,8 +11,9 @@
 [p]
 [white_in_middle text="......"]
 [p]
+调试用目录
+[select text=["1","2","3.1","4.1"] label=["*gj1","*gj2","*gj3.1","*gj4.1"] labelFile=["main","main","main","main"]]
 [jump label="*gj1"]
-
 *gj1
 [typewriter pos=[360,350] rect=[5,5,600,200] text="7:00 am"][p]
 [se file="resources/gj1/gas.wav" channel=1 loop=false] 
@@ -218,7 +219,7 @@
 [protagonist text="是我，不再“被需要”了吗？"][p]
 [stop channel=1 fadeout=0]
 [protagonist text="……"][p]
-[se file="resources/gj2.1/nervous2.wav" channel=1 loop=true volume=100 fadein=1000]
+[se file="resources/gj2.1/nervous2.wav" channel=1 loop=true fadein=1000]
 [voice file="resources/gj2.1/lcy10.wav" vol=100]
 [protagonist text="未来不受掌控又完全无法确认……这种感觉，是他们所说的，“心慌”吗？"][p]
 [voice file="resources/gj2.1/lcy11.wav" vol=100]
@@ -727,7 +728,7 @@ supposed to be dead code[p]
 @addto index=102 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000
 @waittrans
-[se file="resources/gj4.1.1.2/steps.wav" channel=1 loop=false]
+[se file="resources/gj4.1.1.2/steps.wav" channel=1 loop=false][p]
 [p]
 @pretrans
 @sprite index=102 file='resources/gj4.1.1.2/leg'
@@ -749,7 +750,7 @@ supposed to be dead code[p]
 [voice file="resources/gj4.1.1.2/lcy5.wav" vol=100]
 [protagonist text="3……2……1！"][p]
 [textoff]
-[se file="resources/gj4.1.1.2/bumps.wav" channel=1 loop=false]
+[se file="resources/gj4.1.1.2/bumps.wav" channel=1 loop=false][p]
 @pretrans
 @sprite index=102 file='resources/gj4.1.1.2/mess'
 @addto index=102 target=basic_layer opacity=255 
@@ -765,6 +766,48 @@ supposed to be dead code[p]
 [textoff]
 [jump label="*notebook"]
 *gj4.1.1.3
+@pretrans
+@sprite index=102 file='ui/bg/allblack'
+@addto index=102 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+@waittrans 
+[voice file="resources/gj4.1.1.3/lcy1.wav" vol=100]
+[protagonist text="来不及了！！"][p]
+[textoff]
+@pretrans
+@sprite index=101 file='resources/gj4.1.1.3/doctor'
+@addto index=101 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+[voice file="resources/gj4.1.1.3/lcy2.wav" vol=100]
+[doctor text="你……"][p]	
+[voice file="resources/gj4.1.1.3/lcy3.wav" vol=100]
+[protagonist text="绝对不能让他开口喊人！"][p]
+[voice file="resources/gj4.1.1.3/lcy4.wav" vol=100]
+[protagonist text="顾不了那么多了，先控制住他再说！"][p][textoff]
+[se file="resources/gj4.1.1.3/fight.wav" channel=1 loop=false][p]
+@pretrans
+@sprite index=101 file='resources/gj4.1.1.3/doctor_blur'
+@addto index=101 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+[se file="resources/gj4.1.1.3/drop.wav" channel=1 loop=false][p]
+[voice file="resources/gj4.1.1.3/lcy5.wav" vol=100]
+[protagonist text="什么东西？"][p][textoff]
+[se file="resources/gj4.1.1.3/struggle.wav" channel=1 loop=false][p]
+//[resume channel=1]
+[voice file="resources/gj4.1.1.3/lcy6.wav" vol=100]
+[protagonist text="……只能劳烦您先睡一会儿了。"][p][textoff]
+[se file="resources/gj4.1.1.3/beat.wav" channel=1 loop=false][p]
+@pretrans
+@sprite index=101 file='resources/gj4.1.1.1/doctor_notebook'
+@addto index=101 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+[voice file="resources/gj4.1.1.3/lcy7.wav" vol=100]
+[protagonist text="这是……一本纸质的笔记？"][p]
+[voice file="resources/gj4.1.1.3/lcy8.wav" vol=100]
+[protagonist text="研究员从来都是用电子设备记录实验数据……什么时候用到纸质的笔记本了？"][p]
+[voice file="resources/gj4.1.1.3/lcy9.wav" vol=100]
+[protagonist text="还是打开看看吧。"][p][textoff]
+[jump label="*notebook"]
 *gj4.1.2
 [p]
 @quit
