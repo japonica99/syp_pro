@@ -1,6 +1,6 @@
 ﻿*main
 //@call '*init' 'init'
-//[jump label="*test"]
+[jump label="*test"]
 [white_in_middle text="数字视音频音乐制作 请戴好耳机"]
 [p]
 [white_in_middle text="......"]
@@ -522,7 +522,111 @@ dead code only[p]
 @waittrans 
 [p]
 [jump label="*gj4.1"]
+*test
 *gj3.2
+@pretrans
+@sprite index=102 file='ui/bg/allblack'
+@addto index=102 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+[se file="resources/gj3.2/fangqi.wav" channel=1 loop=false][p]
+[protagonist text="……"][p]
+[voice file="resources/gj3.1/woman1.wav" vol=80]
+[figurant text="试验品DS-2333，生命体征正常，正在上传睡眠监测数据——"][p]
+[figurant text="——上传成功"][p]
+[textoff]
+//遮罩 KAG代码
+@pretrans
+//△模仿睁眼的方式，添加由中间向上下的遮罩，从背景A过渡至背景B（遮片渐隐？）。
+@sprite index=102 file='ui/bg/allblack'
+@addto index=102 target=basic_layer opacity=255 
+@sprite index=101 file='resources/gj1/ceiling'
+@addto index=101 target=basic_layer opacity=255 
+@remove index=102
+@trans mode='universal' rule='ui/rules/openFade' time=3000
+[p]
+[voice file="resources/gj3.2/lcy1.wav" vol=100]
+[protagonist text="又一天开始了。"][p]
+[textoff]
+//淡出黑色
+@pretrans
+@sprite index=102 file='ui/bg/allblack'
+@addto index=102 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+[se file="resources/gj3.2/cloth_further.wav" channel=1 loop=false]
+[p]
+@pretrans
+@sprite index=101 file='resources/gj1/desktop'
+@addto index=101 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+[voice file="resources/gj3.2/didiwoman.wav" vol=100]
+[figurant text="DS-2333，心率正常，体温正常，血压正常，肌肉活性正常，正在上传基础数据——"][p]
+[figurant text="——基础数据上传完成。血液样本采集完成，正在进行成分分析。"][p]
+[textoff]
+@pretrans
+@sprite index=102 file='ui/bg/allblack'
+@addto index=102 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+[se file="resources/gj3.2/add_step_in.wav" channel=1 loop=false][p]
+//[voice file="resources/gj3.2/woman2.wav" vol=100]
+[figurant text="上午的例行补给。"][p]
+[se file="resources/gj3.2/shift.wav" channel=1 loop=false][p]
+//[voice file="resources/gj3.2/woman3.wav" vol=100]
+[figurant text="DS-2333，营养剂补给完成，有什么其他需要吗？"][p]
+[voice file="resources/gj3.2/lcy2.wav" vol=100]
+[protagonist text="对了！昨天打翻的试剂！"][p]
+[textoff]
+[select1 text=[" 我需要……"] label=["*A3","*B3"] labelFile=["main","main"]]
+*A3
+@pretrans
+@sprite index=101 file='resources/gj1/desktop'
+@addto index=101 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+[voice file="resources/gj3.2/lcy3.wav" vol=100]
+[protagonist text="怎么回事？！为什么试剂并没有变少？"][p]
+//[voice file="resources/gj3.2/woman3.wav" vol=100]
+[figurant text="DS-2333，请说明你的需求。"][p]
+[select1 text=["  抱歉，没有需求。"] label=["*A4","*B4"] labelFile=["main","main"]]
+*B3
+deadcode[p]
+*A4
+[voice file="resources/gj3.2/lcy4.wav" vol=100]
+[protagonist text="难道昨天没有真的打翻试剂，而是在做梦？怎么最近什么都奇奇怪怪的，该不会是我出了什么问题吧……"][p]
+//[voice file="resources/gj3.2/woman4.wav" vol=100]
+[figurant text="DS-2333，无特殊情况，未发现异常。"][p]
+//[voice file="resources/gj3.2/woman5.wav" vol=100]
+[figurant text="收到。"][p][textoff]
+@pretrans
+@sprite index=102 file='ui/bg/allblack'
+@addto index=102 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+//[se file="resources/gj3.2/step.wav" channel=1 loop=false][p]
+[jump label="*gj3.2.1"]
+*B4
+deadcode[p]
+*gj3.2.1
+[white_in_middle text="集中测试"][p]
+[bgm file="resources/gj3.2.1/white_noise.wav"]
+//[voice file="resources/gj3.2.1/woman1.wav" vol=100]
+[figurant text="DS-2333，测试通过，回到休息室待命。"][p][textoff]
+@pretrans
+@sprite index=101 file='resources/gj3.1.1/corridor'
+@addto index=101 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+[bgm file="resources/gj3.2.1/talking.wav"]
+[voice file="resources/gj3.2.1/lcy1.wav" vol=100]
+[protagonist text="通过集体测试了……那是不是说明我还是没有问题的？总算可以安心一点了……"][p]
+[se file="resources/gj3.2.1/steps_further.wav" channel=1 loop=false][p]
+[voice file="resources/gj3.2.1/lcy2.wav" vol=100]
+[protaspeak text="先生。"]
+[voice file="resources/gj3.2.1/lcy3.wav" vol=100]
+[protaspeak text="嗯。你集中测试结束了……我来拿点东西。"]
+[voice file="resources/gj3.2.1/lcy4.wav" vol=100]
+[protaspeak text="好的先生。"]
+[voice file="resources/gj3.2.1/lcy5.wav" vol=100]
+[protagonist text="这个点研究员不应该在开会吗，为什么会来试验品房间？而且，他为什么会跟我说他来干什么呢，好像之前从来没有过?好像所有事情都开始变得奇怪了起来……"][p]
+[textoff]
+[jump label="*gj3.2.2"]
+*gj3.2.2
 *gj4.1
 @pretrans
 @sprite index=101 file='resources/gj1/desktop'
@@ -561,7 +665,6 @@ dead code only[p]
 @waittrans 
 [p]
 [jump label="*gj4.1.1"]
-*test
 *gj4.1.1
 @pretrans
 @sprite index=101 file='resources/gj3.1.1/office'
