@@ -23,200 +23,295 @@ if(!sf.init){
 @return
 @jump label=*enter
 main.bkscr : *enter
-@white_in_middle text="数字视音频音乐制作 请戴好耳机"
+@pretrans
+@sprite index=102 file="ui/bg/allblack"
+@addto index=102 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@waittrans
+@p
+@jump label=*gj5.1.2
+main.bkscr : *gj5.1.2
+@pretrans
+@sprite index=102 file="resources/gj5.1.2/turn"
+@addto index=102 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@waittrans
+@figurant text="前面就是那安保人员把守的那扇门了。如果我获得的情报没错，应该是有两名试验品站在门前看守。他们有配枪，而且站位边上就有警报器，所以必须要速战速决。你想想有什么办法吧，注意不要发出太大的声响。"
 {
-　macro.bkscr : *white_in_middle
-　@textwindow color=0 pos=[360, 350] rect=[5, 5, 600, 200] xinterval=3
-　@textstyle size=20 color=16777215
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
 　@text text=text
 　@return
 }
 @p
-@white_in_middle text="......"
+@textoff
+@glowyobject file1="resources/gj5.1.2/door" file2="resources/gj5.1.2/door_glow" label=["*a7","*b7"] labelFile=["main","main"] pos=[11,290]
 {
-　macro.bkscr : *white_in_middle
-　@textwindow color=0 pos=[360, 350] rect=[5, 5, 600, 200] xinterval=3
-　@textstyle size=20 color=16777215
-　@text text=text
-　@return
-}
-@p
-@white_in_middle text="那是什么..."
-{
-　macro.bkscr : *white_in_middle
-　@textwindow color=0 pos=[360, 350] rect=[5, 5, 600, 200] xinterval=3
-　@textstyle size=20 color=16777215
-　@text text=text
-　@return
-}
-@p
-@white_in_middle text="是我么..."
-{
-　macro.bkscr : *white_in_middle
-　@textwindow color=0 pos=[360, 350] rect=[5, 5, 600, 200] xinterval=3
-　@textstyle size=20 color=16777215
-　@text text=text
-　@return
-}
-@p
-@white_in_middle text="......"
-{
-　macro.bkscr : *white_in_middle
-　@textwindow color=0 pos=[360, 350] rect=[5, 5, 600, 200] xinterval=3
-　@textstyle size=20 color=16777215
-　@text text=text
-　@return
-}
-@p
-调试用目录
-@select text=["1","2","3.1","4.1"] label=["*gj1","*gj2","*gj3.1","*gj4.1"] labelFile=["main","main","main","main"]
-{
-　extend.bkscr : *select
-　#var size = label.size;
+　extend.bkscr : *glowyobject
 　#var indexes = [];
-　@idlesp get=indexes num=size*5
+　@idlesp get=indexes num=5
 　#var success = true;
 　#var info1 = %[];
-　@info file="ui/selectionbutton" get=info1
-　#var zorder;
-　@zorder index=message_layer get=zorder
 　#tf.curi=0;
 　@action mode="queue"
-　@for var=i range=range(size)
-　　@sprite index=indexes[(i*5)] file="ui/selectionbutton"
-　　@sprite index=indexes[(i*5+1)] file="ui/selectionbutton_on"
-　　@textsprite index=indexes[(i*5+2)] text=text[i] color=0
-　　@anchor index=indexes[(i*5+2)] set="center"
-　　@textsprite index=indexes[(i*5+3)] text=text[i] color=0
-　　@anchor index=indexes[(i*5+3)] set="center"
-　　@addto index=indexes[(i*5+2)] target=indexes[(i*5)] pos=[info1.width/2,info1.height/2,]
-　　@addto index=indexes[(i*5+3)] target=indexes[(i*5+1)] pos=[info1.width/2,info1.height/2+2,]
-　　@buttonex index=indexes[(i*5+4)] idle=indexes[(i*5)] hover=indexes[(i*5+1)] onclick=["*_selectend","extend","jump","tf.curi=curi",%["curi"=>i],%["ignore"=>1],]
-　　#var info2 = %[]
-　　@infoex index=indexes[(i*5+4)] get=info2
-　　#var winsize = System.resolutionSize;
-　　#var w = ( winsize[0] - info2.width ) / 2;
-　　#var h = ( winsize[1] - info2.height * size - ( size-1 ) * 50 ) / 2;
-　　@addto index=indexes[(i*5+4)] target=basic_layer zorder=zorder pos=[w,h+i*(50+info2.height),] opacity=0
-　　@action mode="fadeto" opacity=255 time=400 target=indexes[(i*5+4)]
-　　@next
+　@sprite index=indexes[0] file=file1
+　@sprite index=indexes[1] file=file2
+　@buttonex index=indexes[4] idle=indexes[0] hover=indexes[1] onclick=["*_glowyend","extend","jump","tf.curi=curi",%["curi"=>i],%["ignore"=>1],]
+　#var info2 = %[]
+　@infoex index=indexes[4] get=info2
+　@addto index=indexes[4] target=basic_layer pos=pos opacity=255
 　@action mode="start" target=basic_layer
+　[警告]无效的参数：创建了一个空的并行或者动作队列，该队列将被无视。
+　　　　当试图执行命令（action）时，该错误处于原文件（extend.bkscr）的第261行。
 　@waitbutton
-　extend.bkscr : *_selectend
-　@for var=i range=range(size)
-　　@action mode="fadeto" opacity=0 time=500 target=indexes[(i*5+4)]
-　　@next
+　extend.bkscr : *_glowyend
+　@action mode="fadeto" opacity=0 time=500 target=indexes[4]
 　@waitaction index=indexes[4]
-　@for var=i range=range(size)
-　　@remove index=indexes[(i*5+4)] delete=true
-　　@next
-　@returnto label="*gj1" file="main"}
-main.bkscr : *gj1
-@typewriter pos=[360,350] rect=[5,5,600,200] text="7:00 am"
-{
-　macro.bkscr : *typewriter
-　@textwindow color=0 pos=pos rect=rect xinterval=3
-　@textstyle name="ui/fonts/AiDeep.otf" size=20 color=16777215
-　@textspeed interval=50
-　@text text=text
-　@return
-}
-@p
-@se file="resources/gj1/gas.wav" channel=1 loop=false
-@p
-@figurant text="试验品DS-2333，生命体征正常，正在上传睡眠监测数据——"
-{
-　macro.bkscr : *figurant
-　@textwindow pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
-　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
-　@textspeed interval=50
-　@sprite index=2323 file="ui/messagebox2"
-　@addto index=2323 target=message_layer zorder=-50 pos=[0, 0] opacity=180
-　#var button_pos=[ [700,140],[704,120]];
-　#var onclicks=[ ["*save",'system_SL','call',,,%[condition: "!tf.isRecall", ignore:true]] , ["*load",'system_SL','call',,,%[condition: "!tf.isRecall", ignore:true]] ]
-　@for var=i range=range(1,3)
-　　@button index=9000+i idle="ui/button/m_button_0"+i hover="ui/button/m_button_on_0"+i click="ui/button/m_button_on_0"+i onclick=onclicks[(i-1)] threshold=0
-　　@addto index=9000+i target=message_layer zorder=0 pos=button_pos[(i-1)]
-　　@next
-　@enable_dialogbox
-　{
-　　extend.bkscr : *enable_dialogbox
-　　@spriteopt index=9000 disable=false
-　　【错误】没有找到索引9000对应的精灵，该精灵没有创建或者已被销毁。
-　　　　　　当试图执行命令（spriteopt）时，
-　　@event name="mousewheelup" label="*enter" file="system_history.bkscr" type="call" enable=true condition="System.stable"
-　　@event name="mousewheeldown" label="*mouse" file="extend.bkscr" type="call" enable=true
-　　@return
-　}
-　@text text=text
-　@return
-}
-@p
-@figurant text="——上传成功"
-{
-　macro.bkscr : *figurant
-　@textwindow pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
-　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
-　@textspeed interval=50
-　@sprite index=2323 file="ui/messagebox2"
-　@addto index=2323 target=message_layer zorder=-50 pos=[0, 0] opacity=180
-　#var button_pos=[ [700,140],[704,120]];
-　#var onclicks=[ ["*save",'system_SL','call',,,%[condition: "!tf.isRecall", ignore:true]] , ["*load",'system_SL','call',,,%[condition: "!tf.isRecall", ignore:true]] ]
-　@for var=i range=range(1,3)
-　　@button index=9000+i idle="ui/button/m_button_0"+i hover="ui/button/m_button_on_0"+i click="ui/button/m_button_on_0"+i onclick=onclicks[(i-1)] threshold=0
-　　@addto index=9000+i target=message_layer zorder=0 pos=button_pos[(i-1)]
-　　@next
-　@enable_dialogbox
-　{
-　　extend.bkscr : *enable_dialogbox
-　　@spriteopt index=9000 disable=false
-　　【错误】没有找到索引9000对应的精灵，该精灵没有创建或者已被销毁。
-　　　　　　当试图执行命令（spriteopt）时，
-　　@event name="mousewheelup" label="*enter" file="system_history.bkscr" type="call" enable=true condition="System.stable"
-　　@event name="mousewheeldown" label="*mouse" file="extend.bkscr" type="call" enable=true
-　　@return
-　}
-　@text text=text
-　@return
-}
-@p
-script/system_sl.bkscr : *save
-##
-var mode='save';
-##
-script/system_sl.bkscr : *enter
-#ssDisable=false;
-@screenshot index=999 target=basic_layer width=609 height=343
-@layer index=2000 width=1280 height=720 opacity=0
-@spriteopt index=2000 disable=true
-@sprite index=2001 file="ui/SL/sl_bg"
-@addto index=2001 target=2000 zorder=2 opacity=255
-@sprite index=2002 file="ui/SL/"+mode
-@addto index=2002 target=2001 pos=[0, 0]
-@addto index=2000 target=basic_layer zorder=51 opacity=0
-#tf.cur_sl_page=sf.last_save_page;
-@for var=i range=range(0,7)
-　@event name="checkbox"+i label="*checkbox" type="jump" exp="tf.next_page="+i
-　@checkbox index=2003+i idle="ui/SL/"+mode+"_page_0"+(i+1) checked="ui/SL/"+mode+"_page_on_0"+(i+1) onchanged="checkbox"+i
-　@addto index=2003+i target=2001 pos=[530+104*i,29,]
-　@next
-@spriteopt index=2003+tf.cur_sl_page disable=true
-@event name="checkbox"+tf.cur_sl_page enable=false
-#Sprite(2003+tf.cur_sl_page).value=true;
-@sprite index=2010 file="ui/SL/nodata"
-@addto index=2010 target=2000 zorder=1 pos=[588, 172]
-@button index=2011 idle="ui/backbutton" hover="ui/backbutton_on" onclick=["*exit",void,"jump"]
-@addto index=2011 target=2001 pos=[400, 663]
-script/system_sl.bkscr : *slots
+　@remove index=indexes[4] delete=true
+　@returnto label="*a7" file="main"}
+main.bkscr : *a7
+@jump label=*gj5.1.2cont1
+main.bkscr : *gj5.1.2cont1
 @pretrans
-@for var=i range=range(0,6)
-　##
-　	var saveID=tf.cur_sl_page*6+i;
-　	var text=""+(saveID+1)+". ";
-　	##
-　@event name="hover_saveslot"+i label="*saveslot_hover" type="callback" exp="tf.curss="+saveID condition="!ssDisable"
-　@event name="leave_saveslot"+i label="*saveslot_leave" type="callback" exp="tf.curss="+saveID condition="!ssDisable"
-　@event name=mode+i label="*SS"+mode type="jump" exp="tf.cur="+saveID
-　@sprite index=2013+i file="ui/SL/SL_button"
-　@sprite index=2014+i file="ui/SL/SL_button_on"
-　@textsprite index=2015+i text=text color=12155479 size=28 font="fonts/NotoSansCJK-Medium-5"
+@sprite index=102 file="resources/gj5.1.2/corridor"
+@addto index=102 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@waittrans
+@protagonist text="是那两名负责安保的试验品……"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@pretrans
+@sprite index=102 file="resources/gj5.1.2/turn"
+@addto index=102 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@waittrans
+@glowyobject file1="resources/gj5.1.2/up" file2="resources/gj5.1.2/up_glow" label=["*a8","*b8"] labelFile=["main","main"] pos=[890,1]
+{
+　extend.bkscr : *glowyobject
+　#var indexes = [];
+　@idlesp get=indexes num=5
+　#var success = true;
+　#var info1 = %[];
+　#tf.curi=0;
+　@action mode="queue"
+　@sprite index=indexes[0] file=file1
+　@sprite index=indexes[1] file=file2
+　@buttonex index=indexes[4] idle=indexes[0] hover=indexes[1] onclick=["*_glowyend","extend","jump","tf.curi=curi",%["curi"=>i],%["ignore"=>1],]
+　#var info2 = %[]
+　@infoex index=indexes[4] get=info2
+　@addto index=indexes[4] target=basic_layer pos=pos opacity=255
+　@action mode="start" target=basic_layer
+　[警告]无效的参数：创建了一个空的并行或者动作队列，该队列将被无视。
+　　　　当试图执行命令（action）时，该错误处于原文件（extend.bkscr）的第261行。
+　@waitbutton
+　extend.bkscr : *_glowyend
+　@action mode="fadeto" opacity=0 time=500 target=indexes[4]
+　@waitaction index=indexes[4]
+　@remove index=indexes[4] delete=true
+　@returnto label="*a8" file="main"}
+main.bkscr : *a8
+@jump label=*gj5.1.2cont2
+main.bkscr : *gj5.1.2cont2
+@pretrans
+@sprite index=102 file="resources/gj5.1.2/otherside"
+@addto index=102 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@waittrans
+@p
+@pretrans
+@sprite index=102 file="resources/gj5.1.2/window"
+@addto index=102 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@waittrans
+@protagonist text="通风口……等等！刚才那两名试验品的站位上方也是通风口！或许我可以利用通风口，神不知鬼不觉地转移到他们的头顶上方，偷袭他们！"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+`
+@textoff
+@p
+@pretrans
+@sprite index=102 file="resources/gj5.1.2/bigwin"
+@addto index=102 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@waittrans
+@protagonist text="唔……跳上来抓住倒是挺容易，但怎么才能在扒着通风口的情况下把它打开呢……"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@figurant text="踩住我的肩。"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="竟然……直接跪了下来，让我踩上去？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="我的研究员……为我付出了不少啊。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="抱歉，得冒犯您了。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@pretrans
+@sprite index=102 file="resources/gj5.1.2/nowin"
+@addto index=102 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@waittrans
+@p
+@pretrans
+@sprite index=102 file="ui/bg/allblack"
+@addto index=102 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@waittrans
+@p
+@protagonist text="两边似乎是相通的！这个方案可行！"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@pretrans
+@sprite index=102 file="resources/gj5.1.2/light"
+@addto index=102 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@waittrans
+@p
+@pretrans
+@sprite index=102 file="resources/gj5.1.2/see"
+@addto index=102 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@waittrans
+@protagonist text="到他们头顶的通风口了！接下来只需要趁他们来不及反应时，跳下去将他们一并放倒就可以了！"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@pretrans
+@sprite index=102 file="ui/bg/allblack"
+@addto index=102 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@waittrans
+@protagonist text="3……2……1！"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@protagonist text="意外的还挺顺利。他们没有来得及回头，不知道我的长相，这样就算他们拥有事后上报的智力，要查到我应该也不会太快。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@pretrans
+@sprite index=102 file="resources/gj5.1.2/come"
+@addto index=102 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@waittrans
+@p
+@pretrans
+@sprite index=102 file="resources/gj5.1.2/come1"
+@addto index=102 target=basic_layer opacity=255
+@trans mode="crossfade" time=50
+@waittrans
+@figurant text="果然，被淘汰的试验品，是有被淘汰的理由的。"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@pretrans
+@sprite index=102 file="resources/gj5.1.2/atthedoor"
+@addto index=102 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@waittrans
+@figurant text="走吧。今天先来探一探，这最后的防线究竟是什么"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@quit
+【错误】脚本文件执行到末端。
+　　　　该错误处于原文件（main.bkscr）的第1261行。

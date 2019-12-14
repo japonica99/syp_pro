@@ -8,8 +8,6 @@
     "script": {
         "main.bkscr": 0,
         "script": {
-            "system_history.bkscr": 0,
-            "system_sl.bkscr": 0
         }
     },
     "source": {
