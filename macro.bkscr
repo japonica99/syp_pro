@@ -33,13 +33,6 @@
 [text text=text]
 @return
 
-*doctor
-[textwindow file="ui/messagebox3" pos=[0,0] rect=[118,505,1008,231] xinterval=3]
-[textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0x000000]
-[textspeed interval=50]
-[text text=text]
-@return
-
 *protagonist
 [textwindow file="ui/messagebox" pos=[0,0] rect=[118,505,1008,231] xinterval=3]
 [textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0xffffff]

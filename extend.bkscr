@@ -23,15 +23,7 @@
 
 //用来启用对话框事件的宏
 *enable_dialogbox
-#var button_pos=[ [700,140],[704,120],[716,100],[726,80]];
-#var onclicks=[ ["*save",'save','call',,,%[condition: "!tf.isRecall", ignore:true]] , ["*load",'load','call',,,%[condition: "!tf.isRecall", ignore:true]] ,[ , ,"callback","System.skipMode=true"],["*option","system_setting","callback",,,%[ignore:true]],]
-@for var=i range=range(1,5)
-	@button index=9000+i idle='menu/messagebox/button/m_button_0'+i click='menu/messagebox/button/m_button_on_0'+i hover='menu/messagebox/button/m_button_on_0'+i threshold=0 onclick=onclicks[i-1]
-	@addto target=message_layer index=9000+i pos=button_pos[i-1] zorder=0
-@next
-[addto index=2323 target=message_layer zorder=-50 pos=[0,0] opacity=180]
-@spriteopt index=2323 disable=false
-@spriteopt index=message_layer disable=false 
+@spriteopt index=9000 disable=false
 @event name="mousewheelup" enable=true file="system_history" label="*enter" type="call" ignore=true condition="System.stable"
 @event name="mousewheeldown" enable=true file="extend" label="*mouse" type="call" ignore=true
 @return
@@ -45,12 +37,12 @@
 //储存，读取，回顾，自动，快进，系统
 
 //按钮坐标数组
-#var button_pos=[ [700,140],[704,120],[716,100],[726,80],[1023,680],[1099,680] ];
+#var button_pos=[ [700,140],[704,120]];
 
 //按钮单击事件
-#var onclicks=[ ["*save",'save','call',,,%[condition: "!tf.isRecall", ignore:true]] , ["*load",'load','call',,,%[condition: "!tf.isRecall", ignore:true]] ,[ , ,"callback","System.skipMode=true"],["*option","system_setting","call",,,%[ignore:true]],]
+#var onclicks=[ ["*save",'system_SL','call',,,%[condition: "!tf.isRecall", ignore:true]] , ["*load",'load','call',,,%[condition: "!tf.isRecall", ignore:true]]]
 
-@for var=i range=range(1,7)//生成for循环。其中range(1,7)=[1,2,3,4,5,6]
+@for var=i range=range(1,3)//生成for循环。其中range(1,7)=[1,2,3,4,5,6]
 	//在这个循环中会依次的将01到06号按钮生成并添加到底层上
 	@button index=9000+i idle='menu/messagebox/button/m_button_0'+i click='menu/messagebox/button/m_button_on_0'+i hover='menu/messagebox/button/m_button_on_0'+i threshold=0 onclick=onclicks[i-1]//创建按钮精灵
 	//将按钮精灵添加到底层上

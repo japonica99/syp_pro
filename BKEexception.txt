@@ -1,0 +1,38 @@
+EXE Version : v1.2.4 Build 2751 Dev
+Crash Address : 0047D20C
+Reference Address : 0053EB30  (wWinMain)
+Crash Code : C0000005
+Crash Parameters:
+00000000
+00000000
+
+Error Explanation : 拒绝访问。
+
+Call Stack:
+0048415E => 0047D1F0
+0045659F => 004840F0
+004E2452 => 00456520
+Dynamic Call from 004E7F2F => 004E1B40 (Most Possible)
+004F6994 => 004E7EC0
+0052B332 => 004F55D0
+Dynamic Call from 00421FC1 => 0052B300 (Most Possible)
+Dynamic Call from 0053F01D => 00421EF0 (Most Possible)
+0062F47F => 0053EB30
+009EE090 => 009EE0A2
+
+Registers:
+EAX:0F72C3C4
+EBX:0F72BED8
+ECX:0019E228
+EDX:00000006
+EDI:0F72BED8
+ESI:00000000
+EBP:00000000
+ESP:0019FF74
+EIP:009EE095
+
+Stacks:
+
+Script Callstacks (May not be reliable):
+文件(script/system_sl.bkbin)的标签(*slots)的第33行(总第76)行:
+文件(main.bkbin)的标签(*gj1)的第9行(总第26)行:

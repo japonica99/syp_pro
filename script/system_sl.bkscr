@@ -18,16 +18,16 @@ var mode='save';
 @endif
 @layer index=2000 opacity=0 width=1280 height=720
 @spriteopt index=2000 disable=true
-@sprite index=2001 file="SL/sl_bg"
+@sprite index=2001 file="ui/SL/sl_bg"
 @addto index=2001 target=2000 zorder=2 opacity=255
-@sprite index=2002  file='SL/'+mode
+@sprite index=2002  file='ui/SL/'+mode
 @addto index=2002 target=2001 pos=[0,0]
 @addto index=2000 target=basic_layer opacity=0 zorder=51
 #tf.cur_sl_page=sf.last_save_page;
 //page_buttons 2003 to 2009
 @for var=i range=range(0,7)
 	@event name="checkbox"+i exp="tf.next_page="+i label="*checkbox" type="jump" 
-	@checkbox index=2003+i idle="SL/"+mode+"_page_0"+(i+1)  checked="SL/"+mode+"_page_on_0"+(i+1) onchanged="checkbox"+i
+	@checkbox index=2003+i idle="ui/SL/"+mode+"_page_0"+(i+1)  checked="ui/SL/"+mode+"_page_on_0"+(i+1) onchanged="checkbox"+i
 	@addto index=2003+i pos=[530+104*i,29] target=2001
 @next
 @spriteopt index=2003+tf.cur_sl_page disable=true
@@ -36,7 +36,7 @@ var mode='save';
 //@wait time=10
 //@event name='checkbox'+tf.next_page enable=false
 //preview image=2010
-@sprite index=2010 file="SL/nodata"
+@sprite index=2010 file="ui/SL/nodata"
 @addto index=2010 target=2000 zorder=1 pos=[588,172]
 @button index=2011 idle="backbutton" hover="backbutton_on" onclick=["*exit",,"jump"]
 @addto index=2011 target=2001 pos=[400,663]
@@ -71,15 +71,15 @@ var mode='save';
 	@event name='hover_saveslot'+i label="*saveslot_hover" type='callback' exp='tf.curss='+saveID condition="!ssDisable"
 	@event name='leave_saveslot'+i label="*saveslot_leave" type='callback' exp='tf.curss='+saveID condition="!ssDisable"
 	@event name=mode+i label='*SS'+mode exp='tf.cur='+saveID type='jump'
-	@sprite index=2013+i file="SL/SL_button" 
-	@sprite index=2014+i file="SL/SL_button_on"
-	@textsprite index=2015+i text=text color=0xB97A57 size=28 font='font/MFYueYuan_Noncommercial-Regular'
-	@textsprite index=2016+i text=text color=0xB97A57 size=28 font='font/MFYueYuan_Noncommercial-Regular'
+	@sprite index=2013+i file="ui/SL/SL_button" 
+	@sprite index=2014+i file="ui/SL/SL_button_on"
+	@textsprite index=2015+i text=text color=0xB97A57 size=28 font='fonts/NotoSansCJK-Medium-5'
+	@textsprite index=2016+i text=text color=0xB97A57 size=28 font='fonts/NotoSansCJK-Medium-5'
 	@addto index=2015+i target=2013+i pos=[120,16]
 	@addto index=2016+i target=2014+i pos=[120,17]
 	@buttonex index=2012+i idle=2013+i hover=2014+i onclick=mode+i onenter='hover_saveslot'+i onleave='leave_saveslot'+i threshold=10
 	@if "saveID==sf.last_save"
-		@sprite index=998 file="SL/okawari"
+		@sprite index=998 file="ui/SL/okawari"
 		@anchor index=998 set="center"
 		@addto index=998 target=2012+i pos=[460,32]
 //		@sprite index=997 file="SL/okawari"
@@ -114,7 +114,7 @@ var mode='save';
 @return
 *saveslot_leave
 @if 'SaveData.exist(tf.curss)'
-	@sprite index=2010 file="SL/nodata"
+	@sprite index=2010 file="ui/SL/nodata"
 @endif
 @return
 
@@ -136,12 +136,12 @@ var mode='save';
 @spriteopt index=2000 disable=true
 @event ignore=true name="rclick" type="jump" enable=true label="*SSsaveEnd"
 @layer index=1300 width=1280 height=720
-@sprite index=1301 file="dialog/back"
+@sprite index=1301 file="ui/dialog/back"
 @anchor index=1301 set="center"
 @addto index=1301 target=1300 pos=[640,360]
-@textsprite index=1303 text="确定要保存吗" font="font/MFYueYuan_Noncommercial-Regular" size=34 color=0xB97A57
-@button index=1304 idle="dialog/yes" hover='dialog/yes_on' click='dialog/yes_on' onclick=["*SSsaveYes", ,'jump']
-@button index=1302 idle="dialog/no" hover='dialog/no_on' click='dialog/no_on' onclick=["*SSsaveEnd", ,'jump']
+@textsprite index=1303 text="确定要保存吗" font="fonts/NotoSansCJK-Medium-5" size=34 color=0xB97A57
+@button index=1304 idle="ui/dialog/yes" hover='ui/dialog/yes_on' click='ui/dialog/yes_on' onclick=["*SSsaveYes", ,'jump']
+@button index=1302 idle="ui/dialog/no" hover='ui/dialog/no_on' click='ui/dialog/no_on' onclick=["*SSsaveEnd", ,'jump']
 @anchor index=1302 set="topcenter"
 @anchor index=1303 set="topcenter"
 @anchor index=1304 set="topcenter"
@@ -178,12 +178,12 @@ var mode='save';
 	@spriteopt index=2000 disable=true
 	@event ignore=true name="rclick" type="jump" enable=true label="*SSsaveEnd"
 	@layer index=1300 width=1280 height=720
-	@sprite index=1301 file="dialog/back"
+	@sprite index=1301 file="ui/dialog/back"
 	@anchor index=1301 set="center"
 	@addto index=1301 target=1300 pos=[640,360]
-	@textsprite index=1303 text="确定要读取吗" font="font/MFYueYuan_Noncommercial-Regular" size=34 color=0xB97A57
-	@button index=1304 idle="dialog/yes" hover='dialog/yes_on' click='dialog/yes_on' onclick=["*SSloadYes", ,'jump']
-	@button index=1302 idle="dialog/no" hover='dialog/no_on' click='dialog/no_on' onclick=["*SSloadEnd", ,'jump']
+	@textsprite index=1303 text="确定要读取吗" font="fonts/NotoSansCJK-Medium-5" size=34 color=0xB97A57
+	@button index=1304 idle="ui/dialog/yes" hover='ui/dialog/yes_on' click='ui/dialog/yes_on' onclick=["*SSloadYes", ,'jump']
+	@button index=1302 idle="ui/dialog/no" hover='ui/dialog/no_on' click='ui/dialog/no_on' onclick=["*SSloadEnd", ,'jump']
 	@anchor index=1302 set="topcenter"
 	@anchor index=1303 set="topcenter"
 	@anchor index=1304 set="topcenter"
