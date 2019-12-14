@@ -949,12 +949,119 @@ supposed to be dead code[p]
 *b4
 [jump label="*gj4.1.2cont1"]
 *gj4.1.2cont1
+//[voice file="resources/gj4.1.2/lcy11.wav" vol=100]
 [doctor text="你问独立测试的时候，我猜想你是不是有自我意识，可以自主的思考了，但当时的实验，并没有什么重大的突破，我觉得不可能……“武器”销毁计划的筹备很完善——哦，你应该还不清楚这个计划是什么……"][p]
 [doctor text="集团似乎是出了什么变故，要集体转移，但只会带走研究人员、相关资料和核心设备，而你们作为试验品，只是“武器”研究的“中间产物”，所以并不在转移名单之内，将会被全数销毁……"][p]
 [doctor text="我设计了无数种救你出去的方案，但没有一种是实际可行的。所以我希望你能拥有自我意识，在自己的求生本能的驱使下，借助你们试验品得天独厚的身体条件和智力水平，找到一条生路。"][p]
-//[voice file="resources/gj4.1.2/lcy11.wav" vol=100]
+//[voice file="resources/gj4.1.2/lcy12.wav" vol=100]
 [doctor text="笔记你也看到了，你们的睡眠舱是我负责研发的，当时因为我研究了多年的时间穿梭，对于设计这类结构，有着明显的个人风格，也因为想以防万一，所以这批睡眠舱很容易改造成时间穿梭仪器"][p]
 [doctor text="我手下又只有你一个试验品，因此，只能将笔记放在你的睡眠舱里，让它和你一起经历时间的循环。"][p][textoff]
-[select text=["在问你为什么没有独立测试的一周前。","你为什么要让我拥有自我意识？"] label=["*a5","*b5"] labelFile=["main","main"]]
+[select text=["……","你……为什么要救我出去？"] label=["*a5","*b5"] labelFile=["main","main"]]
+*a5
+[jump label="*gj4.1.2cont2"]
+*b5
+[jump label="*gj4.1.2cont2"]
+*gj4.1.2cont2
+//[voice file="resources/gj4.1.2/lcy13.wav" vol=100]
+[doctor text="……所以，一旦我停止循环，时间来到12月19日，转移行动正式开始，你和其他的试验品都将被留在基地，迎接和整个基地一起被炸成灰烬的命运——你，准备怎么应对？"][p]
+[doctor text="等等，你来办公室，是想要找什么东西么？可是如果不是得知了什么消息，你不会无缘无故冒险来研究员办公室……"][p]
+[doctor text="你之前就已经知道销毁计划了？你想要找什么？"][p][textoff]
+[jump label="*gj4.1.2cont3"]
+*gj4.1.2cont3
+[select text=["告知自己的来意","……"] label=["*a6","*b6"] labelFile=["main","main"]]
+*a6
+[jump label="*gj4.1.2cont4"]
+*b6
+//[voice file="resources/gj4.1.2/lcy14.wav" vol=100]
+[doctor text="你不说，我帮不了你。我希望你还没有愚蠢到在这种情况下，仍旧觉得我不能信任。"][p][textoff]
+[jump label="*gj4.1.2cont3"]
+*gj4.1.2cont4
+//[voice file="resources/gj4.1.2/lcy15.wav" vol=100]
+[protaspeak text="其实，我之前已经来过一次您的办公室了。当时我发现您的状态与以往不同，定期的独立测试也没有进行，以为自己已经没有研究价值，将要被销毁，出于……求生的本能，就来到了办公室，希望能确认自己是否真的将要被放弃……"][p]
+//[voice file="resources/gj4.1.2/lcy16.wav" vol=100]
+[protagonist text="但现在想来，那所谓的“敷衍”，只是因为有心事而表现出的心不在焉吧。"][p]
+//[voice file="resources/gj4.1.2/lcy17.wav" vol=100]
+[protaspeak text="潜入您的办公室时，我就发现了那份销毁计划书；但那时的我并不知道我一直在12月18日里不断循环，因此，在我看来，销毁行动的时间已经过去……"][p]
+[protaspeak text="但我仍旧认为，行动不会无缘无故地取消，或许是因为什么意外情况而推迟了……"][p]
+[protaspeak text="后的这几天，我一直在思考如何才能避免被执行销毁计划，但也一直没能想出一个万全之策。今天我忽然想到，若是能删除或篡改自己的身份信息，使得销毁计划的名单里不存在一个活着的、需要被销毁的DS-2333，或许我就可以在不被发现的情况下离开基地"][p]
+[protaspeak text="但要神不知鬼不觉地修改身份信息，则必须要直接对基地主电脑里的数据库进行操作，而主电脑的位置，我们试验品一向是没有机会了解的。由我自己慢慢摸索主电脑位置的话，可能会赶不上销毁计划的行动时间，于是我就想来您这里碰碰运气，看看能不能得到主电脑位置相关的情报。"][p]
+//[voice file="resources/gj4.1.2/lcy18.wav" vol=100]
+[doctor text="修改身份信息……这点我也想过，但……"][p]
+[doctor text="等等！"][p]
+[doctor text="之前这个方案行不通，是因为你还没有自我意识，我无法将方案告知与你，因为那时的你只有对集团的“忠诚”，一定会将此事上报，最终会得不偿失；但如今你已经拥有了自我意识，也在筹划着逃离这里，那么事情就简单许多了。"][p]
+[textoff]
+//[se file="resources/gj4.1.2/bump.wav" channel=1 loop=false][p]
+@pretrans
+@sprite index=101 file='resources/gj4.1.2/typing'
+@addto index=101 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+//[voice file="resources/gj4.1.2/lcy19.wav" vol=100]
+[doctor text="主电脑的位置我确实大致知道，但其实主电脑的具体位置，是连研究员也没有权限获知的。我也是想到修改身份信息的方法之后，通过各种渠道，逐渐拼凑出的大体位置。"][p]
+[doctor text="但你来我办公室找这项情报，是必定空手而归的——如此重要的机密信息，而且还是违规获得的，我必然不会随便地存在我的电脑里。"][p]
+[doctor text="这份隐藏着的位置文件经过了重重加密，不仅需要密码，还需要我本人的指纹；保险起见，又带有多种自毁程序。可以说，除非是我本人来取用文件，否则，没有第二个人可以得到它。"][p]
+//[se file="resources/gj4.1.2/type.wav" channel=1 loop=false][p]
+//[voice file="resources/gj4.1.2/lcy20.wav" vol=100]
+[doctor text="这就是那份文件了。里面除了主电脑的位置，还有几乎整个基地的建筑结构，以及监控、控制系统的位置和运行规律、基地内人员的活动规律等等。"][p]
+[doctor text="从研究员和试验品所处的实验区出发，的确可以到达主电脑所在的机房；但这一路上，会遇到重重封锁——之前一直困扰我的问题并不是每道门上必备的密码锁，那些我都已经完全摸清了；使我感到难以解决、并最终迫使我放弃这个方案的的问题是在最后一扇门前的安保人员。"][p]
+[doctor text="他们是之前淘汰下来的试验品，因为当时的技术不够成熟，所以他们被剥夺了智力，但他们的身体强度与你们这批试验品不相上下，论纯粹的身体对抗，连你们都不一定能占上风，更别提我们这些文职人员了。"][p]
+//[voice file="resources/gj4.1.2/lcy21.wav" vol=100]
+[doctor text="如今你也参与这次行动，身体对抗的劣势被抹除，那这一关也就一定会有解决的方案。但还有最关键的一个问题：因为没法接触、也无从了解到这关之后的安保措施，之后的行动，就只能走一步看一步了。"][p]
+[doctor text="我听说，安保人员的身后，就是保护主电脑室的最后一道门。之前的那些封锁，我们若是获得许可，倒也可以通过，然而这最后的一道门，据说只有基地的最高领导人才可以打开。"][p]
+[doctor text="具体的原因我并不清楚，或许打开这道门需要的密码是目前难以被破解的，又或许这道门索性就是指纹锁开启。究竟要怎么才能开门，还需要我们先去试探踩点，之后再想对策。"][p]
+[doctor text="我们唯一的优势是，只要能顺利地离开，不被当场抓住或认出身份，就算任务失败，我们也可以通过逆转时间的方法逃脱检查，避免因为有人试图潜入主电脑室而导致安保措施变得更加严格。"][p]
+[doctor text="也就是说，只要小心行事，我们可以无限次地尝试进入主电脑室。所以，我们在明天的循环里就可以前去踩点，尽量到最后一道门前，弄清楚开门方式，之后几天再找机会开门进去，修改资料。"][p]
+[doctor text="明天上午的我才刚拿到笔记本，无法立刻了解事情经过并带你行动，所以下午的例行注射结束后，我会以额外的独立测试的名义将你带走"][p]
+[doctor text="集中测试时基地内来往的人比较少，更方便我们行动。之后我们会避开监控前往主电脑室，主电脑室附近的监控是每天下午5点对前24小时的监控内容进行审核"][p]
+[doctor text="因此，只要不触发警报，我们有很长一段的时间可以利用。至于如何避免触发警报……我会负责正确输入密码，让安保人员无法拉响警报的工作就交给你了"][p]
+[doctor text="行了，大致安排就是这样，你尽快回去吧，就算我会帮你掩盖事实，离开太久你也一样会受到怀疑的。下午见，DS-2333"][p]
+//[voice file="resources/gj4.1.2/lcy22.wav" vol=100]
+[protagonist text="原来研究员竟为我考虑过这么多……这还是我第一次见研究员对我说这么多话，为我做这么多“不该做的事”。他看起来，似乎与以前有了什么本质上的变化……"][p]
+//[se file="resources/gj4.1.2/door.wav" channel=1 loop=false][p]
+//[voice file="resources/gj4.1.2/lcy23.wav" vol=100]
+[doctor text="哦对了……你……等你成功离开这里……我就……为你起一个名字吧。"][p]
+[doctor text="不是现在的这种编号……而是一个真正的，人类的名字。"][p]
+//[voice file="resources/gj4.1.2/lcy24.wav" vol=100]
+[doctor text="别愣着了，快走吧。"][p]
+//[se file="resources/gj4.1.2/atep.wav" channel=1 loop=false][p]
+//[voice file="resources/gj4.1.2/lcy25.wav" vol=100]
+[protagonist text="这种感觉，究竟是……"][p]
+//[se file="resources/gj4.1.2/closedoor.wav" channel=1 loop=false][p]
+[textoff]
+@pretrans
+@sprite index=102 file='ui/bg/allblack'
+@addto index=102 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+@waittrans
+[jump "*gj5.1"]
+*gj5.1
+//[se file="resources/gj4.1.2/didi.wav" channel=1 loop=false][p]
+@pretrans
+@sprite index=101 file='resources/gj1/doctor'
+@addto index=101 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+//[voice file="resources/gj5.1/lcy1.wav" vol=100]
+[doctor text="下午的例行注射完成。"][p]
+//[se file="resources/gj5.1/stuff.wav" channel=1 loop=false][p]
+//[voice file="resources/gj5.1/lcy2.wav" vol=100]
+[doctor text="DS-2333，今天下午的集中测试不用去参加了。鉴于你最近的身体数据变化，我新增了一次针对你个人情况的独立测试；测试申请已经上报并通过，在集中测试的时间，我会到这间休息室来带你去进行测试"][p]//[se file="resources/gj5.1/step.wav" channel=1 loop=false][p]
+[textoff]
+//[voice file="resources/gj5.1/lcy3.wav" vol=100]
+@pretrans
+@sprite index=102 file='ui/bg/allblack'
+@addto index=102 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+@waittrans
+[protagonist text="看起来一切顺利。看来研究员已经了解了昨天发生的变故。"][p]
+//[voice file="resources/gj5.1/lcy4.wav" vol=100]
+[protagonist text="其实随着循环的次数越来越多，研究员的压力也在与日俱增——每天上午拿回笔记本之后，需要将之前的所有实验情况都了解一遍，然后才能进行新的实验，若是继续这么循环下去，总有一天，研究员会很难在一天内完成了解之前的实验、进行新的实验、记录新的实验结果这一流程……幸好，在这个结果发生之前，我就已经恢复了自我意识。"][p]
+//[voice file="resources/gj5.1/lcy5.wav" vol=100]
+[protagonist text="说起来，昨天下午研究员最后说的那些话，究竟是什么意思呢？也不知道问现在的研究员，他能不能解答……"][p]
+//[voice file="resources/gj5.1/lcy6.wav" vol=100]
+[protagonist text="真正的、人类的名字……那会是什么样的呢？研究员有吗？1024……应该，也只是他的编号吧？"][p]
+//[voice file="resources/gj5.1/lcy6.wav" vol=100]
+[protagonist text="等到这一切都尘埃落定了，再问问他吧。"][p][textoff]
+[jump label="*gj5.1.1"]
+*gj5.1.1
+
 [p]
 @quit
