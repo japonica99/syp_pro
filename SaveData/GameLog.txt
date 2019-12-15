@@ -23,197 +23,6 @@ if(!sf.init){
 @return
 @jump label=*enter
 main.bkscr : *enter
-@pretrans
-@sprite index=102 file="ui/bg/allblack"
-@addto index=102 target=basic_layer opacity=255
-@trans mode="crossfade" time=1000
-@waittrans
-@p
-@jump label=*gj5.1.2
-main.bkscr : *gj5.1.2
-@pretrans
-@sprite index=102 file="resources/gj5.1.2/turn"
-@addto index=102 target=basic_layer opacity=255
-@trans mode="crossfade" time=1000
-@waittrans
-@figurant text="前面就是那安保人员把守的那扇门了。如果我获得的情报没错，应该是有两名试验品站在门前看守。他们有配枪，而且站位边上就有警报器，所以必须要速战速决。你想想有什么办法吧，注意不要发出太大的声响。"
-{
-　macro.bkscr : *figurant
-　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
-　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
-　@textspeed interval=50
-　@text text=text
-　@return
-}
-@p
-@textoff
-@glowyobject file1="resources/gj5.1.2/door" file2="resources/gj5.1.2/door_glow" label=["*a7","*b7"] labelFile=["main","main"] pos=[11,290]
-{
-　extend.bkscr : *glowyobject
-　#var indexes = [];
-　@idlesp get=indexes num=5
-　#var success = true;
-　#var info1 = %[];
-　#tf.curi=0;
-　@action mode="queue"
-　@sprite index=indexes[0] file=file1
-　@sprite index=indexes[1] file=file2
-　@buttonex index=indexes[4] idle=indexes[0] hover=indexes[1] onclick=["*_glowyend","extend","jump","tf.curi=curi",%["curi"=>i],%["ignore"=>1],]
-　#var info2 = %[]
-　@infoex index=indexes[4] get=info2
-　@addto index=indexes[4] target=basic_layer pos=pos opacity=255
-　@action mode="start" target=basic_layer
-　[警告]无效的参数：创建了一个空的并行或者动作队列，该队列将被无视。
-　　　　当试图执行命令（action）时，该错误处于原文件（extend.bkscr）的第261行。
-　@waitbutton
-　extend.bkscr : *_glowyend
-　@action mode="fadeto" opacity=0 time=500 target=indexes[4]
-　@waitaction index=indexes[4]
-　@remove index=indexes[4] delete=true
-　@returnto label="*a7" file="main"}
-main.bkscr : *a7
-@jump label=*gj5.1.2cont1
-main.bkscr : *gj5.1.2cont1
-@pretrans
-@sprite index=102 file="resources/gj5.1.2/corridor"
-@addto index=102 target=basic_layer opacity=255
-@trans mode="crossfade" time=1000
-@waittrans
-@protagonist text="是那两名负责安保的试验品……"
-{
-　macro.bkscr : *protagonist
-　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
-　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
-　@textspeed interval=50
-　@text text=text
-　@return
-}
-@p
-@textoff
-@pretrans
-@sprite index=102 file="resources/gj5.1.2/turn"
-@addto index=102 target=basic_layer opacity=255
-@trans mode="crossfade" time=1000
-@waittrans
-@glowyobject file1="resources/gj5.1.2/up" file2="resources/gj5.1.2/up_glow" label=["*a8","*b8"] labelFile=["main","main"] pos=[890,1]
-{
-　extend.bkscr : *glowyobject
-　#var indexes = [];
-　@idlesp get=indexes num=5
-　#var success = true;
-　#var info1 = %[];
-　#tf.curi=0;
-　@action mode="queue"
-　@sprite index=indexes[0] file=file1
-　@sprite index=indexes[1] file=file2
-　@buttonex index=indexes[4] idle=indexes[0] hover=indexes[1] onclick=["*_glowyend","extend","jump","tf.curi=curi",%["curi"=>i],%["ignore"=>1],]
-　#var info2 = %[]
-　@infoex index=indexes[4] get=info2
-　@addto index=indexes[4] target=basic_layer pos=pos opacity=255
-　@action mode="start" target=basic_layer
-　[警告]无效的参数：创建了一个空的并行或者动作队列，该队列将被无视。
-　　　　当试图执行命令（action）时，该错误处于原文件（extend.bkscr）的第261行。
-　@waitbutton
-　extend.bkscr : *_glowyend
-　@action mode="fadeto" opacity=0 time=500 target=indexes[4]
-　@waitaction index=indexes[4]
-　@remove index=indexes[4] delete=true
-　@returnto label="*a8" file="main"}
-main.bkscr : *a8
-@jump label=*gj5.1.2cont2
-main.bkscr : *gj5.1.2cont2
-@pretrans
-@sprite index=102 file="resources/gj5.1.2/otherside"
-@addto index=102 target=basic_layer opacity=255
-@trans mode="crossfade" time=1000
-@waittrans
-@p
-@pretrans
-@sprite index=102 file="resources/gj5.1.2/window"
-@addto index=102 target=basic_layer opacity=255
-@trans mode="crossfade" time=1000
-@waittrans
-@protagonist text="通风口……等等！刚才那两名试验品的站位上方也是通风口！或许我可以利用通风口，神不知鬼不觉地转移到他们的头顶上方，偷袭他们！"
-{
-　macro.bkscr : *protagonist
-　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
-　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
-　@textspeed interval=50
-　@text text=text
-　@return
-}
-@p
-`
-@textoff
-@p
-@pretrans
-@sprite index=102 file="resources/gj5.1.2/bigwin"
-@addto index=102 target=basic_layer opacity=255
-@trans mode="crossfade" time=1000
-@waittrans
-@protagonist text="唔……跳上来抓住倒是挺容易，但怎么才能在扒着通风口的情况下把它打开呢……"
-{
-　macro.bkscr : *protagonist
-　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
-　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
-　@textspeed interval=50
-　@text text=text
-　@return
-}
-@p
-@figurant text="踩住我的肩。"
-{
-　macro.bkscr : *figurant
-　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
-　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
-　@textspeed interval=50
-　@text text=text
-　@return
-}
-@p
-@protagonist text="竟然……直接跪了下来，让我踩上去？"
-{
-　macro.bkscr : *protagonist
-　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
-　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
-　@textspeed interval=50
-　@text text=text
-　@return
-}
-@p
-@protagonist text="我的研究员……为我付出了不少啊。"
-{
-　macro.bkscr : *protagonist
-　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
-　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
-　@textspeed interval=50
-　@text text=text
-　@return
-}
-@p
-@protagonist text="抱歉，得冒犯您了。"
-{
-　macro.bkscr : *protagonist
-　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
-　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
-　@textspeed interval=50
-　@text text=text
-　@return
-}
-@p
-@textoff
-@pretrans
-@sprite index=102 file="resources/gj5.1.2/nowin"
-@addto index=102 target=basic_layer opacity=255
-@trans mode="crossfade" time=1000
-@waittrans
-@p
-@pretrans
-@sprite index=102 file="ui/bg/allblack"
-@addto index=102 target=basic_layer opacity=255
-@trans mode="crossfade" time=1000
-@waittrans
-@p
 @protagonist text="两边似乎是相通的！这个方案可行！"
 {
 　macro.bkscr : *protagonist
@@ -312,6 +121,663 @@ main.bkscr : *gj5.1.2cont2
 }
 @p
 @textoff
+@jump label=*gj5.1.3
+main.bkscr : *gj5.1.3
+@figurant text="这道门，应该就是那据说只有基地的最高领导人才可以打开的门了"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@figurant text="这是……"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@figurant text="主电脑室，我们应该是进不去了"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@select text=["怎么回事？","为什么？"] label=["*A5","*B5"] labelFile=["main","main"]
+{
+　extend.bkscr : *select
+　#var size = label.size;
+　#var indexes = [];
+　@idlesp get=indexes num=size*5
+　#var success = true;
+　#var info1 = %[];
+　@info file="ui/selectionbutton" get=info1
+　#var zorder;
+　@zorder index=message_layer get=zorder
+　#tf.curi=0;
+　@action mode="queue"
+　@for var=i range=range(size)
+　　@sprite index=indexes[(i*5)] file="ui/selectionbutton"
+　　@sprite index=indexes[(i*5+1)] file="ui/selectionbutton_on"
+　　@textsprite index=indexes[(i*5+2)] text=text[i] color=0
+　　@anchor index=indexes[(i*5+2)] set="center"
+　　@textsprite index=indexes[(i*5+3)] text=text[i] color=0
+　　@anchor index=indexes[(i*5+3)] set="center"
+　　@addto index=indexes[(i*5+2)] target=indexes[(i*5)] pos=[info1.width/2,info1.height/2,]
+　　@addto index=indexes[(i*5+3)] target=indexes[(i*5+1)] pos=[info1.width/2,info1.height/2+2,]
+　　@buttonex index=indexes[(i*5+4)] idle=indexes[(i*5)] hover=indexes[(i*5+1)] onclick=["*_selectend","extend","jump","tf.curi=curi",%["curi"=>i],%["ignore"=>1],]
+　　#var info2 = %[]
+　　@infoex index=indexes[(i*5+4)] get=info2
+　　#var winsize = System.resolutionSize;
+　　#var w = ( winsize[0] - info2.width ) / 2;
+　　#var h = ( winsize[1] - info2.height * size - ( size-1 ) * 50 ) / 2;
+　　@addto index=indexes[(i*5+4)] target=basic_layer zorder=zorder pos=[w,h+i*(50+info2.height),] opacity=0
+　　@action mode="fadeto" opacity=255 time=400 target=indexes[(i*5+4)]
+　　@next
+　@action mode="start" target=basic_layer
+　@waitbutton
+　extend.bkscr : *_selectend
+　@for var=i range=range(size)
+　　@action mode="fadeto" opacity=0 time=500 target=indexes[(i*5+4)]
+　　@next
+　@waitaction index=indexes[4]
+　@for var=i range=range(size)
+　　@remove index=indexes[(i*5+4)] delete=true
+　　@next
+　@returnto label="*B5" file="main"}
+main.bkscr : *B5
+@jump label=*gj5.1.3cont1
+main.bkscr : *gj5.1.3cont1
+@figurant text="你自己来看吧。怪不得说旁人不可能打开……这道锁，利用的是虹膜识别技术。虹膜识别的安全系数比指纹和掌纹识别还要高，指纹和掌纹尚且可以较为轻易地复制，但虹膜不可脱离人体，基本无法复制……而且虹膜识别的一大特点是活体检测，也就是说，不能利用照片之类投机取巧的方法解锁，只能……绑架那个拥有可以解开这道所的虹膜的人，带他过来开这道锁……但这显然不可能实现……"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@pretrans
+@sprite index=102 file="resources/gj5.1.3/eye"
+@addto index=102 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@waittrans
+@protagonist text="竟然是虹膜识别……这个逃离方案就要这么失败了吗？或许……试试看绑架那位最高领导者？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@figurant text="都已经到这一步了，就这么前功尽弃了么……"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@figurant text="你让一下……我再看看这个虹膜识别装置，有没有拆卸或者破坏的可能性……"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@pretrans
+@sprite index=102 file="ui/bg/allblack"
+@addto index=102 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@waittrans
+@p
+@pretrans
+@sprite index=102 file="resources/gj5.1.2/atthedoor"
+@addto index=102 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@waittrans
+@figurant text="虹膜数据匹配成功，欢迎您，Phantom先生。"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@pretrans
+@sprite index=101 file="resources/gj3.1.1/door"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@p
+@pretrans
+@sprite index=101 file="resources/gj5.1.3/open2"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@figurant text="……"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="……"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@figurant text="刚才……发生了什么？"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@select text=["不知道。","这个问题，不是应该问你吗？"] label=["*a9","*b9"] labelFile=["main","main"]
+{
+　extend.bkscr : *select
+　#var size = label.size;
+　#var indexes = [];
+　@idlesp get=indexes num=size*5
+　#var success = true;
+　#var info1 = %[];
+　@info file="ui/selectionbutton" get=info1
+　#var zorder;
+　@zorder index=message_layer get=zorder
+　#tf.curi=0;
+　@action mode="queue"
+　@for var=i range=range(size)
+　　@sprite index=indexes[(i*5)] file="ui/selectionbutton"
+　　@sprite index=indexes[(i*5+1)] file="ui/selectionbutton_on"
+　　@textsprite index=indexes[(i*5+2)] text=text[i] color=0
+　　@anchor index=indexes[(i*5+2)] set="center"
+　　@textsprite index=indexes[(i*5+3)] text=text[i] color=0
+　　@anchor index=indexes[(i*5+3)] set="center"
+　　@addto index=indexes[(i*5+2)] target=indexes[(i*5)] pos=[info1.width/2,info1.height/2,]
+　　@addto index=indexes[(i*5+3)] target=indexes[(i*5+1)] pos=[info1.width/2,info1.height/2+2,]
+　　@buttonex index=indexes[(i*5+4)] idle=indexes[(i*5)] hover=indexes[(i*5+1)] onclick=["*_selectend","extend","jump","tf.curi=curi",%["curi"=>i],%["ignore"=>1],]
+　　#var info2 = %[]
+　　@infoex index=indexes[(i*5+4)] get=info2
+　　#var winsize = System.resolutionSize;
+　　#var w = ( winsize[0] - info2.width ) / 2;
+　　#var h = ( winsize[1] - info2.height * size - ( size-1 ) * 50 ) / 2;
+　　@addto index=indexes[(i*5+4)] target=basic_layer zorder=zorder pos=[w,h+i*(50+info2.height),] opacity=0
+　　@action mode="fadeto" opacity=255 time=400 target=indexes[(i*5+4)]
+　　@next
+　@action mode="start" target=basic_layer
+　@waitbutton
+　extend.bkscr : *_selectend
+　@for var=i range=range(size)
+　　@action mode="fadeto" opacity=0 time=500 target=indexes[(i*5+4)]
+　　@next
+　@waitaction index=indexes[4]
+　@for var=i range=range(size)
+　　@remove index=indexes[(i*5+4)] delete=true
+　　@next
+　@returnto label="*b9" file="main"}
+main.bkscr : *b9
+@jump label=*gj5.1.3cont2
+main.bkscr : *gj5.1.3cont2
+@figurant text="只是凑上去看了看那个识别装置……难道是我的虹膜可以解锁？不可能啊……这道门我们研究员是不可能打得开的，而且我们身体检测时并没有虹膜信息录入这一项……"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@figurant text="虹膜是有唯一性的，总不会是我的虹膜数据恰巧跟那位最高领导者的一样吧……等等，难道是……"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@figurant text="……"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@select text=["……","研究员？"] label=["*a10","*b10"] labelFile=["main","main"]
+{
+　extend.bkscr : *select
+　#var size = label.size;
+　#var indexes = [];
+　@idlesp get=indexes num=size*5
+　#var success = true;
+　#var info1 = %[];
+　@info file="ui/selectionbutton" get=info1
+　#var zorder;
+　@zorder index=message_layer get=zorder
+　#tf.curi=0;
+　@action mode="queue"
+　@for var=i range=range(size)
+　　@sprite index=indexes[(i*5)] file="ui/selectionbutton"
+　　@sprite index=indexes[(i*5+1)] file="ui/selectionbutton_on"
+　　@textsprite index=indexes[(i*5+2)] text=text[i] color=0
+　　@anchor index=indexes[(i*5+2)] set="center"
+　　@textsprite index=indexes[(i*5+3)] text=text[i] color=0
+　　@anchor index=indexes[(i*5+3)] set="center"
+　　@addto index=indexes[(i*5+2)] target=indexes[(i*5)] pos=[info1.width/2,info1.height/2,]
+　　@addto index=indexes[(i*5+3)] target=indexes[(i*5+1)] pos=[info1.width/2,info1.height/2+2,]
+　　@buttonex index=indexes[(i*5+4)] idle=indexes[(i*5)] hover=indexes[(i*5+1)] onclick=["*_selectend","extend","jump","tf.curi=curi",%["curi"=>i],%["ignore"=>1],]
+　　#var info2 = %[]
+　　@infoex index=indexes[(i*5+4)] get=info2
+　　#var winsize = System.resolutionSize;
+　　#var w = ( winsize[0] - info2.width ) / 2;
+　　#var h = ( winsize[1] - info2.height * size - ( size-1 ) * 50 ) / 2;
+　　@addto index=indexes[(i*5+4)] target=basic_layer zorder=zorder pos=[w,h+i*(50+info2.height),] opacity=0
+　　@action mode="fadeto" opacity=255 time=400 target=indexes[(i*5+4)]
+　　@next
+　@action mode="start" target=basic_layer
+　@waitbutton
+　extend.bkscr : *_selectend
+　@for var=i range=range(size)
+　　@action mode="fadeto" opacity=0 time=500 target=indexes[(i*5+4)]
+　　@next
+　@waitaction index=indexes[4]
+　@for var=i range=range(size)
+　　@remove index=indexes[(i*5+4)] delete=true
+　　@next
+　@returnto label="*b10" file="main"}
+main.bkscr : *b10
+@jump label=*gj5.1.3cont3
+main.bkscr : *gj5.1.3cont3
+@figurant text="先不管这个了。既然门开了，就先进去吧"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@pretrans
+@sprite index=101 file="resources/gj5.1.3/openin"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@protagonist text="是我的错觉吗？为什么我感觉……研究员忽然变得不太一样了？是……想到了什么吗？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="为什么不说呢？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@pretrans
+@sprite index=102 file="ui/bg/allblack"
+@addto index=102 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@waittrans
+@p
+@jump label=*gj5.1.4
+main.bkscr : *gj5.1.4
+@pretrans
+@sprite index=101 file="resources/gj5.1.4/computer"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@figurant text="这里应该就是主电脑室没有错。现在，只需要进入主电脑的数据库，修改信息就可以了。就由你自己来操作吧，毕竟，这类操作也是你们基本功的一部分，不是么？"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@pretrans
+@sprite index=101 file="resources/gj5.1.4/screen"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@protagonist text="研究员让我来操作，那他在做什么呢？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@pretrans
+@sprite index=101 file="resources/gj5.1.4/thinking"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@protagonist text="研究员他……这是在做什么？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="自从进入这间房间，研究员的状态就有些不太对劲……不，是从意外打开那把锁开始的……究竟想到了什么，会让他不顾这次来的目的，独自陷入沉思？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="唯一能确定的一点是：他对我没有恶意，和其他的研究员相比，甚至显得过分温和。他不可能是那个最高领导者，因为他没必要纡尊来演这一出戏。所以问题在于，锁究竟是怎么开的？是哪儿出了差错，又是什么，使我的研究员变得如此反常？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@pretrans
+@sprite index=101 file="resources/gj5.1.4/ok"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@protagonist text="身份信息修改成功了。现在的DS-2333，已经是因为实验问题死亡的试验品之一了。之后的行动，只需要避免遇到身份检查的环节就可以了。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="还是赶紧离开吧，也不知道那两名安保人员的身体抗性如何，什么时候会醒……"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@pretrans
+@sprite index=101 file="resources/gj5.1.4/thinking"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@protagonist text="……"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@textoff
+@pretrans
+@sprite index=101 file="resources/gj5.1.4/up"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=50
+@figurant text="已经处理完了么？那赶紧走吧，免得拖拖拉拉的暴露身份"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@pretrans
+@sprite index=102 file="ui/bg/allblack"
+@addto index=102 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@waittrans
+@protagonist text="他根本没有注意数据库的处理情况……研究员他……究竟在想些什么呢？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@jump label=*gj5.1.5
+main.bkscr : *gj5.1.5
+@pretrans
+@sprite index=101 file="resources/gj3.1.1/office"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@protagonist text="顺利离开主电脑室，回到实验区了。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="第一次尝试行动就完成了修改数据库的最终目标……这个结果，研究员应该也想不到吧。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="不过说起研究员……他回到办公室之后，就不再是方才那种反常的状态了……"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@figurant text="虽然没有想到能够如此轻易地完成任务，但既然已经完成了既定目标，那么索性就提前行动时间吧。没有多少继续循环下去的必要了，今晚我就会结束时间逆转装置，进入12月19日。所以，我们现在就需要确定明天的撤离方案。"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@pretrans
+@sprite index=101 file="resources/gj5.1.5/screen"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@figurant text="之前考虑过偷偷把你送走，所以我制定了这样一份撤离计划，并申请转移了一套睡眠舱样本；你的身份信息已经被修改，没必要回你的休息室了，你直接在这里等着吧。明天销毁行动开始后，你在这儿躲过人员检查，之后按照这份方案上的撤离路线走，到这个用于转移设备的仓库去，躲进睡眠舱，跟着货车离开。具体的行动步骤和细节都在这份文件里了，你有一晚上的时间研究。还有什么问题吗？"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@select text=["没有了。","今天在主电脑室，你在想些什么？"] label=["*a11","*b11"] labelFile=["main","main"]
+{
+　extend.bkscr : *select
+　#var size = label.size;
+　#var indexes = [];
+　@idlesp get=indexes num=size*5
+　#var success = true;
+　#var info1 = %[];
+　@info file="ui/selectionbutton" get=info1
+　#var zorder;
+　@zorder index=message_layer get=zorder
+　#tf.curi=0;
+　@action mode="queue"
+　@for var=i range=range(size)
+　　@sprite index=indexes[(i*5)] file="ui/selectionbutton"
+　　@sprite index=indexes[(i*5+1)] file="ui/selectionbutton_on"
+　　@textsprite index=indexes[(i*5+2)] text=text[i] color=0
+　　@anchor index=indexes[(i*5+2)] set="center"
+　　@textsprite index=indexes[(i*5+3)] text=text[i] color=0
+　　@anchor index=indexes[(i*5+3)] set="center"
+　　@addto index=indexes[(i*5+2)] target=indexes[(i*5)] pos=[info1.width/2,info1.height/2,]
+　　@addto index=indexes[(i*5+3)] target=indexes[(i*5+1)] pos=[info1.width/2,info1.height/2+2,]
+　　@buttonex index=indexes[(i*5+4)] idle=indexes[(i*5)] hover=indexes[(i*5+1)] onclick=["*_selectend","extend","jump","tf.curi=curi",%["curi"=>i],%["ignore"=>1],]
+　　#var info2 = %[]
+　　@infoex index=indexes[(i*5+4)] get=info2
+　　#var winsize = System.resolutionSize;
+　　#var w = ( winsize[0] - info2.width ) / 2;
+　　#var h = ( winsize[1] - info2.height * size - ( size-1 ) * 50 ) / 2;
+　　@addto index=indexes[(i*5+4)] target=basic_layer zorder=zorder pos=[w,h+i*(50+info2.height),] opacity=0
+　　@action mode="fadeto" opacity=255 time=400 target=indexes[(i*5+4)]
+　　@next
+　@action mode="start" target=basic_layer
+　@waitbutton
+　extend.bkscr : *_selectend
+　@for var=i range=range(size)
+　　@action mode="fadeto" opacity=0 time=500 target=indexes[(i*5+4)]
+　　@next
+　@waitaction index=indexes[4]
+　@for var=i range=range(size)
+　　@remove index=indexes[(i*5+4)] delete=true
+　　@next
+　@returnto label="*b11" file="main"}
+main.bkscr : *b11
+@figurant text="没什么。"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@jump label=*gj5.1.5cont1
+main.bkscr : *gj5.1.5cont1
+@figurant text="没有别的问题的话，我就先走了。"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@pretrans
+@sprite index=101 file="resources/gj5.1.5/back"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@figurant text="我们应该不会再见了。明天我会跟在研究员的队伍里离开……祝你好运吧。"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@pretrans
+@sprite index=101 file="resources/gj5.1.5/back"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@protagonist text="“不会再见了”？虽说从方案上看，确实我们明天的路线不会有交集……但既然是这样，他之前又为什么会说，等我成功离开，就为我起名呢？明明在我按这个方案离开之后，我们永远都不会再见面了……"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@pretrans
+@sprite index=102 file="ui/bg/allblack"
+@addto index=102 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@waittrans
+@jump label=*gj6.1
+main.bkscr : *gj6.1
+@p
 @quit
 【错误】脚本文件执行到末端。
-　　　　该错误处于原文件（main.bkscr）的第1261行。
+　　　　该错误处于原文件（main.bkscr）的第1468行。

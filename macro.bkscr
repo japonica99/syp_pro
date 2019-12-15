@@ -5,7 +5,6 @@
 [macro name="typewriter" text pos rect]
 [macro name="figurant" text]
 [macro name="protagonist" text]
-[macro name="doctor" text]
 [macro name="protaspeak" text]
 [macro name="card" text]
 [return]
