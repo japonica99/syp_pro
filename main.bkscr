@@ -1274,4 +1274,88 @@ deadcode[p]
 *B5
 [jump label="*gj5.1.3cont1"]
 *gj5.1.3cont1
+//[voice file="resources/gj5.1.3/lcy3.wav" vol=100]
+[figurant text="你自己来看吧。怪不得说旁人不可能打开……这道锁，利用的是虹膜识别技术。虹膜识别的安全系数比指纹和掌纹识别还要高，指纹和掌纹尚且可以较为轻易地复制，但虹膜不可脱离人体，基本无法复制……而且虹膜识别的一大特点是活体检测，也就是说，不能利用照片之类投机取巧的方法解锁，只能……绑架那个拥有可以解开这道所的虹膜的人，带他过来开这道锁……但这显然不可能实现……"][p]
+[textoff]
+//[se file="resources/gj5.1.3/step.wav" channel=1 loop=false][p]
+@pretrans
+@sprite index=102 file='resources/gj5.1.3/eye'
+@addto index=102 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+@waittrans
+//[voice file="resources/gj5.1.3/lcy4.wav" vol=100]
+[protagonist text="竟然是虹膜识别……这个逃离方案就要这么失败了吗？或许……试试看绑架那位最高领导者？"][p]
+//[voice file="resources/gj5.1.3/lcy5.wav" vol=100]
+[figurant text="都已经到这一步了，就这么前功尽弃了么……"][p]
+[figurant text="你让一下……我再看看这个虹膜识别装置，有没有拆卸或者破坏的可能性……"][p][textoff]
+@pretrans
+@sprite index=102 file='ui/bg/allblack'
+@addto index=102 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+@waittrans
+[p]
+@pretrans
+@sprite index=102 file='resources/gj5.1.2/atthedoor'
+@addto index=102 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+@waittrans
+//[se file="resources/gj5.1.3/success.wav" channel=1 loop=false][p]
+//[voice file="resources/gj5.1.3/woman1.wav" vol=100]
+[figurant text="虹膜数据匹配成功，欢迎您，Phantom先生。"][p]
+[textoff]
+@pretrans
+@sprite index=101 file='resources/gj3.1.1/door'
+@addto index=101 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+//[se file="resources/gj5.1.3/open.wav" channel=1 loop=false]\
+[p]
+@pretrans
+@sprite index=101 file='resources/gj5.1.3/open2'
+@addto index=101 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+[figurant text="……"][p]
+[protagonist text="……"][p]
+//[voice file="resources/gj5.1.3/lcy6.wav" vol=100]
+[figurant text="刚才……发生了什么？"][p][textoff]
+[select text=["不知道。","这个问题，不是应该问你吗？"] label=["*a9","*b9"] labelFile=["main","main"]]
+*a9
+[jump label="*gj5.1.3cont2"]
+*b9
+[jump label="*gj5.1.3cont2"]
+*gj5.1.3cont2
+//[voice file="resources/gj5.1.3/lcy6.wav" vol=100]
+[figurant text="只是凑上去看了看那个识别装置……难道是我的虹膜可以解锁？不可能啊……这道门我们研究员是不可能打得开的，而且我们身体检测时并没有虹膜信息录入这一项……"][p]
+[figurant text="虹膜是有唯一性的，总不会是我的虹膜数据恰巧跟那位最高领导者的一样吧……等等，难道是……"][p]
+[figurant text="……"][p][textoff]
+[select text=["……","研究员？"] label=["*a10","*b10"] labelFile=["main","main"]]
+*a10
+[jump label="*gj5.1.3cont3"]
+*b10
+[jump label="*gj5.1.3cont3"]
+*gj5.1.3cont3
+//[voice file="resources/gj5.1.3/lcy7.wav" vol=100]
+[figurant text="先不管这个了。既然门开了，就先进去吧"][p]
+[textoff]
+@pretrans
+@sprite index=101 file='resources/gj5.1.3/openin'
+@addto index=101 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+//[voice file="resources/gj5.1.3/lcy8.wav" vol=100]
+[protagonist text="是我的错觉吗？为什么我感觉……研究员忽然变得不太一样了？是……想到了什么吗？"][p]
+//[voice file="resources/gj5.1.3/lcy9.wav" vol=100]
+[protagonist text="为什么不说呢？"][p]
+[textoff]
+@pretrans
+@sprite index=102 file='ui/bg/allblack'
+@addto index=102 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+@waittrans
+[p]
+[jump label="*gj5.1.4"]
+*gj5.1.4
+@pretrans
+@sprite index=101 file='resources/gj5.1.4/computer'
+@addto index=101 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+[p]
 @quit
