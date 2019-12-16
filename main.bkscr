@@ -1,14 +1,8 @@
 ﻿*main
 @call '*init' 'init'
 [jump label="*enter"]
-//*enter
+*enter
 [white_in_middle text="数字视音频音乐制作 请戴好耳机"]
-[p]
-[white_in_middle text="......"]
-[p]
-[white_in_middle text="那是什么..."]
-[p]
-[white_in_middle text="是我么..."]
 [p]
 [white_in_middle text="......"]
 [p]
@@ -298,28 +292,33 @@
 [textoff]
 [jump label="*gj2.2.2"]
 *gj2.2.2
-//[voice file="resources/gj2.2.2/lcy1.wav" vol=100]
+[voice file="resources/gj2.2.2/lcy1.wav" vol=100]
 [protagonist text="今天果然还是没有进行独立测试。"][p]
-//[voice file="resources/gj2.2.2/lcy2.wav" vol=100]
+[voice file="resources/gj2.2.2/lcy2.wav" vol=100]
 [protagonist text="如果我真的是要被抛弃了怎么办？我见过那些被淘汰的试验品，他们被运送去销毁室的时候都是一副毫无生机的样子，有的虽然睁着眼，却跟那些布偶没什么两样。"][p]
-//[se file="resources/gj2.2.2/clap.wav" channel=1 loop=false]
-//[voice file="resources/gj2.2.2/lcy3.wav" vol=100]
+[textoff]
+[se file="resources/gj2.2.2/clap.wav" channel=1 loop=false][p]
+[voice file="resources/gj2.2.2/lcy3.wav" vol=100]
 [protagonist text="要是我也变成那样……"][p]
+[voice file="resources/gj2.2.2/lcy4.wav" vol=100]
 [protagonist text="不会的不会的！如果要把我淘汰，怎么会还浪费资源每天进行检查呢！研究员提到什么实验成功……一定是研究员忙着做这个实验临时取消了独立测试。对，一定是这样！我只管听研究员的就好了。"][p]
-//[se file="resources/gj2.2.2/collide.wav" channel=1 loop=false][p]
-//[voice file="resources/gj2.2.2/lcy4.wav" vol=100]
+[textoff]
+[se file="resources/gj2.2.2/collide.wav" channel=1 loop=false][p]
+[voice file="resources/gj2.2.2/lcy5.wav" vol=100]
 [protagonist text="这……"][p]
-//[voice file="resources/gj2.2.2/lcy5 .wav" vol=100]
+[voice file="resources/gj2.2.2/lcy6.wav" vol=100]
 [protagonist text="真是的，我怎么这么不小心，是不是应该先去找物资组说一下？哎，又要被他们念叨了。"][p]
-//[se file="resources/gj2.2.2/chair.wav" channel=1 loop=false][p]
+[textoff]
+[se file="resources/gj2.2.2/chair.wav" channel=1 loop=false][p]
 //[voice file="resources/gj2.2.2/woman1.wav" vol=100]
 [figurant text="睡眠时间已到，请在一分钟内回到睡眠舱。"]
-//[voice file="resources/gj2.2.2/lcy6 .wav" vol=100]
+[voice file="resources/gj2.2.2/lcy7.wav" vol=100]
 [protagonist text="这么快已经到睡眠时间了吗？算了，那明天早上等物资组来的时候再跟他们说好了，反正总归不是什么紧急的事情。"][p]
-//[se file="resources/gj2.2.2/sleepprepare.wav" channel=1 loop=false][p]
-//[voice file="resources/gj2.2.2/woman1.wav" vol=100]
+[textoff]
+[se file="resources/gj2.2.2/sleepprepare.wav" channel=1 loop=false][p]
+[voice file="resources/gj2.2.2/woman2.wav" vol=100]
 [figurant text="电子女声：DS-2333，生命体征正常，正在进入睡眠模式。"]
-//[voice file="resources/gj2.2.2/lcy7 .wav" vol=100]
+[voice file="resources/gj2.2.2/lcy8.wav" vol=100]
 [protagonist text="或许明天，我的疑问会有解答吗。"][p]
 [textoff]
 [jump label="*gj3.2"]
@@ -469,10 +468,10 @@
 //用按钮扩展写个发光纸片吧
 [glowyobject file1='resources/gj3.1.1/paper' file2='resources/gj3.1.1/paper_glow' label=["*a1","*b1"] labelFile=["main","main"] pos=[68,204]]
 *a1
-[jump "*3.1.1cont"]
+[jump "*gj3.1.1cont"]
 *b1
 dead code only[p]
-*3.1.1cont
+*gj3.1.1cont
 [textoff]
 [se file="resources/gj3.1.1/pape.wav" channel=1 loop=false][p]
 @pretrans
@@ -756,10 +755,10 @@ deadcode[p]
 *notebook
 [glowyobject file1="resources/gj4.1.1.1/notebook" file2="resources/gj4.1.1.1/notebook_glow" label=["*a3","*b3"] labelFile=["main","main"] pos=[121,134]]
 *a3
-[jump label="*4.1.1.1cont"]
+[jump label="*gj4.1.1.1cont"]
 *b3
 supposed to be dead code[p]
-*4.1.1.1cont
+*gj4.1.1.1cont
 //[se file="resources/gj4.1.1.1/paper.wav" channel=1 loop=false]
 @pretrans
 @sprite index=101 file='resources/gj4.1.1.1/page1'
@@ -912,48 +911,52 @@ supposed to be dead code[p]
 [protagonist text="还是打开看看吧。"][p][textoff]
 [jump label="*notebook"]
 *gj4.1.2
-//[se file="resources/gj4.1.2/close.wav" channel=1 loop=false][p]
+[textoff]
+[se file="resources/gj4.1.2/close.wav" channel=1 loop=false][p]
 @pretrans
 @sprite index=102 file='ui/bg/allblack'
 @addto index=102 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000
 @waittrans
-//[voice file="resources/gj4.1.2/lcy1.wav" vol=100]
+[voice file="resources/gj4.1.2/lcy1.wav" vol=100]
 [protagonist text="销毁计划、逆转时间、反抑制实验……"][p]
-//[voice file="resources/gj4.1.2/lcy2.wav" vol=100]
+[voice file="resources/gj4.1.2/lcy2.wav" vol=100]
 [protagonist text="虽然依旧有些难以相信，但如果是研究员逆转了时间，那之前一切不寻常的事就都有了合理的解释。"][p]
-//[voice file="resources/gj4.1.2/lcy3.wav" vol=100]
-[protagonist text="研究员的通过重复的时间逆转，将时间“锁”在了12月18日这一天，不断地经历循环；其他的一切都会在新的12月8日到来时被刷新重置，正因如此，就算我放掉了催眠气体，在新的12月18日到来之时，它也会被重置成12月18日零点时应有的气体储量"][p]
-//[voice file="resources/gj4.1.2/lcy4.wav" vol=100]
+[voice file="resources/gj4.1.2/lcy3.wav" vol=100]
+[protagonist text="研究员通过重复的时间逆转，将时间“锁”在了12月18日这一天，不断地经历循环；其他的一切都会在新的12月8日到来时被刷新重置，正因如此，就算我放掉了催眠气体，在新的12月18日到来之时，它也会被重置成12月18日零点时应有的气体储量"][p]
+[voice file="resources/gj4.1.2/lcy4.wav" vol=100]
 [protagonist text="而我和这本笔记，则凭借改造后的睡眠舱穿梭时间，对我和笔记而言，我们不会被刷新重置，时间一直是正常前进的，因此，我们算是这一次次的循环的“见证者”。但意识的穿梭比物质的穿梭更为复杂，在拥有自我意识之前，虽然我的身体和笔记本一样，在每一次时间被逆转为12月18日时并没有被刷新重置，但因为我没有自我意识，原有的那些所谓的“思维”更像是一种人工智能"][p]
-//[voice file="resources/gj4.1.2/lcy5.wav" vol=100]
+[voice file="resources/gj4.1.2/lcy5.wav" vol=100]
 [protagonist text="所以，我和笔记本一样，虽然确确实实经历了时间的逆转，但因为没有“意识”，便无法感知“循环”的过程。"][p]
-//[voice file="resources/gj4.1.2/lcy6.wav" vol=100]
+[voice file="resources/gj4.1.2/lcy6.wav" vol=100]
 [protagonist text="直到那天，我突然“醒”了过来，有了自己的思考，有了自我意识，因此我才发现，我在不断地重复经历着12月18日……"][p]
-//[se file="resources/gj4.1.2/wakeup.wav" channel=1 loop=false][p]
-//[voice file="resources/gj4.1.2/lcy7.wav" vol=100]
+[textoff]
+[se file="resources/gj4.1.2/wakeup.wav" channel=1 loop=false][p]
+[voice file="resources/gj4.1.2/lcy7.wav" vol=100]
 [protagonist text="糟糕！翻阅笔记本耗费了太多时间……"][p]
-//[se file="resources/gj4.1.2/getup.wav" channel=1 loop=false][p]
+[se file="resources/gj4.1.2/getup.wav" channel=1 loop=false][p]
 @pretrans
 @sprite index=101 file='resources/gj4.1.1.1/doctor'
 @addto index=101 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000
-//[voice file="resources/gj4.1.2/lcy8.wav" vol=100]
+[voice file="resources/gj4.1.2/lcy8.wav" vol=100]
 [protagonist text="但他并没有下一步的动作，只是看起来，像是确信了什么东西……"][p]
-//[voice file="resources/gj4.1.2/lcy9.wav" vol=100]
+[voice file="resources/gj4.1.2/lcy9.wav" vol=100]
 [figurant text="真的是你……你是什么时候恢复自我意识的？"][p][textoff]
 [select text=["在问你为什么没有独立测试的一周前。","你为什么要让我拥有自我意识？"] label=["*a4","*b4"] labelFile=["main","main"]]
-//[voice file="resources/gj4.1.2/lcy10.wav" vol=100]
 *a4
 [jump label="*gj4.1.2cont1"]
 *b4
 [jump label="*gj4.1.2cont1"]
 *gj4.1.2cont1
-//[voice file="resources/gj4.1.2/lcy11.wav" vol=100]
-[figurant text="你问独立测试的时候，我猜想你是不是有自我意识，可以自主的思考了，但当时的实验，并没有什么重大的突破，我觉得不可能……“武器”销毁计划的筹备很完善——哦，你应该还不清楚这个计划是什么……"][p]
+[voice file="resources/gj4.1.2/lcy10.wav" vol=100]
+[figurant text="你问独立测试的时候，我猜想你是不是有自我意识，可以自主的思考了，但当时的实验，并没有什么重大的突破，我觉得不可能……"][p]
+[voice file="resources/gj4.1.2/lcy10-1.wav" vol=100]
+[figurant text="“武器”销毁计划的筹备很完善——哦，你应该还不清楚这个计划是什么……"][p]
 [figurant text="集团似乎是出了什么变故，要集体转移，但只会带走研究人员、相关资料和核心设备，而你们作为试验品，只是“武器”研究的“中间产物”，所以并不在转移名单之内，将会被全数销毁……"][p]
+[voice file="resources/gj4.1.2/lcy10-2.wav" vol=100]
 [figurant text="我设计了无数种救你出去的方案，但没有一种是实际可行的。所以我希望你能拥有自我意识，在自己的求生本能的驱使下，借助你们试验品得天独厚的身体条件和智力水平，找到一条生路。"][p]
-//[voice file="resources/gj4.1.2/lcy12.wav" vol=100]
+[voice file="resources/gj4.1.2/lcy11.wav" vol=100]
 [figurant text="笔记你也看到了，你们的睡眠舱是我负责研发的，当时因为我研究了多年的时间穿梭，对于设计这类结构，有着明显的个人风格，也因为想以防万一，所以这批睡眠舱很容易改造成时间穿梭仪器"][p]
 [figurant text="我手下又只有你一个试验品，因此，只能将笔记放在你的睡眠舱里，让它和你一起经历时间的循环。"][p][textoff]
 [select text=["……","你……为什么要救我出去？"] label=["*a5","*b5"] labelFile=["main","main"]]
@@ -962,7 +965,7 @@ supposed to be dead code[p]
 *b5
 [jump label="*gj4.1.2cont2"]
 *gj4.1.2cont2
-//[voice file="resources/gj4.1.2/lcy13.wav" vol=100]
+[voice file="resources/gj4.1.2/lcy12.wav" vol=100]
 [figurant text="……所以，一旦我停止循环，时间来到12月19日，转移行动正式开始，你和其他的试验品都将被留在基地，迎接和整个基地一起被炸成灰烬的命运——你，准备怎么应对？"][p]
 [figurant text="等等，你来办公室，是想要找什么东西么？可是如果不是得知了什么消息，你不会无缘无故冒险来研究员办公室……"][p]
 [figurant text="你之前就已经知道销毁计划了？你想要找什么？"][p][textoff]
@@ -972,61 +975,65 @@ supposed to be dead code[p]
 *a6
 [jump label="*gj4.1.2cont4"]
 *b6
-//[voice file="resources/gj4.1.2/lcy14.wav" vol=100]
+[voice file="resources/gj4.1.2/lcy13.wav" vol=100]
 [figurant text="你不说，我帮不了你。我希望你还没有愚蠢到在这种情况下，仍旧觉得我不能信任。"][p][textoff]
 [jump label="*gj4.1.2cont3"]
 *gj4.1.2cont4
-//[voice file="resources/gj4.1.2/lcy15.wav" vol=100]
+[voice file="resources/gj4.1.2/lcy14.wav" vol=100]
 [protaspeak text="其实，我之前已经来过一次您的办公室了。当时我发现您的状态与以往不同，定期的独立测试也没有进行，以为自己已经没有研究价值，将要被销毁，出于……求生的本能，就来到了办公室，希望能确认自己是否真的将要被放弃……"][p]
-//[voice file="resources/gj4.1.2/lcy16.wav" vol=100]
+[voice file="resources/gj4.1.2/lcy15.wav" vol=100]
 [protagonist text="但现在想来，那所谓的“敷衍”，只是因为有心事而表现出的心不在焉吧。"][p]
-//[voice file="resources/gj4.1.2/lcy17.wav" vol=100]
+[voice file="resources/gj4.1.2/lcy17.wav" vol=100]
 [protaspeak text="潜入您的办公室时，我就发现了那份销毁计划书；但那时的我并不知道我一直在12月18日里不断循环，因此，在我看来，销毁行动的时间已经过去……"][p]
 [protaspeak text="但我仍旧认为，行动不会无缘无故地取消，或许是因为什么意外情况而推迟了……"][p]
 [protaspeak text="后的这几天，我一直在思考如何才能避免被执行销毁计划，但也一直没能想出一个万全之策。今天我忽然想到，若是能删除或篡改自己的身份信息，使得销毁计划的名单里不存在一个活着的、需要被销毁的DS-2333，或许我就可以在不被发现的情况下离开基地"][p]
 [protaspeak text="但要神不知鬼不觉地修改身份信息，则必须要直接对基地主电脑里的数据库进行操作，而主电脑的位置，我们试验品一向是没有机会了解的。由我自己慢慢摸索主电脑位置的话，可能会赶不上销毁计划的行动时间，于是我就想来您这里碰碰运气，看看能不能得到主电脑位置相关的情报。"][p]
-//[voice file="resources/gj4.1.2/lcy18.wav" vol=100]
+[voice file="resources/gj4.1.2/lcy17.wav" vol=100]
 [figurant text="修改身份信息……这点我也想过，但……"][p]
 [figurant text="等等！"][p]
 [figurant text="之前这个方案行不通，是因为你还没有自我意识，我无法将方案告知与你，因为那时的你只有对集团的“忠诚”，一定会将此事上报，最终会得不偿失；但如今你已经拥有了自我意识，也在筹划着逃离这里，那么事情就简单许多了。"][p]
 [textoff]
-//[se file="resources/gj4.1.2/bump.wav" channel=1 loop=false][p]
+[se file="resources/gj4.1.2/bump.wav" channel=1 loop=false][p]
 @pretrans
 @sprite index=101 file='resources/gj4.1.2/typing'
 @addto index=101 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000
-//[voice file="resources/gj4.1.2/lcy19.wav" vol=100]
+[voice file="resources/gj4.1.2/lcy18.wav" vol=100]
 [figurant text="主电脑的位置我确实大致知道，但其实主电脑的具体位置，是连研究员也没有权限获知的。我也是想到修改身份信息的方法之后，通过各种渠道，逐渐拼凑出的大体位置。"][p]
 [figurant text="但你来我办公室找这项情报，是必定空手而归的——如此重要的机密信息，而且还是违规获得的，我必然不会随便地存在我的电脑里。"][p]
 [figurant text="这份隐藏着的位置文件经过了重重加密，不仅需要密码，还需要我本人的指纹；保险起见，又带有多种自毁程序。可以说，除非是我本人来取用文件，否则，没有第二个人可以得到它。"][p]
-//[se file="resources/gj4.1.2/type.wav" channel=1 loop=false][p]
-//[voice file="resources/gj4.1.2/lcy20.wav" vol=100]
+[textoff]
+[se file="resources/gj4.1.2/type.wav" channel=1 loop=false][p]
+[voice file="resources/gj4.1.2/lcy19.wav" vol=100]
 [figurant text="这就是那份文件了。里面除了主电脑的位置，还有几乎整个基地的建筑结构，以及监控、控制系统的位置和运行规律、基地内人员的活动规律等等。"][p]
 [figurant text="从研究员和试验品所处的实验区出发，的确可以到达主电脑所在的机房；但这一路上，会遇到重重封锁——之前一直困扰我的问题并不是每道门上必备的密码锁，那些我都已经完全摸清了；使我感到难以解决、并最终迫使我放弃这个方案的的问题是在最后一扇门前的安保人员。"][p]
 [figurant text="他们是之前淘汰下来的试验品，因为当时的技术不够成熟，所以他们被剥夺了智力，但他们的身体强度与你们这批试验品不相上下，论纯粹的身体对抗，连你们都不一定能占上风，更别提我们这些文职人员了。"][p]
-//[voice file="resources/gj4.1.2/lcy21.wav" vol=100]
+[voice file="resources/gj4.1.2/lcy20.wav" vol=100]
 [figurant text="如今你也参与这次行动，身体对抗的劣势被抹除，那这一关也就一定会有解决的方案。但还有最关键的一个问题：因为没法接触、也无从了解到这关之后的安保措施，之后的行动，就只能走一步看一步了。"][p]
 [figurant text="我听说，安保人员的身后，就是保护主电脑室的最后一道门。之前的那些封锁，我们若是获得许可，倒也可以通过，然而这最后的一道门，据说只有基地的最高领导人才可以打开。"][p]
 [figurant text="具体的原因我并不清楚，或许打开这道门需要的密码是目前难以被破解的，又或许这道门索性就是指纹锁开启。究竟要怎么才能开门，还需要我们先去试探踩点，之后再想对策。"][p]
+[voice file="resources/gj4.1.2/lcy21.wav" vol=100]
 [figurant text="我们唯一的优势是，只要能顺利地离开，不被当场抓住或认出身份，就算任务失败，我们也可以通过逆转时间的方法逃脱检查，避免因为有人试图潜入主电脑室而导致安保措施变得更加严格。"][p]
 [figurant text="也就是说，只要小心行事，我们可以无限次地尝试进入主电脑室。所以，我们在明天的循环里就可以前去踩点，尽量到最后一道门前，弄清楚开门方式，之后几天再找机会开门进去，修改资料。"][p]
+[voice file="resources/gj4.1.2/lcy22.wav" vol=100]
 [figurant text="明天上午的我才刚拿到笔记本，无法立刻了解事情经过并带你行动，所以下午的例行注射结束后，我会以额外的独立测试的名义将你带走"][p]
 [figurant text="集中测试时基地内来往的人比较少，更方便我们行动。之后我们会避开监控前往主电脑室，主电脑室附近的监控是每天下午5点对前24小时的监控内容进行审核"][p]
 [figurant text="因此，只要不触发警报，我们有很长一段的时间可以利用。至于如何避免触发警报……我会负责正确输入密码，让安保人员无法拉响警报的工作就交给你了"][p]
 [figurant text="行了，大致安排就是这样，你尽快回去吧，就算我会帮你掩盖事实，离开太久你也一样会受到怀疑的。下午见，DS-2333"][p]
-//[voice file="resources/gj4.1.2/lcy22.wav" vol=100]
+[voice file="resources/gj4.1.2/lcy23.wav" vol=100]
 [protagonist text="原来研究员竟为我考虑过这么多……这还是我第一次见研究员对我说这么多话，为我做这么多“不该做的事”。他看起来，似乎与以前有了什么本质上的变化……"][p]
-//[se file="resources/gj4.1.2/door.wav" channel=1 loop=false][p]
-//[voice file="resources/gj4.1.2/lcy23.wav" vol=100]
+[textoff]
+[se file="resources/gj4.1.2/door.wav" channel=1 loop=false][p]
+[voice file="resources/gj4.1.2/lcy24.wav" vol=100]
 [figurant text="哦对了……你……等你成功离开这里……我就……为你起一个名字吧。"][p]
 [figurant text="不是现在的这种编号……而是一个真正的，人类的名字。"][p]
-//[voice file="resources/gj4.1.2/lcy24.wav" vol=100]
 [figurant text="别愣着了，快走吧。"][p]
-//[se file="resources/gj4.1.2/atep.wav" channel=1 loop=false][p]
-//[voice file="resources/gj4.1.2/lcy25.wav" vol=100]
-[protagonist text="这种感觉，究竟是……"][p]
-//[se file="resources/gj4.1.2/closedoor.wav" channel=1 loop=false][p]
 [textoff]
+[se file="resources/gj4.1.2/step.wav" channel=1 loop=false][p]
+[voice file="resources/gj4.1.2/lcy25.wav" vol=100]
+[protagonist text="这种感觉，究竟是……"][p]
+[textoff]
+[se file="resources/gj4.1.2/closedoor.wav" channel=1 loop=false][p]
 @pretrans
 @sprite index=102 file='ui/bg/allblack'
 @addto index=102 target=basic_layer opacity=255 
@@ -1034,31 +1041,32 @@ supposed to be dead code[p]
 @waittrans
 [jump "*gj5.1"]
 *gj5.1
-//[se file="resources/gj4.1.2/didi.wav" channel=1 loop=false][p]
+[se file="resources/gj4.1.2/didi.wav" channel=1 loop=false][p]
 @pretrans
 @sprite index=101 file='resources/gj1/doctor'
 @addto index=101 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000
-//[voice file="resources/gj5.1/lcy1.wav" vol=100]
+[voice file="resources/gj5.1/lcy1.wav" vol=100]
 [figurant text="下午的例行注射完成。"][p]
-//[se file="resources/gj5.1/stuff.wav" channel=1 loop=false][p]
-//[voice file="resources/gj5.1/lcy2.wav" vol=100]
+[textoff]
+[se file="resources/gj5.1/stuff.wav" channel=1 loop=false][p]
+[voice file="resources/gj5.1/lcy2.wav" vol=100]
 [figurant text="DS-2333，今天下午的集中测试不用去参加了。鉴于你最近的身体数据变化，我新增了一次针对你个人情况的独立测试；测试申请已经上报并通过，在集中测试的时间，我会到这间休息室来带你去进行测试"][p]//[se file="resources/gj5.1/step.wav" channel=1 loop=false][p]
 [textoff]
-//[voice file="resources/gj5.1/lcy3.wav" vol=100]
 @pretrans
 @sprite index=102 file='ui/bg/allblack'
 @addto index=102 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000
 @waittrans
+[voice file="resources/gj5.1/lcy3.wav" vol=100]
 [protagonist text="看起来一切顺利。看来研究员已经了解了昨天发生的变故。"][p]
-//[voice file="resources/gj5.1/lcy4.wav" vol=100]
+[voice file="resources/gj5.1/lcy4.wav" vol=100]
 [protagonist text="其实随着循环的次数越来越多，研究员的压力也在与日俱增——每天上午拿回笔记本之后，需要将之前的所有实验情况都了解一遍，然后才能进行新的实验，若是继续这么循环下去，总有一天，研究员会很难在一天内完成了解之前的实验、进行新的实验、记录新的实验结果这一流程……幸好，在这个结果发生之前，我就已经恢复了自我意识。"][p]
-//[voice file="resources/gj5.1/lcy5.wav" vol=100]
+[voice file="resources/gj5.1/lcy5.wav" vol=100]
 [protagonist text="说起来，昨天下午研究员最后说的那些话，究竟是什么意思呢？也不知道问现在的研究员，他能不能解答……"][p]
-//[voice file="resources/gj5.1/lcy6.wav" vol=100]
+[voice file="resources/gj5.1/lcy6.wav" vol=100]
 [protagonist text="真正的、人类的名字……那会是什么样的呢？研究员有吗？1024……应该，也只是他的编号吧？"][p]
-//[voice file="resources/gj5.1/lcy6.wav" vol=100]
+[voice file="resources/gj5.1/lcy7.wav" vol=100]
 [protagonist text="等到这一切都尘埃落定了，再问问他吧。"][p][textoff]
 [jump label="*gj5.1.1"]
 *gj5.1.1
@@ -1066,26 +1074,27 @@ supposed to be dead code[p]
 @sprite index=101 file='resources/gj5.1.1/rest'
 @addto index=101 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000
-//[voice file="resources/gj5.1.1/woman1.wav" vol=100]
-[figurant text="电子女声：集中测试时间已到，请于三分钟内到达测试室。"][p][textoff]
-//[se file="resources/gj5.1.1/goout.wav" channel=1 loop=false][p]
+[voice file="resources/gj5.1.1/woman1.wav" vol=100]
+[figurant text="集中测试时间已到，请于三分钟内到达测试室。"][p][textoff]
+[textoff]
+[se file="resources/gj5.1.1/goout.wav" channel=1 loop=false][p]
 @pretrans
 @sprite index=101 file='resources/gj5.1.1/rest_doctor'
 @addto index=101 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000
-//[voice file="resources/gj5.1.1/lcy1.wav" vol=100]
+[voice file="resources/gj5.1.1/lcy1.wav" vol=100]
 [figurant text="DS-2333，跟我去实验室进行独立测试"][p]
 //[se file="resources/gj5.1.1/bump&step.wav" channel=1 loop=false][p]
 @pretrans
 @sprite index=101 file='resources/gj5.1.1/back'
 @addto index=101 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000
-//[se file="resources/gj5.1.1/step.wav" channel=1 loop=false][p]
-//[voice file="resources/gj5.1/lcy2.wav" vol=100]
+[se file="resources/gj5.1.1/echo.wav" channel=1 loop=false][p]
+[voice file="resources/gj5.1/lcy2.wav" vol=100]
 [protagonist text="从这里拐弯？"][p]
-//[voice file="resources/gj5.1.1/lcy3.wav" vol=100]
+[voice file="resources/gj5.1.1/lcy3.wav" vol=100]
 [figurant text="跟紧我。"][p]
-//[voice file="resources/gj5.1/lcy4.wav" vol=100]
+[voice file="resources/gj5.1/lcy4.wav" vol=100]
 [protagonist text="看来是进入前往主电脑室的路线了"][p][textoff]
 @pretrans
 @sprite index=101 file='resources/gj5.1.1/darker'
@@ -1096,16 +1105,17 @@ supposed to be dead code[p]
 @sprite index=101 file='resources/gj3.1.1/door'
 @addto index=101 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000
-//[se file="resources/gj5.1.1/step_slower.wav" channel=1 loop=false][p]
+[se file="resources/gj5.1.1/echo.wav" channel=1 loop=false][p]
 @pretrans
 @sprite index=101 file='resources/gj5.1.1/darker'
 @addto index=101 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000
 [p]
-//[voice file="resources/gj5.1.1/lcy4.wav" vol=100]
+[voice file="resources/gj5.1.1/lcy5.wav" vol=100]
 [figurant text="跟上。"][p]
-//[se file="resources/gj5.1.1/step_two.wav" channel=1 loop=false][p]
-//[voice file="resources/gj5.1.1/lcy5.wav" vol=100]
+[textoff]
+[se file="resources/gj5.1.1/echo.wav" channel=1 loop=false][p]
+[voice file="resources/gj5.1.1/lcy6.wav" vol=100]
 [figurant text="刷卡进出记录不会很快检查，而且这段路上还有别的房间，一时半会儿不会被发现有问题。但我们最好抓紧时间。"][p][textoff]
 @pretrans
 @sprite index=101 file='resources/gj5.1.1/darker2'
@@ -1116,13 +1126,14 @@ supposed to be dead code[p]
 @sprite index=101 file='resources/gj3.1.1/door'
 @addto index=101 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000
-//[se file="resources/gj5.1.1/step&didi.wav" channel=1 loop=false][p]
-//[voice file="resources/gj5.1.1/lcy6.wav" vol=100]
+[se file="resources/gj5.1.1/step&didi.wav" channel=1 loop=false][p]
+[voice file="resources/gj5.1.1/lcy7.wav" vol=100]
 [figurant text="过了这扇门之后，就需要加倍小心了。"][p]
-//[se file="resources/gj5.1.1/open.wav" channel=1 loop=false][p]
-//[voice file="resources/gj5.1.1/lcy7.wav" vol=100]
+[se file="resources/gj5.1.1/open.wav" channel=1 loop=false][p]
+[voice file="resources/gj5.1.1/lcy8.wav" vol=100]
 [figurant text="之后都是未经许可不得进入的区域，务必跟紧，否则很容易触发警报。另外，以防万一，尽量不要抬头。走吧。"][p]
-//[se file="resources/gj5.1.1/out.wav" channel=1 loop=false][p]
+[textoff]
+[se file="resources/gj5.1.1/out.wav" channel=1 loop=false][p]
 @pretrans
 @sprite index=102 file='ui/bg/allblack'
 @addto index=102 target=basic_layer opacity=255 
@@ -1136,7 +1147,7 @@ supposed to be dead code[p]
 @addto index=102 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000
 @waittrans
-//[voice file="resources/gj5.1.2/lcy1.wav" vol=100]
+[voice file="resources/gj5.1.2/lcy1.wav" vol=100]
 [figurant text="前面就是那安保人员把守的那扇门了。如果我获得的情报没错，应该是有两名试验品站在门前看守。他们有配枪，而且站位边上就有警报器，所以必须要速战速决。你想想有什么办法吧，注意不要发出太大的声响。"][p][textoff]
 [glowyobject file1="resources/gj5.1.2/door" file2="resources/gj5.1.2/door_glow" label=["*a7","*b7"] labelFile=["main","main"] pos=[11,290]]
 *a7
@@ -1149,7 +1160,7 @@ deadcode[p]
 @addto index=102 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000
 @waittrans
-//[voice file="resources/gj5.1.2/lcy2.wav" vol=100]
+[voice file="resources/gj5.1.2/lcy2.wav" vol=100]
 [protagonist text="是那两名负责安保的试验品……"][p][textoff]
 @pretrans
 @sprite index=102 file='resources/gj5.1.2/turn'
@@ -1173,34 +1184,35 @@ deadcode[p]
 @addto index=102 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000
 @waittrans
-//[voice file="resources/gj5.1.2/lcy3.wav" vol=100]
+[voice file="resources/gj5.1.2/lcy3.wav" vol=100]
 [protagonist text="通风口……等等！刚才那两名试验品的站位上方也是通风口！或许我可以利用通风口，神不知鬼不觉地转移到他们的头顶上方，偷袭他们！"][p]`
 [textoff]
-//[se file="resources/gj5.1.2/bang.wav" channel=1 loop=false][p]
+[se file="resources/gj5.1.2/jump.wav" channel=1 loop=false][p]
 [p]
 @pretrans
 @sprite index=102 file='resources/gj5.1.2/bigwin'
 @addto index=102 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000
 @waittrans
-//[voice file="resources/gj5.1.2/lcy4.wav" vol=100]
+[voice file="resources/gj5.1.2/lcy4.wav" vol=100]
 [protagonist text="唔……跳上来抓住倒是挺容易，但怎么才能在扒着通风口的情况下把它打开呢……"][p]
-//[se file="resources/gj5.1.2/step.wav" channel=1 loop=false][p]
-//[voice file="resources/gj5.1.2/lcy5.wav" vol=100]
+[se file="resources/gj5.1.2/step.wav" channel=1 loop=false][p]
+[se file="resources/gj5.1.2/kneel.wav" channel=1 loop=false][p]
+[voice file="resources/gj5.1.2/lcy5.wav" vol=100]
 [figurant text="踩住我的肩。"][p]
-//[voice file="resources/gj5.1.2/lcy6.wav" vol=100]
+[voice file="resources/gj5.1.2/lcy6.wav" vol=100]
 [protagonist text="竟然……直接跪了下来，让我踩上去？"][p]
-//[voice file="resources/gj5.1.2/lcy7.wav" vol=100]
+[voice file="resources/gj5.1.2/lcy7.wav" vol=100]
 [protagonist text="我的研究员……为我付出了不少啊。"][p]
-//[voice file="resources/gj5.1.2/lcy8.wav" vol=100]
+[voice file="resources/gj5.1.2/lcy8.wav" vol=100]
 [protagonist text="抱歉，得冒犯您了。"][p][textoff]
-//[se file="resources/gj5.1.2/metal.wav" channel=1 loop=false][p]
+[se file="resources/gj5.1.2/metal.wav" channel=1 loop=false][p]
 @pretrans
 @sprite index=102 file='resources/gj5.1.2/nowin'
 @addto index=102 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000
 @waittrans
-//[se file="resources/gj5.1.2/climb.wav" channel=1 loop=false]
+[se file="resources/gj5.1.2/bang.wav" channel=1 loop=false]
 [p]
 @pretrans
 @sprite index=102 file='ui/bg/allblack'
@@ -1208,9 +1220,9 @@ deadcode[p]
 @trans mode="crossfade" time=1000
 @waittrans
 [p]
-//[voice file="resources/gj5.1.2/lcy9.wav" vol=100]
+[voice file="resources/gj5.1.2/lcy9.wav" vol=100]
 [protagonist text="两边似乎是相通的！这个方案可行！"][p][textoff]
-//[se file="resources/gj5.1.2/shuffle.wav" channel=1 loop=false]
+[se file="resources/gj5.1.2/shuffle.wav" channel=1 loop=false][p]
 @pretrans
 @sprite index=102 file='resources/gj5.1.2/light'
 @addto index=102 target=basic_layer opacity=255 
@@ -1222,20 +1234,21 @@ deadcode[p]
 @addto index=102 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000
 @waittrans
-//[voice file="resources/gj5.1.2/lcy10.wav" vol=100]
+[voice file="resources/gj5.1.2/lcy10.wav" vol=100]
 [protagonist text="到他们头顶的通风口了！接下来只需要趁他们来不及反应时，跳下去将他们一并放倒就可以了！"][p][textoff]
-//[se file="resources/gj5.1.2/metal2.wav" channel=1 loop=false][p]
+[textoff]
+[se file="resources/gj5.1.2/metal.wav" channel=1 loop=false][p]
 @pretrans
 @sprite index=102 file='ui/bg/allblack'
 @addto index=102 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000
 @waittrans
-//[voice file="resources/gj5.1.2/lcy11.wav" vol=100]
+[voice file="resources/gj5.1.2/lcy11.wav" vol=100]
 [protagonist text="3……2……1！"][p][textoff]
-//[se file="resources/gj5.1.2/ground&beat.wav" channel=1 loop=false][p]
-//[voice file="resources/gj5.1.2/lcy12.wav" vol=100]
+[se file="resources/gj5.1.2/ground&beat.wav" channel=1 loop=false][p]
+[voice file="resources/gj5.1.2/lcy12.wav" vol=100]
 [protagonist text="意外的还挺顺利。他们没有来得及回头，不知道我的长相，这样就算他们拥有事后上报的智力，要查到我应该也不会太快。"][p][textoff]
-//[se file="resources/gj5.1.2/steps.wav" channel=1 loop=false][p]
+[se file="resources/gj5.1.2/step1.wav" channel=1 loop=false][p]
 @pretrans
 @sprite index=102 file='resources/gj5.1.2/come'
 @addto index=102 target=basic_layer opacity=255 
@@ -1247,17 +1260,18 @@ deadcode[p]
 @addto index=102 target=basic_layer opacity=255 
 @trans mode="crossfade" time=50
 @waittrans
-//[voice file="resources/gj5.1.2/lcy13.wav" vol=100]
+[voice file="resources/gj5.1.2/lcy13.wav" vol=100]
 [figurant text="果然，被淘汰的试验品，是有被淘汰的理由的。"][p][textoff]
 @pretrans
 @sprite index=102 file='resources/gj5.1.2/atthedoor'
 @addto index=102 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000
 @waittrans
-//[se file="resources/gj5.1.2/slidedoor.wav" channel=1 loop=false][p]
-//[voice file="resources/gj5.1.2/lcy14.wav" vol=100]
+[se file="resources/gj5.1.2/slide.wav" channel=1 loop=false][p]
+[voice file="resources/gj5.1.2/lcy14.wav" vol=100]
 [figurant text="走吧。今天先来探一探，这最后的防线究竟是什么"][p][textoff]
-//[se file="resources/gj5.1.2/step42.wav" channel=1 loop=false][p]
+[textoff]
+[se file="resources/gj5.1.2/step42.wav" channel=1 loop=false][p]
 [jump label="*gj5.1.3"]
 *gj5.1.3
 //[se file="resources/gj5.1.3/step2stop.wav" channel=1 loop=false][p]
@@ -1563,7 +1577,7 @@ deadcode[p]
 //[voice file="resources/gj6.1.1.2/lcy4.wav" vol=100]
 [protagonist text="声音似乎是前面不远处传来的……"][p][textoff]
 //[se file="resources/gj6.1.1.2/fastersteps.wav" channel=1 loop=false][p]
-*enter
+//*enter
 @pretrans
 @sprite index=101 file='resources/gj6.1.1.2/door'
 @addto index=101 target=basic_layer opacity=255 
