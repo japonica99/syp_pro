@@ -12,8 +12,8 @@
 [p]
 [white_in_middle text="......"]
 [p]
-调试用目录
-[select text=["1","2","3.1","4.1"] label=["*gj1","*gj2","*gj3.1","*gj4.1"] labelFile=["main","main","main","main"]]
+//调试用目录
+//[select text=["1","2","3.1","4.1"] label=["*gj1","*gj2","*gj3.1","*gj4.1"] labelFile=["main","main","main","main"]]
 [jump label="*gj1"]
 *gj1
 [typewriter pos=[360,350] rect=[5,5,600,200] text="7:00 am"][p]
@@ -1208,7 +1208,6 @@ deadcode[p]
 @trans mode="crossfade" time=1000
 @waittrans
 [p]
-*enter
 //[voice file="resources/gj5.1.2/lcy9.wav" vol=100]
 [protagonist text="两边似乎是相通的！这个方案可行！"][p][textoff]
 //[se file="resources/gj5.1.2/shuffle.wav" channel=1 loop=false]
@@ -1465,5 +1464,191 @@ deadcode[p]
 @waittrans
 [jump label="*gj6.1"]
 *gj6.1
+@pretrans
+@sprite index=101 file='resources/gj3.1.1/office'
+@addto index=101 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+//[voice file="resources/gj6.1/lcy1.wav" vol=100]
+[protagonist text="研究员并没有来办公室……或许是直接到指定的地点集合了吧。"][p]
+//[voice file="resources/gj6.1/lcy2.wav" vol=100]
+[protagonist text="可是，办公室里的这些资料怎么办？按理说，如果今天不再来办公室的话，这些电子和纸质资料都应该提前带走啊。但研究员昨天走的时候，似乎并没有备份资料，也没有拿走多少纸质材料……"][p]
+//[voice file="resources/gj6.1/lcy3.wav" vol=100]
+[protagonist text="可能是更早的时候就已经把要用的资料备份好了吧。"][p]
+//[voice file="resources/gj6.1/lcy4.wav" vol=100]
+[protagonist text="又或者……研究员也准备离开这个组织了？可他昨天为什么没有告诉我呢……"][p]
+//[se file="resources/gj6.1/steps&knock.wav" channel=1 loop=false][p]
+//[voice file="resources/gj6.1/lcy5.wav" vol=100]
+[figurant text="1022号研究员，请尽快前往集合点。"][p]
+//[voice file="resources/gj6.1/lcy6.wav" vol=100]
+[figurant text="好的，我现在就过去。"][p]
+//[se file="resources/gj6.1/steps_further.wav" channel=1 loop=false][p]
+//[voice file="resources/gj6.1/lcy7.wav" vol=100]
+[figurant text="1022已前往集合点；实验区内研究员已经全部通知到位。"][p]
+//[voice file="resources/gj6.1/lcy8.wav" vol=100]
+[figurant text="收到。除你汇报的这几名研究员外，其余研究员已全部到齐，试验品都在休息室内，实验区检查完成。你可以前往集合点了。"][p]
+//[voice file="resources/gj6.1/lcy9.wav" vol=100]
+[figurant text="收到。"][p]
+//[se file="resources/gj6.1/steps_further.wav" channel=1 loop=false][p]
+//[voice file="resources/gj6.1/lcy10.wav" vol=100]
+[protagonist text="可能是更早的时候就已经把要用的资料备份好了吧。"][p][textoff]
+@pretrans
+@sprite index=102 file='ui/bg/allblack'
+@addto index=102 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+@waittrans
+//[se file="resources/gj6.1/steps&knock.wav" channel=1 loop=false][p]
+[jump label="*gj6.1.1"]
+*gj6.1.1
+//[bgm file="resources/gj6.1.1/steps.wav"]
+//[voice file="resources/gj6.1.1/lcy1.wav" vol=100]
+[protagonist text="从撤离路线上看，首先要经过的是试验品区……试验品区只保留了几个路口处的监控，躲避起来倒是还挺容易。"][p]
+//[voice file="resources/gj6.1.1/woman1.wav" vol=100]
+[figurant text="体试验品请注意——今日例行检查、注射及集中测试均取消，请所有试验品在休息室内待命。"][p]
+//[voice file="resources/gj6.1.1/lcy2.wav" vol=100]
+[protagonist text="我记得那天看到的“武器”销毁计划里写着，销毁的具体手段似乎是炸毁整个基地……让试验品们在休息室内不要出去，如果不只是为了方便管理检查的话……莫非，炸药量最大的地方，是在试验品区？毕竟，炸药布置不可能完全平均……"][p]
+[textoff]
+@pretrans
+@sprite index=101 file='resources/gj3.1.1/corridor'
+@addto index=101 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+//[voice file="resources/gj6.1.1/lcy3.wav" vol=100]
+[protagonist text="没有人试图出门，所以没有人发现现在的实验区，除了他们以外，已经没有其他人了。"][p]
+//[voice file="resources/gj6.1.1/lcy4.wav" vol=100]
+[protagonist text="作为试验品，他们和曾经的我一样，没有自我，没有提出异议的意识；他们安静地待在自己的休息室里，迎接他们未知的毁灭。"][p]
+//[voice file="resources/gj6.1.1/lcy5.wav" vol=100]
+[protagonist text="为了更好地作战，我们几乎没有痛觉；被剥夺了自我意识，我们的“本能”并不完全，感受不到恐惧。但我不知道，濒临死亡的时候，我们是否会有不一样的感受……"][p]
+//[voice file="resources/gj6.1.1/lcy6.wav" vol=100]
+[protagonist text="找到自我之后，我下意识地选择了反抗组织，避免被销毁；我的这些同伴们，如果也有了自我意识，会和我有一样的“求生的本能”吗？"][p]
+//[voice file="resources/gj6.1.1/lcy7.wav" vol=100]
+[protagonist text="我们不畏惧死亡，但那是因为我们没有畏惧的权力，没有选择逃离的权力；因为死亡如影随形，不知何时会到来。可如果能够选择，我们还会义无反顾地为了别人的利益或者命令，欣然赴死吗？"][p]
+//[voice file="resources/gj6.1.1/lcy8.wav" vol=100]
+[protagonist text="我能够恢复自我意识，说不定同为试验品的他们也可以恢复；那么，是不是意味着，他们也可以成为能意识到自我的存在的，真正的“人”呢？既然如此，作为尚不完整的“人”，他们就可以被随意地销毁吗？"][p]
+//[voice file="resources/gj6.1.1/lcy9.wav" vol=100]
+[protagonist text="或许是在他们的身上看到了曾经的我的影子吧……扪心自问，我不希望这些和曾经的我一样的试验品们，被活活炸死；为实验而生，被抛弃而死，这短暂的一生，似乎也太没有意义，没有人的尊严了。"][p]
+//[voice file="resources/gj6.1.1/lcy10.wav" vol=100]
+[protagonist text="拥有自我意识的时间久了，好像变得多愁善感了起来啊……"][p]
+//[bgm file="resources/gj6.1.1/bgm.wav"]
+//[voice file="resources/gj6.1.1/lcy11.wav" vol=100]
+[protagonist text="可如果要救他们出去，就必须要与他们有沟通；他们是否会听我是一码事，更重要的是，我如果要接触到他们，就一定会引起他们的异常行动，比如突然开口说话，或是走到门口；这些行动都会引起监控者的警觉，那样的话，就不可能隐蔽地撤离出去。"][p]
+//[voice file="resources/gj6.1.1/lcy12.wav" vol=100]
+[protagonist text="但我们都是试验品，或许可以趁着他们反应不及时，依靠自身实力，强行冲出一条路；况且试验品向来听话，说不定，监控者会因认为试验品不可能有问题，就没有认真检查监控……"][p]
+//[voice file="resources/gj6.1.1/lcy13.wav" vol=100]
+[protagonist text="如果现在不救他们，之后应该就没有机会再返回这里，救出他们了吧………"][p]
+//[voice file="resources/gj6.1.1/lcy14.wav" vol=100]
+[protagonist text="所以，我到底要不要救他们出去呢？"][p]
+[select text=["赌一把，救他们","确保自己存活要紧，先行离开，若是有机会，再考虑回来救人"] label=["*A6","*B6"] labelFile=["main","main"]]
+*A6
+[jump label="*gj6.1.1.1"]
+*B6
+[jump label="*gj6.1.1.2"]
+*gj6.1.1.1
+*gj6.1.1.2
+//[voice file="resources/gj6.1.1.2/lcy1.wav" vol=100]
+[protagonist text="在休息室监控底下强行救人，风险太大了，还是先保证自己能顺利离开吧……"][p][textoff]
+@pretrans
+@sprite index=102 file='ui/bg/allblack'
+@addto index=102 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+@waittrans
+//[se file="resources/gj6.1.1.2/steps_further.wav" channel=1 loop=false][p]
+@pretrans
+@sprite index=101 file='resources/gj6.1.1.2/darker'
+@addto index=101 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+//[voice file="resources/gj6.1.1.2/lcy2.wav" vol=100]
+[protagonist text="到管理层的办公区了。这里我曾经来过……研究组之前的工作汇报会议就是在这里的会议室进行的。"][p][textoff]
+//[se file="resources/gj6.1.1.2/fight.wav" channel=1 loop=false][p]
+//[voice file="resources/gj6.1.1.2/lcy3.wav" vol=100]
+[protagonist text="等等！似乎有什么声音？可是这里的人应该都已经撤离了才对……"][p]
+//[voice file="resources/gj6.1.1.2/lcy4.wav" vol=100]
+[protagonist text="声音似乎是前面不远处传来的……"][p][textoff]
+//[se file="resources/gj6.1.1.2/fastersteps.wav" channel=1 loop=false][p]
+*enter
+@pretrans
+@sprite index=101 file='resources/gj6.1.1.2/door'
+@addto index=101 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+//[voice file="resources/gj6.1.1.2/lcy5.wav" vol=100]
+[figurant  text="果然是你！你手腕上的这串数字刺青，就是我当年亲手纹在你身上的！你为什么还会活着，还成为了这里的最高领导者，“武器”项目的实际总负责人？我当年明明已经把你销毁了……"][p]
+//[voice file="resources/gj6.1.1.2/lcy6.wav" vol=100]
+[protagonist text="是研究员？！他没有去集合点吗？还有……他在跟谁说话？"][p]
+//[voice file="resources/gj6.1.1.2/lcy7.wav" vol=100]
+[protagonist text="先听听到底是什么情况吧……"][p]
+//[voice file="resources/gj6.1.1.2/lcy8.wav" vol=100]
+[protagonist text="不行！设备转移行动马上就要开始了！之前在实验区犹豫了一会儿，已经浪费了不少时间，如果在这里停下，会赶不上在转移行动开始前躲进睡眠舱！"][p]
+//[voice file="resources/gj6.1.1.2/lcy9.wav" vol=100]
+[protagonist text="究竟应该怎么办？"][p]
+[textoff]
+[select text=["研究员或许有自己的行动计划，自己按原定方案离开","留下来看发生了什么，说不定还可以帮助研究员"] label=["*A7","*B7"] labelFile=["main","main"]]
+*A7
+[jump label="*gj6.1.1.2.1"]
+*B7
+[jump label="*gj6.1.1.2.2"]
+*gj6.1.1.2.1
+*gj6.1.1.2.2
+//[voice file="resources/gj6.1.1.2.2/lcy1.wav" vol=100]
+[protagonist text="研究员毕竟帮助我拥有了自我意识，还为我筹划了那么多，是对我有恩的人；现在他在这个时间点还没有离开基地，恐怕是遇上了什么困难，帮他脱离困境也是应当的。"][p]
+//[voice file="resources/gj6.1.1.2.2/lcy2.wav" vol=100]
+[protagonist text="但在门口听，总归不太安全，万一里面的人忽然推门出来，我会陷入被动；而且只是听声音的话，没法准确地判断里面究竟是什么情况，难以进行相应的行动……"][p]
+//[voice file="resources/gj6.1.1.2.2/lcy3.wav" vol=100]
+[protagonist text="有什么可以看到办公室内部，或者更加安全地窃听的方法呢？"][p]
+[textoff]
+[jump label="*gj6.1.1.2.2cont1"]
+*gj6.1.1.2.2cont1
+[glowyobjects file1=["resources/gj6.1.1.2.2/nextdoor","resources/gj6.1.1.2.2/feng","resources/gj6.1.1.2.2/lock"] file2=["resources/gj6.1.1.2.2/nextdoor_glow","resources/gj6.1.1.2.2/feng_glow","resources/gj6.1.1.2.2/lock_glow"] label=["*a12","*b12","*c12"] labelFile=["main","main","main"] pos=[[487,190],[134,76],[87,402]]]
+*c12
+//[voice file="resources/gj6.1.1.2.2/lcy4.wav" vol=100]
+[protagonist text="不清楚具体情况的前提下直接推门进去的话，也太过危险了。"][p][textoff]
+[jump label="*gj6.1.1.2.2cont1"]
+*b12
+@pretrans
+@sprite index=101 file='resources/gj6.1.1.2.2/argue'
+@addto index=101 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+//[voice file="resources/gj6.1.1.2.2/lcy5.wav" vol=100]
+[protagonist text="从门缝里看……似乎什么都看不清。"][p][textoff]
+@pretrans
+@sprite index=101 file='resources/gj6.1.1.2/door'
+@addto index=101 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+[jump label="*gj6.1.1.2.2cont1"]
+*a12
+//[voice file="resources/gj6.1.1.2.2/lcy6.wav" vol=100]
+[protagonist text="对了！不如到隔壁去听研究员所在的办公室的情况！"][p][textoff]
+//[se file="resources/gj6.1.1.2.2/door&steps.wav" channel=1 loop=false][p]
+@pretrans
+@sprite index=101 file='resources/gj6.1.1.2.2/next'
+@addto index=101 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+//[voice file="resources/gj6.1.1.2.2/lcy7.wav" vol=100]
+[figurant text="Phantom……《歌剧魅影》的男主角的名字，看你的样子，是毁了容吧？……当年我也是用一场爆炸，把你和我的实验成果全部销毁……我不知道你是怎么从爆炸中存活下来的……你是不记得之前发生的事了么？是经历爆炸的后遗症？"][p]
+//[voice file="resources/gj6.1.1.2.2/lcy8.wav" vol=100]
+[protagonist text="听得很清晰……但是要如何才能看到办公室里的情况呢？"][p]
+@pretrans
+@sprite index=102 file='resources/gj5.1.2/bigwin'
+@addto index=102 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+@waittrans
+//[voice file="resources/gj6.1.1.2.2/lcy9.wav" vol=100]
+[protagonist text="是通风口！或许可以再次利用通风管道……这里的办公室构造应该都差不多，应该可以从那边的通风口处看到办公室内部；而且这里的办公桌、书柜之类的都可供借力，可以轻松地打开通风口。"][p]
+[textoff]
+//[se file="resources/gj6.1.1.2.2/stepon.wav" channel=1 loop=false][p]
+@pretrans
+@sprite index=102 file='resources/gj5.1.2/nowin'
+@addto index=102 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+@waittrans
+//[se file="resources/gj6.1.1.2.2/up.wav" channel=1 loop=false]
+[p]
+@pretrans
+@sprite index=102 file='resources/gj5.1.2/light'
+@addto index=102 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+@waittrans
+//[se file="resources/gj6.1.1.2.2/scrub.wav" channel=1 loop=false]
+[p]
+//[voice file="resources/gj6.1.1.2.2/lcy10.wav" vol=100]
+[protagonist text="到了。"][p]
+[textoff]
 [p]
 @quit
