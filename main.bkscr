@@ -1,7 +1,7 @@
 ﻿*main
 @call '*init' 'init'
 [jump label="*enter"]
-*enter
+//*enter
 [white_in_middle text="数字视音频音乐制作 请戴好耳机"]
 [p]
 [white_in_middle text="......"]
@@ -439,6 +439,7 @@
 [protagonist text="什么样的联系，才会产生这种毫无逻辑的信任感呢？"][p]
 //[stop channel=1]
 [textoff]
+*enter
 @pretrans
 @sprite index=101 file='resources/gj3.1.1/door'
 @addto index=101 target=basic_layer opacity=255 
@@ -1370,36 +1371,39 @@ deadcode[p]
 @sprite index=101 file='resources/gj5.1.4/computer'
 @addto index=101 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000
-//[voice file="resources/gj5.1.4/lcy1.wav" vol=100]
+[voice file="resources/gj5.1.4/lcy1.wav" vol=100]
 [figurant text="这里应该就是主电脑室没有错。现在，只需要进入主电脑的数据库，修改信息就可以了。就由你自己来操作吧，毕竟，这类操作也是你们基本功的一部分，不是么？"][p]
-//[se file="resources/gj5.1.4/typing.wav" channel=1 loop=false]
+[textoff]
+[se file="resources/gj5.1.4/typing.wav" channel=1 loop=false][p]
+[voice file="resources/gj5.1.4/lcy2.wav" vol=100]
+[protagonist text="确实，黑客操作对我们来说非常基础……但研究员为什么突然来这么一出？是出于信任，还是……"][p]
 [textoff]
 @pretrans
 @sprite index=101 file='resources/gj5.1.4/screen'
 @addto index=101 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000
-//[voice file="resources/gj5.1.4/lcy2.wav" vol=100]
+[voice file="resources/gj5.1.4/lcy3.wav" vol=100]
 [protagonist text="研究员让我来操作，那他在做什么呢？"][p]
 [textoff]
 @pretrans
 @sprite index=101 file='resources/gj5.1.4/thinking'
 @addto index=101 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000
-//[voice file="resources/gj5.1.4/lcy3.wav" vol=100]
+[voice file="resources/gj5.1.4/lcy4.wav" vol=100]
 [protagonist text="研究员他……这是在做什么？"][p]
-//[voice file="resources/gj5.1.4/lcy4.wav" vol=100]
+[voice file="resources/gj5.1.4/lcy5.wav" vol=100]
 [protagonist text="自从进入这间房间，研究员的状态就有些不太对劲……不，是从意外打开那把锁开始的……究竟想到了什么，会让他不顾这次来的目的，独自陷入沉思？"][p]
-//[voice file="resources/gj5.1.4/lcy5.wav" vol=100]
+[voice file="resources/gj5.1.4/lcy6.wav" vol=100]
 [protagonist text="唯一能确定的一点是：他对我没有恶意，和其他的研究员相比，甚至显得过分温和。他不可能是那个最高领导者，因为他没必要纡尊来演这一出戏。所以问题在于，锁究竟是怎么开的？是哪儿出了差错，又是什么，使我的研究员变得如此反常？"][p]
 [textoff]
-//[se file="resources/gj5.1.4/dbok.wav" channel=1 loop=false]
+[se file="resources/gj5.1.4/dbok.wav" channel=1 loop=false][p]
 @pretrans
 @sprite index=101 file='resources/gj5.1.4/ok'
 @addto index=101 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000
-//[voice file="resources/gj5.1.4/lcy6.wav" vol=100]
+[voice file="resources/gj5.1.4/lcy7.wav" vol=100]
 [protagonist text="身份信息修改成功了。现在的DS-2333，已经是因为实验问题死亡的试验品之一了。之后的行动，只需要避免遇到身份检查的环节就可以了。"][p]
-//[voice file="resources/gj5.1.4/lcy7.wav" vol=100]
+[voice file="resources/gj5.1.4/lcy8.wav" vol=100]
 [protagonist text="还是赶紧离开吧，也不知道那两名安保人员的身体抗性如何，什么时候会醒……"][p]
 [textoff]
 @pretrans
@@ -1413,14 +1417,14 @@ deadcode[p]
 @sprite index=101 file='resources/gj5.1.4/up'
 @addto index=101 target=basic_layer opacity=255 
 @trans mode="crossfade" time=50
-//[voice file="resources/gj5.1.4/lcy8.wav" vol=100]
+[voice file="resources/gj5.1.4/lcy9.wav" vol=100]
 [figurant text="已经处理完了么？那赶紧走吧，免得拖拖拉拉的暴露身份"][p][textoff]
 @pretrans
 @sprite index=102 file='ui/bg/allblack'
 @addto index=102 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000
 @waittrans
-//[voice file="resources/gj5.1.4/lcy9.wav" vol=100]
+[voice file="resources/gj5.1.4/lcy10.wav" vol=100]
 [protagonist text="他根本没有注意数据库的处理情况……研究员他……究竟在想些什么呢？"][p][textoff]
 [jump label="*gj5.1.5"]
 *gj5.1.5
@@ -1428,47 +1432,47 @@ deadcode[p]
 @sprite index=101 file='resources/gj3.1.1/office'
 @addto index=101 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000
-//[voice file="resources/gj5.1.5/lcy1.wav" vol=100]
+[voice file="resources/gj5.1.5/lcy1.wav" vol=100]
 [protagonist text="顺利离开主电脑室，回到实验区了。"][p]
-//[voice file="resources/gj5.1.5/lcy2.wav" vol=100]
+[voice file="resources/gj5.1.5/lcy2.wav" vol=100]
 [protagonist text="第一次尝试行动就完成了修改数据库的最终目标……这个结果，研究员应该也想不到吧。"][p]
-//[voice file="resources/gj5.1.5/lcy3.wav" vol=100]
+[voice file="resources/gj5.1.5/lcy3.wav" vol=100]
 [protagonist text="不过说起研究员……他回到办公室之后，就不再是方才那种反常的状态了……"][p]
-//[voice file="resources/gj5.1.5/lcy4.wav" vol=100]
+[voice file="resources/gj5.1.5/lcy4.wav" vol=100]
 [figurant text="虽然没有想到能够如此轻易地完成任务，但既然已经完成了既定目标，那么索性就提前行动时间吧。没有多少继续循环下去的必要了，今晚我就会结束时间逆转装置，进入12月19日。所以，我们现在就需要确定明天的撤离方案。"][p]
 [textoff]
-//[se file="resources/gj5.1.5/typing.wav" channel=1 loop=false]
+[se file="resources/gj5.1.5/typing.wav" channel=1 loop=false]
 @pretrans
 @sprite index=101 file='resources/gj5.1.5/screen'
 @addto index=101 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000
-//[voice file="resources/gj5.1.5/lcy5.wav" vol=100]
+[voice file="resources/gj5.1.5/lcy5.wav" vol=100]
 [figurant text="之前考虑过偷偷把你送走，所以我制定了这样一份撤离计划，并申请转移了一套睡眠舱样本；你的身份信息已经被修改，没必要回你的休息室了，你直接在这里等着吧。明天销毁行动开始后，你在这儿躲过人员检查，之后按照这份方案上的撤离路线走，到这个用于转移设备的仓库去，躲进睡眠舱，跟着货车离开。具体的行动步骤和细节都在这份文件里了，你有一晚上的时间研究。还有什么问题吗？"][p]
 [textoff]
 [select text=["没有了。","今天在主电脑室，你在想些什么？"] label=["*a11","*b11"] labelFile=["main","main"]]
 *a11
 [jump label="*gj5.1.5cont1"]
 *b11
-//[voice file="resources/gj5.1.5/lcy6.wav" vol=100]
+[voice file="resources/gj5.1.5/lcy6.wav" vol=100]
 [figurant text="没什么。"][p]
 [textoff]
 [jump label="*gj5.1.5cont1"]
 *gj5.1.5cont1
-//[voice file="resources/gj5.1.5/lcy7.wav" vol=100]
+[voice file="resources/gj5.1.5/lcy7.wav" vol=100]
 [figurant text="没有别的问题的话，我就先走了。"][p][textoff]
-//[se file="resources/gj5.1.5/steps.wav" channel=1 loop=false]
+[se file="resources/gj5.1.5/step.wav" channel=1 loop=false]
 @pretrans
 @sprite index=101 file='resources/gj5.1.5/back'
 @addto index=101 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000
-//[voice file="resources/gj5.1.5/lcy8.wav" vol=100]
+[voice file="resources/gj5.1.5/lcy8.wav" vol=100]
 [figurant text="我们应该不会再见了。明天我会跟在研究员的队伍里离开……祝你好运吧。"][p][textoff]
-//[se file="resources/gj5.1.5/steps.wav" channel=1 loop=false]
+[se file="resources/gj5.1.5/steps.wav" channel=1 loop=false]
 @pretrans
 @sprite index=101 file='resources/gj5.1.5/back'
 @addto index=101 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000
-//[voice file="resources/gj5.1.5/lcy9.wav" vol=100]
+[voice file="resources/gj5.1.5/lcy9.wav" vol=100]
 [protagonist text="“不会再见了”？虽说从方案上看，确实我们明天的路线不会有交集……但既然是这样，他之前又为什么会说，等我成功离开，就为我起名呢？明明在我按这个方案离开之后，我们永远都不会再见面了……"][p]
 [textoff]
 @pretrans
