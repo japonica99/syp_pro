@@ -650,7 +650,6 @@ deadcode[p]
 [protagonist text="这个点研究员不应该在开会吗，为什么会来试验品房间？而且，他为什么会跟我说他来干什么呢，好像之前从来没有过?好像所有事情都开始变得奇怪了起来……"][p]
 [textoff]
 [jump label="*gj3.2.2"]
-*enter
 *gj3.2.2
 @pretrans
 @sprite index=102 file='ui/bg/allblack'
@@ -1752,6 +1751,7 @@ deadcode[p]
 [jump label="*gj6.1.1.2.1"]
 *B7
 [jump label="*gj6.1.1.2.2"]
+*enter
 *gj6.1.1.2.1
 //[voice file="resources/gj6.1.1.2.1/lcy1.wav" vol=100]
 [protagonist text="研究员或许有自己的行动计划，而我若是在这儿耽搁太久的话，他苦心为我规划的撤离行动就功亏一篑了。"][p][textoff]
@@ -1883,7 +1883,7 @@ deadcode[p]
 //[voice file="resources/gj6.1.1.2.1/lcy37.wav" vol=100]
 [protagonist text="这就是……基地以外的世界吗？"][p]
 //[voice file="resources/gj6.1.1.2.1/lcy38.wav" vol=100]
-[protagonist text="比基地里更广阔的天地……可我又该，何去何从呢？"][p]
+[protagonist text="比基地里更广阔的天地……可我又该，何去何从呢？"][p][textoff]
 @pretrans
 @sprite index=102 file='ui/bg/allblack'
 @addto index=102 target=basic_layer opacity=255 
@@ -1901,8 +1901,7 @@ deadcode[p]
 @addto index=101 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000
 @waittrans
-[p]
-@quit
+[jump label="*ending"]
 *gj6.1.1.2.2
 //[voice file="resources/gj6.1.1.2.2/lcy1.wav" vol=100]
 [protagonist text="研究员毕竟帮助我拥有了自我意识，还为我筹划了那么多，是对我有恩的人；现在他在这个时间点还没有离开基地，恐怕是遇上了什么困难，帮他脱离困境也是应当的。"][p]
@@ -1972,4 +1971,16 @@ deadcode[p]
 [protagonist text="到了。"][p]
 [textoff]
 [p]
+@quit
+
+*ending
+[textwindow color=0x000000 pos=[360,350] rect=[5,5,600,200] xinterval=3]
+[textstyle size=20 color=0xffffff]
+精妙绝伦的剧本：高雨婕[r]
+主角、研究员、boss、保安、工人、不重要的配角们：楼晨阳[r]
+音效、背景音乐、声音处理：何墨琪[r]
+非电子女声、音效、背景音乐、声音处理：诸炳帆[r]
+代码、UI、图片、交互：孙文欣[p]
+[white_in_middle text="更多剧情请见完整版"][p]
+[white_in_middle text="嘻嘻"][p]
 @quit

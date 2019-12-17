@@ -21,11 +21,11 @@ Dynamic Call from 0053F01D => 00421EF0 (Most Possible)
 009EE090 => 009EE0A2
 
 Registers:
-EAX:0F72C3C4
-EBX:0F72BED8
+EAX:0FA0C404
+EBX:0FA0BF18
 ECX:0019E228
-EDX:00000006
-EDI:0F72BED8
+EDX:00000020
+EDI:0FA0BF18
 ESI:00000000
 EBP:00000000
 ESP:0019FF74
@@ -34,5 +34,4 @@ EIP:009EE095
 Stacks:
 
 Script Callstacks (May not be reliable):
-文件(script/system_sl.bkbin)的标签(*slots)的第33行(总第76)行:
-文件(main.bkbin)的标签(*gj1)的第9行(总第26)行:
+文件(main.bkbin)的标签(*ending)的第40行(总第2017)行:

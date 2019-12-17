@@ -22,14 +22,51 @@ if(!sf.init){
 ##
 @return
 @jump label=*enter
-main.bkscr : *gj3.2.2
-main.bkscr : *gj3.2.2
+main.bkscr : *gj6.1.1.2.1
+main.bkscr : *gj6.1.1.2.1
+@protagonist text="研究员或许有自己的行动计划，而我若是在这儿耽搁太久的话，他苦心为我规划的撤离行动就功亏一篑了。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
 @pretrans
 @sprite index=102 file="ui/bg/allblack"
 @addto index=102 target=basic_layer opacity=255
 @trans mode="crossfade" time=1000
 @waittrans
-@figurant text="DS-2333，催眠气体补充完毕。"
+@p
+@pretrans
+@sprite index=101 file="resources/gj6.1.1.2.1/warehouse"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@waittrans
+@protagonist text="到物资集中仓库了。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="那边放着的就是睡眠舱——看来我到得还算及时，睡眠舱还没有被装箱。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@figurant text="三号车，装货"
 {
 　macro.bkscr : *figurant
 　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
@@ -39,8 +76,17 @@ main.bkscr : *gj3.2.2
 　@return
 }
 @p
-@textoff
-@protagonist text="今天早点进睡眠舱等着好了。"
+@protagonist text="怪不得研究员让我先躲进睡眠舱——装箱过程全程有人监管，没法神不知鬼不觉地进入集装箱；但尚未装箱的货物堆放在一边并没有人看管，所以要跟着运输车离开的唯一方法就是先躲进货物里，跟着货物一起被运送到集装箱内。而能藏人的货物，看起来只有睡眠舱这一个。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="所以，接下来，只需要避开物资组的人，躲进睡眠舱就行了。"
 {
 　macro.bkscr : *protagonist
 　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
@@ -52,83 +98,17 @@ main.bkscr : *gj3.2.2
 @p
 @textoff
 @pretrans
-@sprite index=101 file="resources/gj1/ceiling"
+@sprite index=101 file="resources/gj6.1.1.2.1/floor"
 @addto index=101 target=basic_layer opacity=255
 @trans mode="crossfade" time=1000
 @waittrans
-@protagonist text="等等。早上集中测试之后看到研究员关上睡眠舱门，他说来拿东西?……我的睡眠舱能有什么他要的东西？"
-{
-　macro.bkscr : *protagonist
-　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
-　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
-　@textspeed interval=50
-　@text text=text
-　@return
-}
 @p
-@protagonist text="难道睡眠舱里还有什么我从前没发现过的装置？"
-{
-　macro.bkscr : *protagonist
-　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
-　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
-　@textspeed interval=50
-　@text text=text
-　@return
-}
-@p
-@protagonist text="不如直接来找找看。"
-{
-　macro.bkscr : *protagonist
-　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
-　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
-　@textspeed interval=50
-　@text text=text
-　@return
-}
-@p
-@textoff
 @pretrans
 @sprite index=101 file="resources/gj3.2.2/bed"
 @addto index=101 target=basic_layer opacity=255
 @trans mode="crossfade" time=1000
 @waittrans
-@jump label=*gj3.2.2cont1
-main.bkscr : *gj3.2.2cont1
-@glowyobjects file1=["resources/gj3.2.2/pillow","resources/gj3.2.2/wall","resources/gj3.2.2/feng","resources/gj3.2.2/window"] file2=["resources/gj3.2.2/pillow_glow","resources/gj3.2.2/wall_glow","resources/gj3.2.2/feng_glow","resources/gj3.2.2/window_glow"] label=["*a13","*b13","*c13","*d13"] labelFile=["main","main","main","main"] pos=[[67,467],[68,222],[684,422],[612,0]]
-{
-　extend.bkscr : *glowyobjects
-　#var size = file1.size;
-　#var indexes = [];
-　@idlesp get=indexes num=size*5
-　#var success = true;
-　#var info1 = %[];
-　#var zorder;
-　@zorder index=message_layer get=zorder
-　#tf.curi=0;
-　@action mode="queue"
-　@for var=i range=range(size)
-　　@sprite index=indexes[(i*5)] file=file1[i]
-　　@sprite index=indexes[(i*5+1)] file=file2[i]
-　　@buttonex index=indexes[(i*5+4)] idle=indexes[(i*5)] hover=indexes[(i*5+1)] onclick=["*_glowyobjects","extend","jump","tf.curi=curi",%["curi"=>i],%["ignore"=>1],]
-　　#var info2 = %[]
-　　@infoex index=indexes[(i*5+4)] get=info2
-　　@addto index=indexes[(i*5+4)] target=basic_layer zorder=zorder pos=pos[i] opacity=255
-　　@next
-　@action mode="start" target=basic_layer
-　[警告]无效的参数：创建了一个空的并行或者动作队列，该队列将被无视。
-　　　　当试图执行命令（action）时，该错误处于原文件（extend.bkscr）的第323行。
-　@waitbutton
-　extend.bkscr : *_glowyobjects
-　@for var=i range=range(size)
-　　@action mode="fadeto" opacity=0 time=500 target=indexes[(i*5+4)]
-　　@next
-　@waitaction index=indexes[4]
-　@for var=i range=range(size)
-　　@remove index=indexes[(i*5+4)] delete=true
-　　@next
-　@returnto label="*b13" file="main"}
-main.bkscr : *b13
-@protagonist text="这里好像什么都没有"
+@protagonist text="到了。"
 {
 　macro.bkscr : *protagonist
 　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
@@ -139,430 +119,13 @@ main.bkscr : *b13
 }
 @p
 @textoff
-@jump label=*gj3.2.2cont1
-main.bkscr : *gj3.2.2cont1
-@glowyobjects file1=["resources/gj3.2.2/pillow","resources/gj3.2.2/wall","resources/gj3.2.2/feng","resources/gj3.2.2/window"] file2=["resources/gj3.2.2/pillow_glow","resources/gj3.2.2/wall_glow","resources/gj3.2.2/feng_glow","resources/gj3.2.2/window_glow"] label=["*a13","*b13","*c13","*d13"] labelFile=["main","main","main","main"] pos=[[67,467],[68,222],[684,422],[612,0]]
-{
-　extend.bkscr : *glowyobjects
-　#var size = file1.size;
-　#var indexes = [];
-　@idlesp get=indexes num=size*5
-　#var success = true;
-　#var info1 = %[];
-　#var zorder;
-　@zorder index=message_layer get=zorder
-　#tf.curi=0;
-　@action mode="queue"
-　@for var=i range=range(size)
-　　@sprite index=indexes[(i*5)] file=file1[i]
-　　@sprite index=indexes[(i*5+1)] file=file2[i]
-　　@buttonex index=indexes[(i*5+4)] idle=indexes[(i*5)] hover=indexes[(i*5+1)] onclick=["*_glowyobjects","extend","jump","tf.curi=curi",%["curi"=>i],%["ignore"=>1],]
-　　#var info2 = %[]
-　　@infoex index=indexes[(i*5+4)] get=info2
-　　@addto index=indexes[(i*5+4)] target=basic_layer zorder=zorder pos=pos[i] opacity=255
-　　@next
-　@action mode="start" target=basic_layer
-　[警告]无效的参数：创建了一个空的并行或者动作队列，该队列将被无视。
-　　　　当试图执行命令（action）时，该错误处于原文件（extend.bkscr）的第323行。
-　@waitbutton
-　extend.bkscr : *_glowyobjects
-　@for var=i range=range(size)
-　　@action mode="fadeto" opacity=0 time=500 target=indexes[(i*5+4)]
-　　@next
-　@waitaction index=indexes[4]
-　@for var=i range=range(size)
-　　@remove index=indexes[(i*5+4)] delete=true
-　　@next
-　@returnto label="*a13" file="main"}
-main.bkscr : *a13
-@protagonist text="这里好像什么都没有"
-{
-　macro.bkscr : *protagonist
-　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
-　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
-　@textspeed interval=50
-　@text text=text
-　@return
-}
-@p
-@textoff
-@jump label=*gj3.2.2cont1
-main.bkscr : *gj3.2.2cont1
-@glowyobjects file1=["resources/gj3.2.2/pillow","resources/gj3.2.2/wall","resources/gj3.2.2/feng","resources/gj3.2.2/window"] file2=["resources/gj3.2.2/pillow_glow","resources/gj3.2.2/wall_glow","resources/gj3.2.2/feng_glow","resources/gj3.2.2/window_glow"] label=["*a13","*b13","*c13","*d13"] labelFile=["main","main","main","main"] pos=[[67,467],[68,222],[684,422],[612,0]]
-{
-　extend.bkscr : *glowyobjects
-　#var size = file1.size;
-　#var indexes = [];
-　@idlesp get=indexes num=size*5
-　#var success = true;
-　#var info1 = %[];
-　#var zorder;
-　@zorder index=message_layer get=zorder
-　#tf.curi=0;
-　@action mode="queue"
-　@for var=i range=range(size)
-　　@sprite index=indexes[(i*5)] file=file1[i]
-　　@sprite index=indexes[(i*5+1)] file=file2[i]
-　　@buttonex index=indexes[(i*5+4)] idle=indexes[(i*5)] hover=indexes[(i*5+1)] onclick=["*_glowyobjects","extend","jump","tf.curi=curi",%["curi"=>i],%["ignore"=>1],]
-　　#var info2 = %[]
-　　@infoex index=indexes[(i*5+4)] get=info2
-　　@addto index=indexes[(i*5+4)] target=basic_layer zorder=zorder pos=pos[i] opacity=255
-　　@next
-　@action mode="start" target=basic_layer
-　[警告]无效的参数：创建了一个空的并行或者动作队列，该队列将被无视。
-　　　　当试图执行命令（action）时，该错误处于原文件（extend.bkscr）的第323行。
-　@waitbutton
-　extend.bkscr : *_glowyobjects
-　@for var=i range=range(size)
-　　@action mode="fadeto" opacity=0 time=500 target=indexes[(i*5+4)]
-　　@next
-　@waitaction index=indexes[4]
-　@for var=i range=range(size)
-　　@remove index=indexes[(i*5+4)] delete=true
-　　@next
-　@returnto label="*d13" file="main"}
-main.bkscr : *d13
-@protagonist text="这里好像什么都没有"
-{
-　macro.bkscr : *protagonist
-　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
-　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
-　@textspeed interval=50
-　@text text=text
-　@return
-}
-@p
-@textoff
-@jump label=*gj3.2.2cont1
-main.bkscr : *gj3.2.2cont1
-@glowyobjects file1=["resources/gj3.2.2/pillow","resources/gj3.2.2/wall","resources/gj3.2.2/feng","resources/gj3.2.2/window"] file2=["resources/gj3.2.2/pillow_glow","resources/gj3.2.2/wall_glow","resources/gj3.2.2/feng_glow","resources/gj3.2.2/window_glow"] label=["*a13","*b13","*c13","*d13"] labelFile=["main","main","main","main"] pos=[[67,467],[68,222],[684,422],[612,0]]
-{
-　extend.bkscr : *glowyobjects
-　#var size = file1.size;
-　#var indexes = [];
-　@idlesp get=indexes num=size*5
-　#var success = true;
-　#var info1 = %[];
-　#var zorder;
-　@zorder index=message_layer get=zorder
-　#tf.curi=0;
-　@action mode="queue"
-　@for var=i range=range(size)
-　　@sprite index=indexes[(i*5)] file=file1[i]
-　　@sprite index=indexes[(i*5+1)] file=file2[i]
-　　@buttonex index=indexes[(i*5+4)] idle=indexes[(i*5)] hover=indexes[(i*5+1)] onclick=["*_glowyobjects","extend","jump","tf.curi=curi",%["curi"=>i],%["ignore"=>1],]
-　　#var info2 = %[]
-　　@infoex index=indexes[(i*5+4)] get=info2
-　　@addto index=indexes[(i*5+4)] target=basic_layer zorder=zorder pos=pos[i] opacity=255
-　　@next
-　@action mode="start" target=basic_layer
-　[警告]无效的参数：创建了一个空的并行或者动作队列，该队列将被无视。
-　　　　当试图执行命令（action）时，该错误处于原文件（extend.bkscr）的第323行。
-　@waitbutton
-　extend.bkscr : *_glowyobjects
-　@for var=i range=range(size)
-　　@action mode="fadeto" opacity=0 time=500 target=indexes[(i*5+4)]
-　　@next
-　@waitaction index=indexes[4]
-　@for var=i range=range(size)
-　　@remove index=indexes[(i*5+4)] delete=true
-　　@next
-　@returnto label="*c13" file="main"}
-main.bkscr : *c13
-@protagonist text="这里怎么缝隙比别的地方都要大一点？不会是睡眠舱也坏了吧。我先看一下，有问题还是得尽早跟物资组讲一下。"
-{
-　macro.bkscr : *protagonist
-　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
-　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
-　@textspeed interval=50
-　@text text=text
-　@return
-}
-@p
-@textoff
-@jump label=*gj3.2.2cont2
-main.bkscr : *gj3.2.2cont2
-@protagonist text="这里怎么会有个机关？？"
-{
-　macro.bkscr : *protagonist
-　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
-　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
-　@textspeed interval=50
-　@text text=text
-　@return
-}
-@p
-@protagonist text="里面有一个小本子？好像是以前没见过的东西，会是什么呢。"
-{
-　macro.bkscr : *protagonist
-　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
-　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
-　@textspeed interval=50
-　@text text=text
-　@return
-}
-@p
-@textoff
-#f.bump=1
-@jump label=*notebook
-main.bkscr : *notebook
-@glowyobject file1="resources/gj4.1.1.1/notebook" file2="resources/gj4.1.1.1/notebook_glow" label=["*a3","*b3"] labelFile=["main","main"] pos=[121,134]
-{
-　extend.bkscr : *glowyobject
-　#var indexes = [];
-　@idlesp get=indexes num=5
-　#var success = true;
-　#var info1 = %[];
-　#tf.curi=0;
-　@action mode="queue"
-　@sprite index=indexes[0] file=file1
-　@sprite index=indexes[1] file=file2
-　@buttonex index=indexes[4] idle=indexes[0] hover=indexes[1] onclick=["*_glowyend","extend","jump","tf.curi=curi",%["curi"=>i],%["ignore"=>1],]
-　#var info2 = %[]
-　@infoex index=indexes[4] get=info2
-　@addto index=indexes[4] target=basic_layer pos=pos opacity=255
-　@action mode="start" target=basic_layer
-　[警告]无效的参数：创建了一个空的并行或者动作队列，该队列将被无视。
-　　　　当试图执行命令（action）时，该错误处于原文件（extend.bkscr）的第261行。
-　@waitbutton
-　extend.bkscr : *_glowyend
-　@action mode="fadeto" opacity=0 time=500 target=indexes[4]
-　@waitaction index=indexes[4]
-　@remove index=indexes[4] delete=true
-　@returnto label="*a3" file="main"}
-main.bkscr : *a3
-@jump label=*gj4.1.1.1cont
-main.bkscr : *gj4.1.1.1cont
-@pretrans
-@sprite index=101 file="resources/gj4.1.1.1/page1"
-@addto index=101 target=basic_layer opacity=255
-@trans mode="crossfade" time=1000
-@waittrans
-@p
-@pretrans
-@sprite index=101 file="resources/gj4.1.1.1/page2"
-@addto index=101 target=basic_layer opacity=255
-@trans mode="crossfade" time=50
-@waittrans
-@p
-@pretrans
-@sprite index=101 file="resources/gj4.1.1.1/page3"
-@addto index=101 target=basic_layer opacity=255
-@trans mode="crossfade" time=50
-@waittrans
-@p
-@pretrans
-@sprite index=101 file="resources/gj4.1.1.1/page4"
-@addto index=101 target=basic_layer opacity=255
-@trans mode="crossfade" time=50
-@waittrans
-@p
-@pretrans
-@sprite index=101 file="resources/gj4.1.1.1/page5"
-@addto index=101 target=basic_layer opacity=255
-@trans mode="crossfade" time=50
-@waittrans
-@p
-@pretrans
-@sprite index=101 file="resources/gj4.1.1.1/page6"
-@addto index=101 target=basic_layer opacity=255
-@trans mode="crossfade" time=50
-@waittrans
-@p
-@pretrans
-@sprite index=101 file="resources/gj4.1.1.1/page7_2.2"
-@addto index=101 target=basic_layer opacity=255
-@trans mode="crossfade" time=50
-@waittrans
-@protagonist text="所以，打翻试剂瓶不是我在做梦，而是因为在循环所以自动恢复了……"
-{
-　macro.bkscr : *protagonist
-　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
-　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
-　@textspeed interval=50
-　@text text=text
-　@return
-}
-@p
-@protagonist text="这看起来跟研究员的字迹很像，应该就是他的东西。	今天早上他在我的睡眠舱前就是为了拿它？他到底在谋划着什么？我怎么感觉一夜之间什么都不一样了。"
-{
-　macro.bkscr : *protagonist
-　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
-　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
-　@textspeed interval=50
-　@text text=text
-　@return
-}
-@p
-@protagonist text="销毁计划、逆转时间、反抑制实验……"
-{
-　macro.bkscr : *protagonist
-　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
-　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
-　@textspeed interval=50
-　@text text=text
-　@return
-}
-@p
-@protagonist text="虽然依旧有些难以相信，但如果是研究员逆转了时间，那之前一切不寻常的事就都有了合理的解释。"
-{
-　macro.bkscr : *protagonist
-　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
-　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
-　@textspeed interval=50
-　@text text=text
-　@return
-}
-@p
-@protagonist text="研究员的通过重复的时间逆转，将时间“锁”在了12月18日这一天，不断地经历循环；其他的一切都会在新的12月8日到来时被刷新重置，正因如此，就算我打翻了试剂，在新的12月18日到来之时，这瓶试剂也会被重置成12月18日零点时的状态——正常地被放置在实验台上，里面的试剂一滴不少；"
-{
-　macro.bkscr : *protagonist
-　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
-　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
-　@textspeed interval=50
-　@text text=text
-　@return
-}
-@p
-@protagonist text="而我和这本笔记，则凭借改造后的睡眠舱穿梭时间，对我和笔记而言，我们不会被刷新重置，时间一直是正常前进的，因此，我们算是这一次次的循环的“见证者”。但意识的穿梭比物质的穿梭更为复杂，在拥有自我意识之前，虽然我的身体和笔记本一样，在每一次时间被逆转为12月18日时并没有被刷新重置，但因为我没有自我意识，原有的那些所谓的“思维”更像是一种人工智能"
-{
-　macro.bkscr : *protagonist
-　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
-　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
-　@textspeed interval=50
-　@text text=text
-　@return
-}
-@p
-@protagonist text="所以，我和笔记本一样，虽然确确实实经历了时间的逆转，但因为没有“意识”，便无法感知“循环”的过程"
-{
-　macro.bkscr : *protagonist
-　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
-　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
-　@textspeed interval=50
-　@text text=text
-　@return
-}
-@p
-@protagonist text="直到那天，我突然“醒”了过来，有了自己的思考，有了自我意识，因此我才发现，我在不断地重复经历着12月18日……"
-{
-　macro.bkscr : *protagonist
-　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
-　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
-　@textspeed interval=50
-　@text text=text
-　@return
-}
-@p
-@textoff
-@select text=["不要打草惊蛇，先把本子放回去，明天有机会问一下","这里一定有什么阴谋，我先把它藏起来"] label=["*gj4.1.2","*gj4.2.2"] labelFile=["main","main"]
-{
-　extend.bkscr : *select
-　#var size = label.size;
-　#var indexes = [];
-　@idlesp get=indexes num=size*5
-　#var success = true;
-　#var info1 = %[];
-　@info file="ui/selectionbutton" get=info1
-　#var zorder;
-　@zorder index=message_layer get=zorder
-　#tf.curi=0;
-　@action mode="queue"
-　@for var=i range=range(size)
-　　@sprite index=indexes[(i*5)] file="ui/selectionbutton"
-　　@sprite index=indexes[(i*5+1)] file="ui/selectionbutton_on"
-　　@textsprite index=indexes[(i*5+2)] text=text[i] color=0
-　　@anchor index=indexes[(i*5+2)] set="center"
-　　@textsprite index=indexes[(i*5+3)] text=text[i] color=0
-　　@anchor index=indexes[(i*5+3)] set="center"
-　　@addto index=indexes[(i*5+2)] target=indexes[(i*5)] pos=[info1.width/2,info1.height/2,]
-　　@addto index=indexes[(i*5+3)] target=indexes[(i*5+1)] pos=[info1.width/2,info1.height/2+2,]
-　　@buttonex index=indexes[(i*5+4)] idle=indexes[(i*5)] hover=indexes[(i*5+1)] onclick=["*_selectend","extend","jump","tf.curi=curi",%["curi"=>i],%["ignore"=>1],]
-　　#var info2 = %[]
-　　@infoex index=indexes[(i*5+4)] get=info2
-　　#var winsize = System.resolutionSize;
-　　#var w = ( winsize[0] - info2.width ) / 2;
-　　#var h = ( winsize[1] - info2.height * size - ( size-1 ) * 50 ) / 2;
-　　@addto index=indexes[(i*5+4)] target=basic_layer zorder=zorder pos=[w,h+i*(50+info2.height),] opacity=0
-　　@action mode="fadeto" opacity=255 time=400 target=indexes[(i*5+4)]
-　　@next
-　@action mode="start" target=basic_layer
-　@waitbutton
-　extend.bkscr : *_selectend
-　@for var=i range=range(size)
-　　@action mode="fadeto" opacity=0 time=500 target=indexes[(i*5+4)]
-　　@next
-　@waitaction index=indexes[4]
-　@for var=i range=range(size)
-　　@remove index=indexes[(i*5+4)] delete=true
-　　@next
-　@returnto label="*gj4.1.2" file="main"}
-main.bkscr : *gj4.1.2
-@textoff
-@se file="resources/gj4.1.2/close.wav" channel=1 loop=false
-@p
 @pretrans
 @sprite index=102 file="ui/bg/allblack"
 @addto index=102 target=basic_layer opacity=255
 @trans mode="crossfade" time=1000
 @waittrans
-@voice file="resources/gj4.1.2/lcy1.wav" vol=100
-@protagonist text="销毁计划、逆转时间、反抑制实验……"
-{
-　macro.bkscr : *protagonist
-　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
-　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
-　@textspeed interval=50
-　@text text=text
-　@return
-}
 @p
-@voice file="resources/gj4.1.2/lcy2.wav" vol=100
-@protagonist text="虽然依旧有些难以相信，但如果是研究员逆转了时间，那之前一切不寻常的事就都有了合理的解释。"
-{
-　macro.bkscr : *protagonist
-　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
-　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
-　@textspeed interval=50
-　@text text=text
-　@return
-}
-@p
-@voice file="resources/gj4.1.2/lcy3.wav" vol=100
-@protagonist text="研究员通过重复的时间逆转，将时间“锁”在了12月18日这一天，不断地经历循环；其他的一切都会在新的12月8日到来时被刷新重置，正因如此，就算我放掉了催眠气体，在新的12月18日到来之时，它也会被重置成12月18日零点时应有的气体储量"
-{
-　macro.bkscr : *protagonist
-　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
-　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
-　@textspeed interval=50
-　@text text=text
-　@return
-}
-@p
-@voice file="resources/gj4.1.2/lcy4.wav" vol=100
-@protagonist text="而我和这本笔记，则凭借改造后的睡眠舱穿梭时间，对我和笔记而言，我们不会被刷新重置，时间一直是正常前进的，因此，我们算是这一次次的循环的“见证者”。但意识的穿梭比物质的穿梭更为复杂，在拥有自我意识之前，虽然我的身体和笔记本一样，在每一次时间被逆转为12月18日时并没有被刷新重置，但因为我没有自我意识，原有的那些所谓的“思维”更像是一种人工智能"
-{
-　macro.bkscr : *protagonist
-　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
-　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
-　@textspeed interval=50
-　@text text=text
-　@return
-}
-@p
-@voice file="resources/gj4.1.2/lcy5.wav" vol=100
-@protagonist text="所以，我和笔记本一样，虽然确确实实经历了时间的逆转，但因为没有“意识”，便无法感知“循环”的过程。"
-{
-　macro.bkscr : *protagonist
-　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
-　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
-　@textspeed interval=50
-　@text text=text
-　@return
-}
-@p
-@voice file="resources/gj4.1.2/lcy6.wav" vol=100
-@protagonist text="直到那天，我突然“醒”了过来，有了自己的思考，有了自我意识，因此我才发现，我在不断地重复经历着12月18日……"
+@protagonist text="成功进入睡眠舱了。"
 {
 　macro.bkscr : *protagonist
 　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
@@ -573,10 +136,7 @@ main.bkscr : *gj4.1.2
 }
 @p
 @textoff
-@se file="resources/gj4.1.2/wakeup.wav" channel=1 loop=false
-@p
-@voice file="resources/gj4.1.2/lcy7.wav" vol=100
-@protagonist text="糟糕！翻阅笔记本耗费了太多时间……"
+@protagonist text="上锁了。这辆车的货物应该已经装齐了。"
 {
 　macro.bkscr : *protagonist
 　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
@@ -586,15 +146,7 @@ main.bkscr : *gj4.1.2
 　@return
 }
 @p
-@se file="resources/gj4.1.2/getup.wav" channel=1 loop=false
-@p
-@pretrans
-@sprite index=101 file="resources/gj4.1.1.1/doctor"
-@addto index=101 target=basic_layer opacity=255
-@trans mode="crossfade" time=1000
-@waittrans
-@voice file="resources/gj4.1.2/lcy8.wav" vol=100
-@protagonist text="但他并没有下一步的动作，只是看起来，像是确信了什么东西……"
+@protagonist text="睡眠舱内部的开关在……"
 {
 　macro.bkscr : *protagonist
 　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
@@ -604,8 +156,7 @@ main.bkscr : *gj4.1.2
 　@return
 }
 @p
-@voice file="resources/gj4.1.2/lcy9.wav" vol=100
-@figurant text="真的是你……你是什么时候恢复自我意识的？"
+@figurant text="三号车装货完成。"
 {
 　macro.bkscr : *figurant
 　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
@@ -615,3 +166,354 @@ main.bkscr : *gj4.1.2
 　@return
 }
 @p
+@figurant text="听说……总负责还没出来？"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@figurant text="哦，你说Phantom吗？听说是有点事没处理完，去了趟办公室。不过应该快了吧。"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@figurant text="这样啊……我……"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@protagonist text="这是……爆炸声？发生了什么？！"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="明明要等所有人和物资都撤离之后，爆破组才会开始爆破行动啊？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@figurant text="什么情况？行动不是还没开始吗？"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@figurant text="这爆炸声是不是从办公区传来的啊！"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@figurant text="欸？这……总负责不是还在办公区吗？！"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@figurant text="你听错了吧！那个方向也是实验区啊！实验区炸药布置量这么大，声音传出来又不奇怪。"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@figurant text="那也不对啊！实验区哪能现在就炸啊？"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@figurant text="都安静！既然爆破组那边有行动了，我们这里就加快速度！五号车！装完没有！"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@figurant text="好了！装货都装完了吧！上车！一二四五号车按车号顺序先走，我们三号车殿后！"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@figurant text="这么快？"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@figurant text="上面说了，我们先撤离！都给我快点！"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@protagonist text="到底发生了什么？怎么跟计划的行动相差了这么多？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="但现在下车，只会被撞个正着……只能先跟着运输车出去了。"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@figurant text="诶！三车的！听说了吗！刚刚那爆炸声，就是办公区的！"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@figurant text="怎么回事？那总负责呢！"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@figurant text="总负责啊！好像是跟一个研究员一起在办公室里被炸死了！好像啊，是那个研究员把炸药带进去的！"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@figurant text="什么？！"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@figurant text="5号车的给我闭嘴！刻意掉队就是为了聊天的吗！给我回去！你也是，专心开你的车！"
+{
+　macro.bkscr : *figurant
+　@textwindow file="ui/messagebox2" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=0
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@protagonist text="那人刚刚……说什么？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="被……炸死？是研究员带的炸药……？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="所以……研究员当时在办公室里，是准备和总负责人，那位不知道什么来历的Phantom……同归于尽？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="所以他之前说要为我起名，但在昨天又说不可能再见面……"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="他根本……就没准备活着离开……"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@pretrans
+@sprite index=101 file="resources/gj6.1.1.2.1/sight"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@waittrans
+@p
+@pretrans
+@sprite index=101 file="resources/gj6.1.1.2.1/sight_still"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@waittrans
+@protagonist text="这就是……基地以外的世界吗？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@protagonist text="比基地里更广阔的天地……可我又该，何去何从呢？"
+{
+　macro.bkscr : *protagonist
+　@textwindow file="ui/messagebox" pos=[0, 0] rect=[118, 505, 1008, 231] xinterval=3
+　@textstyle name="ui/fonts/NotoSansCJK-Medium-5.otf" size=20 color=16777215
+　@textspeed interval=50
+　@text text=text
+　@return
+}
+@p
+@textoff
+@pretrans
+@sprite index=102 file="ui/bg/allblack"
+@addto index=102 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@waittrans
+@p
+@pretrans
+@sprite index=101 file="resources/gj6.1.1.2.1/end1"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@waittrans
+@p
+@pretrans
+@sprite index=101 file="resources/gj6.1.1.2.1/end2"
+@addto index=101 target=basic_layer opacity=255
+@trans mode="crossfade" time=1000
+@waittrans
+@jump label=*ending
+main.bkscr : *ending
+@textwindow color=0 pos=[360, 350] rect=[5, 5, 600, 200] xinterval=3
+@textstyle size=20 color=16777215
+精妙绝伦的剧本：高雨婕
+@r
+主角、研究员、boss、保安、工人、不重要的配角们：楼晨阳
+@r
+音效、背景音乐、声音处理：何墨琪
+@r
+非电子女声、音效、背景音乐、声音处理：诸炳帆
+@r
+代码、UI、图片、交互：孙文欣
+@p
+@white_in_middle text="更多剧情请见完整版"
+{
+　macro.bkscr : *white_in_middle
+　@textwindow color=0 pos=[360, 350] rect=[5, 5, 600, 200] xinterval=3
+　@textstyle size=20 color=16777215
+　@text text=text
+　@return
+}
+@p
+@white_in_middle text="嘻嘻"
+{
+　macro.bkscr : *white_in_middle
+　@textwindow color=0 pos=[360, 350] rect=[5, 5, 600, 200] xinterval=3
+　@textstyle size=20 color=16777215
+　@text text=text
+　@return
+}
+@p
+@quit
+【错误】脚本文件执行到末端。
+　　　　该错误处于原文件（main.bkscr）的第1985行。
