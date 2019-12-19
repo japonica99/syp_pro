@@ -1761,7 +1761,6 @@ deadcode[p]
 [voice file="resources/gj6.1.1.2/lcy4.wav" vol=100]
 [protagonist text="声音似乎是前面不远处传来的……"][p][textoff]
 [se file="resources/gj6.1.1.2/fastersteps.wav" channel=1 loop=false][p]
-*enter
 @pretrans
 @sprite index=101 file='resources/gj6.1.1.2/door'
 @addto index=101 target=basic_layer opacity=255 
@@ -2006,11 +2005,134 @@ deadcode[p]
 @addto index=102 target=basic_layer opacity=255 
 @trans mode="crossfade" time=1000
 @waittrans
-//[se file="resources/gj6.1.1.2.2/scrub.wav" channel=1 loop=false]
+//[se file="resources/gj6.1.1.2.2/scrub.wav" channel=1 loop=false][p]
 [p]
 //[voice file="resources/gj6.1.1.2.2/lcy10.wav" vol=100]
 [protagonist text="到了。"][p]
 [textoff]
+*enter
+@pretrans
+@sprite index=102 file='resources/gj5.1.2/see'
+@addto index=102 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+@waittrans
+//[voice file="resources/gj6.1.1.2.2/lcy11.wav" vol=100]
+[phantom text="我不认识你，但我相信你说的都是实话。确实，我的记忆是从十五年前开始的，按照你的说法，我应该是从爆炸中死里逃生，代价是毁容和失去记忆。要推断出你想杀我的原因也很容易——虽然我的脸已经面目全非，但我们的身形轮廓非常相似，说话时的一些语气习惯也很相近；我想，我们应该本来就是同一个人吧"][p]
+//[voice file="resources/gj6.1.1.2.2/lcy12.wav" vol=100]
+[phantom text="你要杀我，是因为你怕我取代你的位置。这个世界上只能有一个你，或者说，只能有一个我，所以你制造了一场爆炸，试图将我“销毁”。至于为什么这世上会多出一个你……结合你所说的实验，要么是你克隆了一个自己——但克隆体的年龄不会与本体几乎一样，所以排除；要么，就是你在做类似时间旅行的实验，并且不小心让自己进入了平行世界，和平行世界里的你，或者说我，相遇了。"][p]
+//[voice file="resources/gj6.1.1.2.2/lcy13.wav" vol=100]
+[phantom text="呵，看样子，后者确实和真相八九不离十。很意外么？我会这么轻易地推断出真相，不就是因为我们是一样的么？（放低声音）可是你想过没有，凭什么是我被销毁？为什么不能是我杀了你呢？你当年是哪里来的自信，认为我才是应该被销毁的那个人？你是实验的执行者，是你进行了时间旅行，你才是那个外来者，是那个应该消失在这个世界上的人，不是么？"][p]
+//[voice file="resources/gj6.1.1.2.2/lcy14.wav" vol=100]
+[figurant text="……我们曾经确实是一样的，这个销毁计划已经证明了这一点。十五年前，是我对你的销毁，十五年后，是你对上百试验品的销毁。但现在，我们不是一类人。十五年前，谁应该消失在这个世界上，确实无法判断；但十五年后，从现在来看，是我比你更适合留在这个世界上。"][p]
+//[voice file="resources/gj6.1.1.2.2/lcy15.wav" vol=100]
+[figurant text="曾经的我为了研究，可以几乎不惜一切代价；曾经的我认为亲情、友情、爱情，一切人类的情感都是没有意义的，可以随意舍弃的。但后来我发现我错了——人之所以为人，就是因为本能中有着对情感羁绊的追求。人类是社会性动物，这是人的弱点，却也是人类力量的来源。"][p]
+//[voice file="resources/gj6.1.1.2.2/lcy16.wav" vol=100]
+[figurant text="我能想通这一点，也多亏了你组织的这项试验。DS组的试验品本应只有人类的想象力、决策力等对作战有用的思维能力，不应该有人类其他的，和情感、自我有关的东西。但我接手了我所负责的试验品的培养任务之后，我发现他虽然确实没有对自我的认知，但他有着人类对亲情的本能渴望。他在没有自我意识的时候，就已经把我当成了父亲。尽管这种对亲情的认知，几乎没有表露出来，但我还是感受到了，并且我对此也产生了情感共鸣——我也将他当成了自己的亲人"][p]
+//[voice file="resources/gj6.1.1.2.2/lcy17.wav" vol=100]
+[figurant text="对冷漠到无视人情甚至伦理道德的你来说，是不是非常地难以理解？但是事实就是如此，和你有着同样的DNA，在性格上原本一模一样的我，对一个算不上多么优秀的试验品产生了所谓的“亲情”。"][p]
+//[voice file="resources/gj6.1.1.2.2/lcy18.wav" vol=100]
+[figurant text="其实人的那些高于其他物种、高于人工智能的智慧，和人类的情感模块是息息相关的。你不可能完全地剥离人的情感、人的自我。你制造的这些试验品，有着人类的智慧；而他们的本能中，也有着人类应有的情感与自我认知。你制造的其实就是真正的人，而你剥夺了他们成为一个正常的人的权利。凭什么同样是人，我们可以遵从自己的意志选择自己要做的事， 我们可以保留自己的隐私，而他们，却要从出生开始，就被严密监控，要经历无数的人体实验，最后因为没有了“研究价值”而被随意地丢弃，和物品一样地被“销毁”？"][p]
+//[voice file="resources/gj6.1.1.2.2/lcy19.wav" vol=100]
+[phantom text="你又有什么立场和资格来指责我呢？别忘了，你曾经想要销毁和你一模一样的我！试验品的所谓“生命”，本就是我赋予的，他们就是为了研究而生的，为什么需要站在他们的立场上考虑？"][p]
+//[voice file="resources/gj6.1.1.2.2/lcy20.wav" vol=100]
+[phantom text="他们根本就没有立场。更何况，我压制了他们的情感，抹除了他们的自我认知，是为了让他们能更冷静地作出决定，让他们的决策可以不被感情和其他无关紧要的因素左右。这些会影响决策的因素，都是阻碍了人类进化的落后产物。你也一样——原本我以为，这世上有另外一个我，那么我的实验将能得到更快的发展；现在看来并不是如此，这所谓的另一个我，只是个被无用的情感蒙蔽了理性思考的废物。"][p]
+//[voice file="resources/gj6.1.1.2.2/lcy21.wav" vol=100]
+[figurant text="你说情感和自我认知，都是阻碍人类进化的负面因素……但人类之所以能进化为人，从猿类祖先中脱颖而出，走出那片非洲大陆，就是依靠着你所说的这些负面的，落后的东西。人类在最初借助情感联系构成社会，通过合作，才获得了更为强大的力量，以脆弱的血肉之躯抗衡天地自然；而正是因为人类有了对自我的深度思考，才有了文明的诞生，有了科技和文化，也才有了你开展这个项目的基础。"][p]
+//[voice file="resources/gj6.1.1.2.2/lcy22.wav" vol=100]
+[figurant text="你对伦理道德的无视和对人情的冷漠，注定了你将被这世界淘汰的命运。但你能在这里兴风作浪，我也有责任。我会和你同归于尽，结束这荒诞的一切。"][p]
+//[voice file="resources/gj6.1.1.2.2/lcy23.wav" vol=100]
+[figurant text="我找爆破组的人要了足以炸毁这片办公区的炸药绑在身上，遥控器就在我的手里。只要你有任何异动，我就会按下遥控器的开关。"][p]
+//[voice file="resources/gj6.1.1.2.2/lcy24.wav" vol=100]
+[phantom text="呵……你都已经知道，我们现在不是一类人了，你怎么就那么肯定，一定可以把我留在这片办公区，等着被你炸死呢？"][p]
+//[voice file="resources/gj6.1.1.2.2/lcy25.wav" vol=100]
+[figurant text="难道你……！"][p]
+//[voice file="resources/gj6.1.1.2.2/lcy27.wav" vol=100]
+[protagonist text="研究员是准备和这人同归于尽吗！怪不得他之前说要为我起名，但在昨天又说不可能再见面……他根本就没准备活着离开这里！"][p]
+//[voice file="resources/gj6.1.1.2.2/lcy28.wav" vol=100]
+[protagonist text="听那人的意思，研究员的这个行动，似乎也不是万无一失的，研究员以命换命失败了……"][p]
+//[voice file="resources/gj6.1.1.2.2/lcy29.wav" vol=100]
+[protagonist text="不！虽然还不知道他们之间发生了什么，但既然我都已经想好了，要放弃之前的撤离方案来帮助研究员，又怎么能看着研究员自杀！"][p]
+//[voice file="resources/gj6.1.1.2.2/lcy30.wav" vol=100]
+[protagonist text="那人正好站在通风口的下方……只要我能下去将他制服，就可以避免研究员与他同归于尽了！"][p]
+//[voice file="resources/gj6.1.1.2.2/lcy31.wav" vol=100]
+[protagonist text="3、2、1！"][p][textoff]
+//[se file="resources/gj6.1.1.2.2/ontheground.wav" channel=1 loop=false][p]
+@pretrans
+@sprite index=102 file='resources/gj6.1.1.2.2/mess'
+@addto index=102 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+@waittrans
+//[se file="resources/gj6.1.1.2.2/beat.wav" channel=1 loop=false]
+[p]
+@pretrans
+@sprite index=102 file='resources/gj6.1.1.2.2/office'
+@addto index=102 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+@waittrans
+//[voice file="resources/gj6.1.1.2.2/lcy32.wav" vol=100]
+[protagonist text="怎么回事！竟然没能第一时间制服他？！他的反应速度和身体强度都异于常人……他也是实验体吗？！"][p]
+//[voice file="resources/gj6.1.1.2.2/lcy33.wav" vol=100]
+[protagonist text="不行！他对这办公室的环境更加熟悉，这点不仅弥补了他在身体强度上的劣势，还会使得他在正面搏斗中占据主动，这么拖下去对我不利！"][p]
+//[voice file="resources/gj6.1.1.2.2/lcy34.wav" vol=100]
+[protagonist text="必须尽快思考出应对方案！"][p][textoff]
+[glowyobjects file1=["resources/gj6.1.1.2.2/display","resources/gj6.1.1.2.2/floor","resources/gj6.1.1.2.2/dagger","resources/gj6.1.1.2.2/electronic"] file2=["resources/gj6.1.1.2.2/display_glow","resources/gj6.1.1.2.2/floor_glow","resources/gj6.1.1.2.2/dagger_glow","resources/gj6.1.1.2.2/electronic_glow"] label=["*a14","*b14","*c14","*d13"] labelFile=["main","main","main","main"] pos=[[1,170],[160,678],[941,529],[513,382]]]
+*a14
+[jump label="*gj7.1.1"]
+*b14
+[jump label="*gj7.1.2"]
+*c14
+[jump label="*gj7.1.3"]
+*d14
+[jump label="*gj7.1.4"]
+*gj7.1.1
+//[voice file="resources/gj7.1.1/lcy1.wav" vol=100]
+[protagonist text="那边的陈列柜里有一把手枪！利用手枪的话，或许就能占据主动了！"][p][textoff]
+@pretrans
+@sprite index=102 file='resources/gj7.1.1/mess'
+@addto index=102 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+@waittrans
+//[se file="resources/gj7.1.1/grabgun.wav" channel=1 loop=false][p]
+//[voice file="resources/gj7.1.1/lcy2.wav" vol=100]
+[protagonist text="不许动！"][p][textoff]
+@pretrans
+@sprite index=102 file='resources/gj7.1.1/display'
+@addto index=102 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+@waittrans
+//[voice file="resources/gj7.1.1/lcy3.wav" vol=100]
+[phantom text="呵……他之前提到，自己负责的试验品在还“没有自我意识的时候”就把他当成了父亲，这也就意味着，他所负责的试验品，现在产生了自我意识……你就是他负责的试验品吧？你应该……不是一个优秀的试验品吧？你难道不知道，在自己所不熟悉的环境里，要保持谦逊，不要想当然吗？"][p][textoff]
+//[se file="resources/gj7.1.1/run.wav" channel=1 loop=false][p]
+//[voice file="resources/gj7.1.1/lcy4.wav" vol=100]
+[protagonist text="什么？"][p][textoff]
+//[se file="resources/gj7.1.1/nobullet.wav" channel=1 loop=false][p]
+//[voice file="resources/gj7.1.1/lcy5.wav" vol=100]
+[protagonist text="这枪里……没有子弹？！"][p]
+//[voice file="resources/gj7.1.1/lcy6.wav" vol=100]
+[protagonist text="明白了吗，年轻人？"][p][textoff]
+//[se file="resources/gj7.1.1/neck.wav" channel=1 loop=false][p]
+@pretrans
+@sprite index=102 file='ui/bg/allblack'
+@addto index=102 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+@waittrans
+[p]
+@pretrans
+@sprite index=102 file='resources/gj7.1.1/end1'
+@addto index=102 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+@waittrans
+[p]
+@pretrans
+@sprite index=102 file='resources/gj7.1.1/end2'
+@addto index=102 target=basic_layer opacity=255 
+@trans mode="crossfade" time=1000
+@waittrans
+[p]
+[jump "*ending"]
+*gj7.1.2
+*gj7.1.3
+*gj7.1.4
 [p]
 @quit
 
@@ -2022,6 +2144,6 @@ deadcode[p]
 音效、背景音乐、声音处理：何墨琪[r]
 非电子女声、音效、背景音乐、声音处理：诸炳帆[r]
 代码、UI、图片、交互：孙文欣[p]
-[white_in_middle text="更多剧情请见完整版"][p]
+[white_in_middle text="感谢运行完整版"][p]
 [white_in_middle text="嘻嘻"][p]
 @quit
