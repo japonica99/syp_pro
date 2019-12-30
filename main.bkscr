@@ -1185,7 +1185,21 @@ supposed to be dead code[p]
 @waittrans
 [jump "*gj5.1"]
 *gj4.2.1
+@pretrans
+@sprite index=101 file='ui/feng'
+@addto index=101 target=basic_layer opacity=255 
+@remove index=102
+@waittrans
+[p]
+[jump label="*ending"]
 *gj4.2.2
+@pretrans
+@sprite index=101 file='ui/feng'
+@addto index=101 target=basic_layer opacity=255 
+@remove index=102
+@waittrans
+[p]
+[jump label="*ending"]
 *gj5.1
 [se file="resources/gj4.1.2/didi.wav" channel=1 loop=false][p]
 @pretrans
@@ -2131,8 +2145,29 @@ deadcode[p]
 [p]
 [jump "*ending"]
 *gj7.1.2
+@pretrans
+@sprite index=101 file='ui/feng'
+@addto index=101 target=basic_layer opacity=255 
+@remove index=102
+@waittrans
+[p]
+[jump label="*ending"]
 *gj7.1.3
+@pretrans
+@sprite index=101 file='ui/feng'
+@addto index=101 target=basic_layer opacity=255 
+@remove index=102
+@waittrans
+[p]
+[jump label="*ending"]
 *gj7.1.4
+@pretrans
+@sprite index=101 file='ui/feng'
+@addto index=101 target=basic_layer opacity=255 
+@remove index=102
+@waittrans
+[p]
+[jump label="*ending"]
 [p]
 @quit
 
@@ -2145,5 +2180,6 @@ deadcode[p]
 非电子女声、音效、背景音乐、声音处理：诸炳帆[r]
 代码、UI、图片、交互：孙文欣[p]
 [white_in_middle text="感谢运行完整版"][p]
-[white_in_middle text="嘻嘻"][p]
+[white_in_middle text="嘻嘻"]
+[p]
 @quit
