@@ -1,7 +1,7 @@
 ﻿*main
 @call '*init' 'init'
 [jump label="*enter"]
-//*enter
+*enter
 [white_in_middle text="数字视音频音乐制作 请戴好耳机"]
 [p]
 [white_in_middle text="......"]
@@ -2024,7 +2024,6 @@ deadcode[p]
 //[voice file="resources/gj6.1.1.2.2/lcy10.wav" vol=100]
 [protagonist text="到了。"][p]
 [textoff]
-*enter
 @pretrans
 @sprite index=102 file='resources/gj5.1.2/see'
 @addto index=102 target=basic_layer opacity=255 
