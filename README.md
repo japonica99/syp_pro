@@ -1,4 +1,2 @@
 # syp_pro
-in case of accident
-interactive game using BKEngine
-KAG(maybe
+数字视音频音乐部分 基于BKEngine的音乐互动游戏 目前完结有NE线路
